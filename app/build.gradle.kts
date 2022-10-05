@@ -47,11 +47,16 @@ android {
     buildFeatures {
         viewBinding = true
     }
+
+    lint {
+        disable.add("GradleDependency")
+    }
 }
 
 dependencies {
 
     implementation(project(":feature:animal"))
+    implementation(project(":feature:discussion"))
     implementation(project(":core:common"))
 
     implementation("androidx.core:core-ktx:1.8.0")

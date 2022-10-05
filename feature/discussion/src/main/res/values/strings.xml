@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- fragment_login -->
+    <string name="phone_number">Phone Number</string>
+    <string name="send">Send</string>
+    <string name="verification_code">Verification Code</string>
+    <string name="verify">Verify</string>
+
+    <!-- fragment_home -->
+    <string name="sign_out">Sign Out</string>
+</resources>
