@@ -1,4 +1,4 @@
-package com.erbeandroid.petfinder.feature.discussion.home
+package com.erbeandroid.petfinder
 
 import androidx.lifecycle.ViewModel
 import com.erbeandroid.petfinder.core.firebase.user.FirebaseUserManager
@@ -6,7 +6,7 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
 @HiltViewModel
-class HomeViewModel @Inject constructor(
+class MainViewModel @Inject constructor(
     private val firebaseUserManager: FirebaseUserManager
 ) : ViewModel() {
 

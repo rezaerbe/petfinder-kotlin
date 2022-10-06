@@ -1,4 +1,4 @@
-package com.erbeandroid.petfinder.feature.discussion.common
+package com.erbeandroid.petfinder.core.common.util
 
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleOwner

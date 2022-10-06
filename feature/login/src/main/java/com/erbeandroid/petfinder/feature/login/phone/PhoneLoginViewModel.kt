@@ -1,4 +1,4 @@
-package com.erbeandroid.petfinder.feature.discussion.login
+package com.erbeandroid.petfinder.feature.login.phone
 
 import androidx.lifecycle.ViewModel
 import com.erbeandroid.petfinder.core.firebase.authentication.PhoneLoginManager
@@ -7,7 +7,7 @@ import kotlinx.coroutines.flow.StateFlow
 import javax.inject.Inject
 
 @HiltViewModel
-class LoginViewModel @Inject constructor(
+class PhoneLoginViewModel @Inject constructor(
     private val phoneLoginManager: PhoneLoginManager
 ) : ViewModel() {
 

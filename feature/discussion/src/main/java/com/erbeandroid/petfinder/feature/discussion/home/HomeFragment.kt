@@ -6,7 +6,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.navigation.fragment.findNavController
 import com.erbeandroid.petfinder.feature.discussion.databinding.FragmentHomeBinding
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -17,15 +16,6 @@ class HomeFragment : Fragment() {
     private val binding get() = _binding!!
 
     private val homeViewModel: HomeViewModel by viewModels()
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        if (homeViewModel.currentUser() == null) {
-            findNavController().navigate(
-                HomeFragmentDirections.actionHomeFragmentToPhoneLoginFragment()
-            )
-        }
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -39,12 +29,6 @@ class HomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.user.text = homeViewModel.currentUser()
-        binding.signOut.setOnClickListener {
-            homeViewModel.signOut()
-            findNavController().navigate(
-                HomeFragmentDirections.actionHomeFragmentToPhoneLoginFragment()
-            )
-        }
     }
 
     override fun onDestroyView() {

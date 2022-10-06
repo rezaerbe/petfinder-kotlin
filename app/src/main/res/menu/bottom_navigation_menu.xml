@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/animal_navigation"
+        android:enabled="true"
+        android:icon="@drawable/ic_home"
+        android:title="@string/animal" />
+
+    <item
+        android:id="@+id/discussion_navigation"
+        android:enabled="true"
+        android:icon="@drawable/ic_home"
+        android:title="@string/discussion" />
+
+</menu>

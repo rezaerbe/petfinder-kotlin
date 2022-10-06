@@ -8,8 +8,8 @@ import android.view.ViewGroup
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import com.erbeandroid.petfinder.feature.animal.common.StateData
-import com.erbeandroid.petfinder.feature.animal.common.launchAndCollectIn
+import com.erbeandroid.petfinder.core.common.util.StateData
+import com.erbeandroid.petfinder.core.common.util.launchAndCollectIn
 import com.erbeandroid.petfinder.feature.animal.databinding.FragmentDetailBinding
 import dagger.hilt.android.AndroidEntryPoint
 

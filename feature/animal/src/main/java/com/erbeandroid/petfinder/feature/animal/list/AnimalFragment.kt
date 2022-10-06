@@ -10,7 +10,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.paging.LoadState
-import com.erbeandroid.petfinder.feature.animal.common.launchAndCollectIn
+import com.erbeandroid.petfinder.core.common.util.launchAndCollectIn
 import com.erbeandroid.petfinder.feature.animal.databinding.FragmentAnimalBinding
 import dagger.hilt.android.AndroidEntryPoint
 

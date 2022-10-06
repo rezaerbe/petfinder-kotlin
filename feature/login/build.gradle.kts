@@ -7,7 +7,7 @@ plugins {
 }
 
 android {
-    namespace = "com.erbeandroid.petfinder.feature.animal"
+    namespace = "com.erbeandroid.petfinder.feature.login"
     compileSdk = 32
 
     defaultConfig {
@@ -22,7 +22,7 @@ android {
 
 dependencies {
 
-    implementation(project(":core:data"))
+    implementation(project(":core:firebase"))
     implementation(project(":core:common"))
 
     implementation("androidx.appcompat:appcompat:1.5.1")
@@ -33,10 +33,6 @@ dependencies {
 
     implementation("androidx.navigation:navigation-fragment-ktx:2.5.2")
     implementation("androidx.navigation:navigation-ui-ktx:2.5.2")
-
-    implementation("androidx.swiperefreshlayout:swiperefreshlayout:1.1.0")
-
-    implementation("androidx.paging:paging-runtime:3.1.1")
 
     implementation("com.google.dagger:hilt-android:2.43.2")
     kapt("com.google.dagger:hilt-android-compiler:2.43.2")

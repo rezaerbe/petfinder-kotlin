@@ -9,4 +9,8 @@
     <string name="google_crash_reporting_api_key" translatable="false">AIzaSyAnhStaQikw3KiDPHrQV7McRhGszL8wXPs</string>
     <string name="google_storage_bucket" translatable="false">petfinder-erbe.appspot.com</string>
     <string name="project_id" translatable="false">petfinder-erbe</string>
+
+    <!-- bottom_navigation_menu -->
+    <string name="animal">Animal</string>
+    <string name="discussion">Discussion</string>
 </resources>

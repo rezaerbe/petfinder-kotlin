@@ -55,8 +55,11 @@ android {
 
 dependencies {
 
+    implementation(project(":feature:login"))
     implementation(project(":feature:animal"))
     implementation(project(":feature:discussion"))
+
+    implementation(project(":core:firebase"))
     implementation(project(":core:common"))
 
     implementation("androidx.core:core-ktx:1.8.0")

@@ -1,4 +1,4 @@
-package com.erbeandroid.petfinder.feature.animal.common
+package com.erbeandroid.petfinder.core.common.util
 
 sealed interface StateData<out T> {
     data class Success<T>(val data: T) : StateData<T>

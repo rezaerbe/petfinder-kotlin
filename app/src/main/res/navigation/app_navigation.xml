@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/app_navigation"
+    app:startDestination="@id/main">
+
+    <navigation
+        android:id="@+id/login"
+        app:startDestination="@id/login_navigation">
+
+        <include app:graph="@navigation/login_navigation" />
+
+        <action
+            android:id="@+id/action_global_navigation_login_to_main"
+            app:destination="@id/main"
+            app:popUpTo="@id/login"
+            app:popUpToInclusive="true" />
+
+    </navigation>
+
+    <navigation
+        android:id="@+id/main"
+        app:startDestination="@id/main_navigation">
+
+        <include app:graph="@navigation/main_navigation" />
+
+        <action
+            android:id="@+id/action_global_navigation_main_to_login"
+            app:destination="@id/login"
+            app:popUpTo="@id/main"
+            app:popUpToInclusive="true" />
+
+    </navigation>
+
+</navigation>

@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/typeFragment"
         android:name="com.erbeandroid.petfinder.feature.animal.type.TypeFragment"
-        android:label="fragment_type"
+        android:label="Type"
         tools:layout="@layout/fragment_type">
 
         <action
@@ -20,7 +20,7 @@
     <fragment
         android:id="@+id/breedFragment"
         android:name="com.erbeandroid.petfinder.feature.animal.breed.BreedFragment"
-        android:label="fragment_breed"
+        android:label="Breed"
         tools:layout="@layout/fragment_breed">
 
         <argument
@@ -36,7 +36,7 @@
     <fragment
         android:id="@+id/animalFragment"
         android:name="com.erbeandroid.petfinder.feature.animal.list.AnimalFragment"
-        android:label="fragment_animal"
+        android:label="Animal"
         tools:layout="@layout/fragment_animal">
 
         <argument
@@ -56,7 +56,7 @@
     <fragment
         android:id="@+id/detailFragment"
         android:name="com.erbeandroid.petfinder.feature.animal.detail.DetailFragment"
-        android:label="fragment_detail"
+        android:label="Detail"
         tools:layout="@layout/fragment_detail">
 
         <argument
