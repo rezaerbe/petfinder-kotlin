@@ -9,6 +9,18 @@
         android:id="@+id/phoneLoginFragment"
         android:name="com.erbeandroid.petfinder.feature.login.phone.PhoneLoginFragment"
         android:label="fragment_phone_login"
-        tools:layout="@layout/fragment_phone_login" />
+        tools:layout="@layout/fragment_phone_login">
+
+        <action
+            android:id="@+id/action_phoneLoginFragment_to_profileFragment"
+            app:destination="@id/profileFragment" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.erbeandroid.petfinder.feature.login.phone.ProfileFragment"
+        android:label="fragment_profile"
+        tools:layout="@layout/fragment_profile" />
 
 </navigation>

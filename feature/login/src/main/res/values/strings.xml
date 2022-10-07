@@ -4,4 +4,8 @@
     <string name="send">Send</string>
     <string name="verification_code">Verification Code</string>
     <string name="verify">Verify</string>
+
+    <!-- fragment_profile -->
+    <string name="name">Name</string>
+    <string name="submit">Submit</string>
 </resources>

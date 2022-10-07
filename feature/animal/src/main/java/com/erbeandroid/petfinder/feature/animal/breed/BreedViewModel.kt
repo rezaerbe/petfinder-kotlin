@@ -26,6 +26,7 @@ class BreedViewModel @Inject constructor(
     }
 
     fun getBreeds() {
+        _breedState.value = StateData.Loading
         val type = savedStateHandle.get<String>("type") ?: ""
         viewModelScope.launch {
             try {

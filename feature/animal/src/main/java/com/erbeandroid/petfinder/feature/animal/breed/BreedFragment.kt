@@ -57,6 +57,7 @@ class BreedFragment : Fragment() {
     private fun observeData() {
         breedViewModel.breedUiState.launchAndCollectIn(viewLifecycleOwner) { breedState ->
             binding.progressBar.isVisible = breedState is StateData.Loading
+            binding.recyclerView.isVisible = breedState is StateData.Success
             if (breedState is StateData.Success) {
                 Log.d("TAG", breedState.data.toString())
                 adapter.submitList(breedState.data)

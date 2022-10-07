@@ -83,7 +83,12 @@ class PhoneLoginManagerImpl @Inject constructor(
             .addOnCompleteListener { task ->
                 if (task.isSuccessful) {
                     Log.d("TAG", "signInWithPhoneAuthCredential: Success")
-                    state.value = "Success"
+                    val user = firebaseAuth.currentUser?.displayName
+                    if (user != null) {
+                        state.value = "Success"
+                    } else {
+                        state.value = "Update"
+                    }
                 } else {
                     if (task.exception is FirebaseAuthInvalidCredentialsException) {
                         Log.d("TAG", "The verification code entered was invalid")

@@ -55,6 +55,7 @@ class TypeFragment : Fragment() {
     private fun observeData() {
         typeViewModel.typeUiState.launchAndCollectIn(viewLifecycleOwner) { typeState ->
             binding.progressBar.isVisible = typeState is StateData.Loading
+            binding.recyclerView.isVisible = typeState is StateData.Success
             if (typeState is StateData.Success) {
                 Log.d("TAG", typeState.data.toString())
                 adapter.submitList(typeState.data)

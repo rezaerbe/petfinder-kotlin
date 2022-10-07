@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.navigation.fragment.findNavController
 import com.erbeandroid.petfinder.core.common.util.launchAndCollectIn
 import com.erbeandroid.petfinder.feature.login.databinding.FragmentPhoneLoginBinding
 import dagger.hilt.android.AndroidEntryPoint
@@ -30,11 +31,17 @@ class PhoneLoginFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.send.setOnClickListener {
-            phoneLoginViewModel.send(binding.fieldPhone.text.toString())
+            val phone = binding.fieldPhone.text.toString()
+            if (phone.isNotEmpty()) {
+                phoneLoginViewModel.send(phone)
+            }
         }
 
         binding.verify.setOnClickListener {
-            phoneLoginViewModel.verify(binding.fieldCode.text.toString())
+            val code = binding.fieldCode.text.toString()
+            if (code.isNotEmpty()) {
+                phoneLoginViewModel.verify(code)
+            }
         }
 
         observeData()
@@ -47,6 +54,11 @@ class PhoneLoginFragment : Fragment() {
                 binding.send.visibility = View.GONE
                 binding.fieldCode.visibility = View.VISIBLE
                 binding.verify.visibility = View.VISIBLE
+            }
+            if (state == "Update") {
+                findNavController().navigate(
+                    PhoneLoginFragmentDirections.actionPhoneLoginFragmentToProfileFragment()
+                )
             }
         }
 

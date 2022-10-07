@@ -24,6 +24,7 @@ class TypeViewModel @Inject constructor(
     }
 
     fun getTypes() {
+        _typeState.value = StateData.Loading
         viewModelScope.launch {
             try {
                 repository.getTypes()

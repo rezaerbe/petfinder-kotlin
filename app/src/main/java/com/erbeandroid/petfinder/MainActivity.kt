@@ -14,6 +14,7 @@ import androidx.navigation.ui.setupWithNavController
 import com.erbeandroid.petfinder.core.common.util.launchAndCollectIn
 import com.erbeandroid.petfinder.databinding.ActivityMainBinding
 import com.erbeandroid.petfinder.feature.login.phone.PhoneLoginViewModel
+import com.erbeandroid.petfinder.feature.login.phone.ProfileViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 import com.erbeandroid.petfinder.feature.animal.R.id as animal
@@ -31,6 +32,7 @@ class MainActivity : AppCompatActivity() {
 
     private val mainViewModel: MainViewModel by viewModels()
     private val phoneLoginViewModel: PhoneLoginViewModel by viewModels()
+    private val profileViewModel: ProfileViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -56,6 +58,13 @@ class MainActivity : AppCompatActivity() {
 
     private fun observeData() {
         phoneLoginViewModel.state.launchAndCollectIn(this) { state ->
+            if (state == "Success") {
+                navController.navigate(LoginDirections.actionGlobalNavigationLoginToMain())
+                setupMain()
+            }
+        }
+
+        profileViewModel.state.launchAndCollectIn(this) { state ->
             if (state == "Success") {
                 navController.navigate(LoginDirections.actionGlobalNavigationLoginToMain())
                 setupMain()
