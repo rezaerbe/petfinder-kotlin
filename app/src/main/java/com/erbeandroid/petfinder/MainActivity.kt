@@ -49,8 +49,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun checkUser() {
         if (mainViewModel.currentUser() == null) {
-            navController.navigate(MainDirections.actionGlobalNavigationMainToLogin())
-            binding.bottomNavigation.isVisible = false
+            signOut()
         } else {
             setupMain()
         }
@@ -59,16 +58,14 @@ class MainActivity : AppCompatActivity() {
     private fun observeData() {
         phoneLoginViewModel.state.launchAndCollectIn(this) { state ->
             if (state == "Success") {
-                navController.navigate(LoginDirections.actionGlobalNavigationLoginToMain())
-                setupMain()
+                signIn()
             }
         }
 
         profileViewModel.state.launchAndCollectIn(this) { state ->
             if (state == "Success") {
                 profileViewModel.postUser()
-                navController.navigate(LoginDirections.actionGlobalNavigationLoginToMain())
-                setupMain()
+                signIn()
             }
         }
 
@@ -77,8 +74,18 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun setupMain() {
+    private fun signIn() {
+        navController.navigate(LoginDirections.actionGlobalNavigationLoginToMain())
         binding.bottomNavigation.isVisible = true
+        setupMain()
+    }
+
+    private fun signOut() {
+        navController.navigate(MainDirections.actionGlobalNavigationMainToLogin())
+        binding.bottomNavigation.isVisible = false
+    }
+
+    private fun setupMain() {
         binding.bottomNavigation.setupWithNavController(navController)
 
         appBarConfiguration = AppBarConfiguration(
