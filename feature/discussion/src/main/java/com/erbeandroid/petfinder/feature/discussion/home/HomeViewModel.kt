@@ -10,7 +10,7 @@ class HomeViewModel @Inject constructor(
     private val firebaseUserManager: FirebaseUserManager
 ) : ViewModel() {
 
-    fun currentUser(): String? {
+/*    fun currentUser(): String? {
         return firebaseUserManager.currentUser()
-    }
+    }*/
 }

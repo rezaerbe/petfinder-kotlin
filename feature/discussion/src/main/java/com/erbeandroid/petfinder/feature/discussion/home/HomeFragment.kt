@@ -29,7 +29,7 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.user.text = homeViewModel.currentUser()
+        // binding.user.text = homeViewModel.currentUser()
         binding.user.setOnClickListener {
             findNavController().navigate(
                 HomeFragmentDirections.actionHomeFragmentToListPostFragment()

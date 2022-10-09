@@ -73,6 +73,9 @@ dependencies {
     implementation("androidx.navigation:navigation-fragment-ktx:2.5.2")
     implementation("androidx.navigation:navigation-ui-ktx:2.5.2")
 
+    implementation(platform("com.google.firebase:firebase-bom:30.5.0"))
+    implementation("com.google.firebase:firebase-auth-ktx")
+
     implementation("com.google.dagger:hilt-android:2.43.2")
     kapt("com.google.dagger:hilt-android-compiler:2.43.2")
 

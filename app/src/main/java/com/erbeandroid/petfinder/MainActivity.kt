@@ -66,6 +66,7 @@ class MainActivity : AppCompatActivity() {
 
         profileViewModel.state.launchAndCollectIn(this) { state ->
             if (state == "Success") {
+                profileViewModel.postUser()
                 navController.navigate(LoginDirections.actionGlobalNavigationLoginToMain())
                 setupMain()
             }
