@@ -5,6 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.erbeandroid.petfinder.core.common.util.click
 import com.erbeandroid.petfinder.core.data.model.Type
 import com.erbeandroid.petfinder.feature.animal.databinding.ItemTypeBinding
 
@@ -31,9 +32,9 @@ class TypeAdapter(
     ) : RecyclerView.ViewHolder(binding.root) {
         fun bind(item: Type) {
             binding.type.text = item.name
-            binding.type.setOnClickListener {
+            binding.type.setOnClickListener(click {
                 onTypeClick(item)
-            }
+            })
         }
     }
 

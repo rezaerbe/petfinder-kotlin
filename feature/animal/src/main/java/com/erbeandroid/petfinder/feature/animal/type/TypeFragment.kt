@@ -1,58 +1,29 @@
 package com.erbeandroid.petfinder.feature.animal.type
 
-import android.os.Bundle
 import android.util.Log
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import androidx.core.view.isVisible
-import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.navigation.fragment.findNavController
+import com.erbeandroid.petfinder.core.common.util.BaseFragment
 import com.erbeandroid.petfinder.core.common.util.StateData
 import com.erbeandroid.petfinder.core.common.util.launchAndCollectIn
 import com.erbeandroid.petfinder.feature.animal.databinding.FragmentTypeBinding
+import com.erbeandroid.petfinder.feature.animal.util.typeToBreed
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class TypeFragment : Fragment() {
-
-    private var _binding: FragmentTypeBinding? = null
-    private val binding get() = _binding!!
+class TypeFragment :
+    BaseFragment<FragmentTypeBinding>(FragmentTypeBinding::inflate) {
 
     private val typeViewModel: TypeViewModel by viewModels()
-    private lateinit var adapter: TypeAdapter
-
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        _binding = FragmentTypeBinding.inflate(inflater, container, false)
-        return binding.root
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
-        adapter = TypeAdapter {
-            it.name?.let { type ->
-                findNavController().navigate(
-                    TypeFragmentDirections.actionTypeFragmentToBreedFragment(type)
-                )
+    private val adapter: TypeAdapter by lazy {
+        TypeAdapter { type ->
+            type.name?.let { name ->
+                typeToBreed(this@TypeFragment, name)
             }
         }
-        binding.recyclerView.adapter = adapter
-
-        binding.refreshLayout.setOnRefreshListener {
-            typeViewModel.getTypes()
-            binding.refreshLayout.isRefreshing = false
-        }
-
-        observeData()
     }
 
-    private fun observeData() {
+    override fun initObserver() {
         typeViewModel.typeUiState.launchAndCollectIn(viewLifecycleOwner) { typeState ->
             binding.progressBar.isVisible = typeState is StateData.Loading
             binding.recyclerView.isVisible = typeState is StateData.Success
@@ -66,8 +37,12 @@ class TypeFragment : Fragment() {
         }
     }
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
+    override fun initInteraction() {
+        binding.recyclerView.adapter = adapter
+
+        binding.refreshLayout.setOnRefreshListener {
+            typeViewModel.getTypes()
+            binding.refreshLayout.isRefreshing = false
+        }
     }
 }

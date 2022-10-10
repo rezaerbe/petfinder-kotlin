@@ -1,60 +1,31 @@
 package com.erbeandroid.petfinder.feature.animal.breed
 
-import android.os.Bundle
 import android.util.Log
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import androidx.core.view.isVisible
-import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import com.erbeandroid.petfinder.core.common.util.BaseFragment
 import com.erbeandroid.petfinder.core.common.util.StateData
 import com.erbeandroid.petfinder.core.common.util.launchAndCollectIn
 import com.erbeandroid.petfinder.feature.animal.databinding.FragmentBreedBinding
+import com.erbeandroid.petfinder.feature.animal.util.breedToAnimal
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class BreedFragment : Fragment() {
-
-    private var _binding: FragmentBreedBinding? = null
-    private val binding get() = _binding!!
+class BreedFragment :
+    BaseFragment<FragmentBreedBinding>(FragmentBreedBinding::inflate) {
 
     private val breedViewModel: BreedViewModel by viewModels()
     private val args: BreedFragmentArgs by navArgs()
-    private lateinit var adapter: BreedAdapter
-
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        _binding = FragmentBreedBinding.inflate(inflater, container, false)
-        return binding.root
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
-        adapter = BreedAdapter {
-            it.name?.let { breed ->
-                findNavController().navigate(
-                    BreedFragmentDirections.actionBreedFragmentToAnimalFragment(args.type, breed)
-                )
+    private val adapter: BreedAdapter by lazy {
+        BreedAdapter { breed ->
+            breed.name?.let { name ->
+                breedToAnimal(this@BreedFragment, args.type, name)
             }
         }
-        binding.recyclerView.adapter = adapter
-
-        binding.refreshLayout.setOnRefreshListener {
-            breedViewModel.getBreeds()
-            binding.refreshLayout.isRefreshing = false
-        }
-
-        observeData()
     }
 
-    private fun observeData() {
+    override fun initObserver() {
         breedViewModel.breedUiState.launchAndCollectIn(viewLifecycleOwner) { breedState ->
             binding.progressBar.isVisible = breedState is StateData.Loading
             binding.recyclerView.isVisible = breedState is StateData.Success
@@ -68,8 +39,12 @@ class BreedFragment : Fragment() {
         }
     }
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
+    override fun initInteraction() {
+        binding.recyclerView.adapter = adapter
+
+        binding.refreshLayout.setOnRefreshListener {
+            breedViewModel.getBreeds()
+            binding.refreshLayout.isRefreshing = false
+        }
     }
 }

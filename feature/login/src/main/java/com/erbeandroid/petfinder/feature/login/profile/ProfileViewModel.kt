@@ -1,4 +1,4 @@
-package com.erbeandroid.petfinder.feature.login.phone
+package com.erbeandroid.petfinder.feature.login.profile
 
 import androidx.lifecycle.ViewModel
 import com.erbeandroid.petfinder.core.firebase.database.manager.FirebaseDatabaseManager
@@ -13,6 +13,8 @@ class ProfileViewModel @Inject constructor(
     private val firebaseDatabaseManager: FirebaseDatabaseManager
 ) : ViewModel() {
 
+    val state: StateFlow<String?> = firebaseUserManager.state
+
     fun updateUser(name: String) {
         firebaseUserManager.updateUser(name)
     }
@@ -20,6 +22,4 @@ class ProfileViewModel @Inject constructor(
     fun postUser() {
         firebaseDatabaseManager.postUser()
     }
-
-    val state: StateFlow<String?> = firebaseUserManager.state
 }

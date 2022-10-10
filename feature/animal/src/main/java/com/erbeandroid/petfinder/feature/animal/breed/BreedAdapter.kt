@@ -5,6 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.erbeandroid.petfinder.core.common.util.click
 import com.erbeandroid.petfinder.core.data.model.Breed
 import com.erbeandroid.petfinder.feature.animal.databinding.ItemBreedBinding
 
@@ -31,9 +32,9 @@ class BreedAdapter(
     ) : RecyclerView.ViewHolder(binding.root) {
         fun bind(item: Breed) {
             binding.breed.text = item.name
-            binding.breed.setOnClickListener {
+            binding.breed.setOnClickListener(click {
                 onBreedClick(item)
-            }
+            })
         }
     }
 

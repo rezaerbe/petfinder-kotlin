@@ -1,53 +1,29 @@
 package com.erbeandroid.petfinder.feature.animal.list
 
-import android.os.Bundle
 import android.util.Log
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import androidx.core.view.isVisible
-import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.navigation.fragment.findNavController
 import androidx.paging.LoadState
+import com.erbeandroid.petfinder.core.common.util.BaseFragment
 import com.erbeandroid.petfinder.core.common.util.launchAndCollectIn
 import com.erbeandroid.petfinder.feature.animal.databinding.FragmentAnimalBinding
+import com.erbeandroid.petfinder.feature.animal.util.animalToDetail
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class AnimalFragment : Fragment() {
-
-    private var _binding: FragmentAnimalBinding? = null
-    private val binding get() = _binding!!
+class AnimalFragment :
+    BaseFragment<FragmentAnimalBinding>(FragmentAnimalBinding::inflate) {
 
     private val animalViewModel: AnimalViewModel by viewModels()
-    private lateinit var adapter: AnimalPagingAdapter
-
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        _binding = FragmentAnimalBinding.inflate(inflater, container, false)
-        return binding.root
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
-        adapter = AnimalPagingAdapter {
-            it.id?.let { id ->
-                findNavController().navigate(
-                    AnimalFragmentDirections.actionAnimalFragmentToDetailFragment(id)
-                )
+    private val adapter: AnimalPagingAdapter by lazy {
+        AnimalPagingAdapter { animal ->
+            animal.id?.let { id ->
+                animalToDetail(this@AnimalFragment, id)
             }
         }
-        binding.recyclerView.adapter = adapter
-
-        observeData()
     }
 
-    private fun observeData() {
+    override fun initObserver() {
         adapter.loadStateFlow.launchAndCollectIn(viewLifecycleOwner) { loadState ->
             binding.progressBar.isVisible = loadState.refresh is LoadState.Loading
             if (loadState.refresh !is LoadState.Loading) {
@@ -63,8 +39,7 @@ class AnimalFragment : Fragment() {
         }
     }
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
+    override fun initInteraction() {
+        binding.recyclerView.adapter = adapter
     }
 }

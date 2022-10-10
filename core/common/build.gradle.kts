@@ -13,6 +13,10 @@ android {
         minSdk = 23
         targetSdk = 32
     }
+
+    buildFeatures {
+        viewBinding = true
+    }
 }
 
 dependencies {

@@ -11,10 +11,6 @@
         android:label="Home"
         tools:layout="@layout/fragment_home">
 
-        <action
-            android:id="@+id/action_homeFragment_to_listPostFragment"
-            app:destination="@id/listPostFragment" />
-
     </fragment>
 
     <fragment
@@ -23,14 +19,6 @@
         android:label="List Post"
         tools:layout="@layout/fragment_list_post">
 
-        <action
-            android:id="@+id/action_listPostFragment_to_detailPostFragment"
-            app:destination="@id/detailPostFragment" />
-
-        <action
-            android:id="@+id/action_listPostFragment_to_addPostFragment"
-            app:destination="@id/addPostFragment" />
-
     </fragment>
 
     <fragment
@@ -38,10 +26,6 @@
         android:name="com.erbeandroid.petfinder.feature.discussion.home.AddPostFragment"
         android:label="Add Post"
         tools:layout="@layout/fragment_add_post">
-
-        <action
-            android:id="@+id/action_addPostFragment_to_listPostFragment"
-            app:destination="@id/listPostFragment" />
 
     </fragment>
 

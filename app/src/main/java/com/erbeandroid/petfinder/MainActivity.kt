@@ -13,35 +13,33 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.erbeandroid.petfinder.core.common.util.launchAndCollectIn
 import com.erbeandroid.petfinder.databinding.ActivityMainBinding
-import com.erbeandroid.petfinder.feature.login.phone.PhoneLoginViewModel
-import com.erbeandroid.petfinder.feature.login.phone.ProfileViewModel
+import com.erbeandroid.petfinder.feature.login.util.LoginListener
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 import com.erbeandroid.petfinder.feature.animal.R.id as animal
 import com.erbeandroid.petfinder.feature.discussion.R.id as discussion
 
 @AndroidEntryPoint
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), LoginListener {
 
     @Inject
     lateinit var connectionMonitoring: ConnectionMonitoring
 
     private lateinit var binding: ActivityMainBinding
-    private lateinit var navController: NavController
+    private val navHostFragment: NavHostFragment by lazy {
+        supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
+    }
+    private val navController: NavController by lazy {
+        navHostFragment.navController
+    }
     private lateinit var appBarConfiguration: AppBarConfiguration
 
     private val mainViewModel: MainViewModel by viewModels()
-    private val phoneLoginViewModel: PhoneLoginViewModel by viewModels()
-    private val profileViewModel: ProfileViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
-        val navHostFragment =
-            supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
-        navController = navHostFragment.navController
 
         checkUser()
         observeData()
@@ -56,22 +54,18 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun observeData() {
-        phoneLoginViewModel.state.launchAndCollectIn(this) { state ->
-            if (state == "Success") {
-                signIn()
-            }
-        }
-
-        profileViewModel.state.launchAndCollectIn(this) { state ->
-            if (state == "Success") {
-                profileViewModel.postUser()
-                signIn()
-            }
-        }
-
         connectionMonitoring.networkStatus.launchAndCollectIn(this) { state ->
             Log.d("TAG", state.toString())
         }
+
+        navController.addOnDestinationChangedListener { _, destination, _ ->
+            val fragment = destination.displayName.split("/")[1]
+            Log.d("TAG", fragment)
+        }
+    }
+
+    override fun onLoginSuccess() {
+        signIn()
     }
 
     private fun signIn() {

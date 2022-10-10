@@ -11,6 +11,9 @@ class PhoneLoginViewModel @Inject constructor(
     private val phoneLoginManager: PhoneLoginManager
 ) : ViewModel() {
 
+    val state: StateFlow<String?> = phoneLoginManager.state
+    val code: StateFlow<String?> = phoneLoginManager.code
+
     fun send(phoneNumber: String) {
         phoneLoginManager.send(phoneNumber)
     }
@@ -18,7 +21,4 @@ class PhoneLoginViewModel @Inject constructor(
     fun verify(code: String) {
         phoneLoginManager.verify(code)
     }
-
-    val state: StateFlow<String?> = phoneLoginManager.state
-    val code: StateFlow<String?> = phoneLoginManager.code
 }

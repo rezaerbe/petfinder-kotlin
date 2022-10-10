@@ -4,29 +4,29 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".phone.PhoneLoginFragment">
+    tools:context=".phone.PhoneVerificationFragment">
 
     <EditText
-        android:id="@+id/field_phone"
+        android:id="@+id/field_code"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
-        android:hint="@string/phone_number"
+        android:hint="@string/verification_code"
         android:importantForAutofill="no"
-        android:inputType="phone"
+        android:inputType="number"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/send"
+        android:id="@+id/verify"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
-        android:text="@string/send"
+        android:text="@string/verify"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/field_phone" />
+        app:layout_constraintTop_toBottomOf="@id/field_code" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

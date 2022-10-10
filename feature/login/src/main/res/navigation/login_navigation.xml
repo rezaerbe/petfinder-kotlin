@@ -12,14 +12,26 @@
         tools:layout="@layout/fragment_phone_login">
 
         <action
-            android:id="@+id/action_phoneLoginFragment_to_profileFragment"
+            android:id="@+id/action_phoneLoginFragment_to_phoneVerificationFragment"
+            app:destination="@id/phoneVerificationFragment" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/phoneVerificationFragment"
+        android:name="com.erbeandroid.petfinder.feature.login.phone.PhoneVerificationFragment"
+        android:label="fragment_phone_verification"
+        tools:layout="@layout/fragment_phone_verification">
+
+        <action
+            android:id="@+id/action_phoneVerificationFragment_to_profileFragment"
             app:destination="@id/profileFragment" />
 
     </fragment>
 
     <fragment
         android:id="@+id/profileFragment"
-        android:name="com.erbeandroid.petfinder.feature.login.phone.ProfileFragment"
+        android:name="com.erbeandroid.petfinder.feature.login.profile.ProfileFragment"
         android:label="fragment_profile"
         tools:layout="@layout/fragment_profile" />
 

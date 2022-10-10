@@ -2,6 +2,8 @@
     <!-- fragment_phone_login -->
     <string name="phone_number">Phone Number</string>
     <string name="send">Send</string>
+
+    <!-- fragment_phone_verification -->
     <string name="verification_code">Verification Code</string>
     <string name="verify">Verify</string>
 

@@ -5,6 +5,7 @@ import android.view.ViewGroup
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
+import com.erbeandroid.petfinder.core.common.util.click
 import com.erbeandroid.petfinder.core.data.model.Animal
 import com.erbeandroid.petfinder.feature.animal.databinding.ItemAnimalBinding
 
@@ -31,9 +32,9 @@ class AnimalPagingAdapter(
     ) : RecyclerView.ViewHolder(binding.root) {
         fun bind(item: Animal) {
             binding.animal.text = item.name
-            binding.animal.setOnClickListener {
+            binding.animal.setOnClickListener(click {
                 onAnimalClick(item)
-            }
+            })
         }
     }
 
