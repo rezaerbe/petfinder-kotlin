@@ -17,6 +17,8 @@ android {
 
 dependencies {
 
+    implementation(project(":core:common"))
+
     implementation(platform("com.google.firebase:firebase-bom:30.5.0"))
     implementation("com.google.firebase:firebase-auth-ktx")
     implementation("com.google.firebase:firebase-database-ktx")

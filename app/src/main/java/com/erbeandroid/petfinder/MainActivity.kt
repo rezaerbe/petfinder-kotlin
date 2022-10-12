@@ -26,6 +26,8 @@ class MainActivity : AppCompatActivity(), LoginListener {
     lateinit var connectionMonitoring: ConnectionMonitoring
 
     private lateinit var binding: ActivityMainBinding
+    private val mainViewModel: MainViewModel by viewModels()
+
     private val navHostFragment: NavHostFragment by lazy {
         supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
     }
@@ -33,8 +35,6 @@ class MainActivity : AppCompatActivity(), LoginListener {
         navHostFragment.navController
     }
     private lateinit var appBarConfiguration: AppBarConfiguration
-
-    private val mainViewModel: MainViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -55,7 +55,7 @@ class MainActivity : AppCompatActivity(), LoginListener {
 
     private fun observeData() {
         connectionMonitoring.networkStatus.launchAndCollectIn(this) { state ->
-            Log.d("TAG", state.toString())
+            Log.d("TAG", if (state) "Connected" else "Disconnected")
         }
 
         navController.addOnDestinationChangedListener { _, destination, _ ->

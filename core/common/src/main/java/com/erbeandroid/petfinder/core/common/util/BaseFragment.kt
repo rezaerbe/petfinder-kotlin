@@ -7,11 +7,11 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.viewbinding.ViewBinding
 
-abstract class BaseFragment<T : ViewBinding>(
-    private val bindFactory: (LayoutInflater, ViewGroup?, Boolean) -> T
+abstract class BaseFragment<VB : ViewBinding>(
+    private val bindFactory: (LayoutInflater, ViewGroup?, Boolean) -> VB
 ) : Fragment() {
 
-    private var _binding: T? = null
+    private var _binding: VB? = null
     protected val binding get() = _binding!!
 
     override fun onCreateView(

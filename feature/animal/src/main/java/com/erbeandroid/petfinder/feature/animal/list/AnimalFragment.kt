@@ -15,8 +15,8 @@ class AnimalFragment :
     BaseFragment<FragmentAnimalBinding>(FragmentAnimalBinding::inflate) {
 
     private val animalViewModel: AnimalViewModel by viewModels()
-    private val adapter: AnimalPagingAdapter by lazy {
-        AnimalPagingAdapter { animal ->
+    private val animalPagingAdapter by lazy {
+        animalPagingAdapter { animal ->
             animal.id?.let { id ->
                 animalToDetail(this@AnimalFragment, id)
             }
@@ -24,7 +24,7 @@ class AnimalFragment :
     }
 
     override fun initObserver() {
-        adapter.loadStateFlow.launchAndCollectIn(viewLifecycleOwner) { loadState ->
+        animalPagingAdapter.loadStateFlow.launchAndCollectIn(viewLifecycleOwner) { loadState ->
             binding.progressBar.isVisible = loadState.refresh is LoadState.Loading
             if (loadState.refresh !is LoadState.Loading) {
                 Log.d("TAG", "Retry")
@@ -35,11 +35,11 @@ class AnimalFragment :
         }
 
         animalViewModel.animals.launchAndCollectIn(viewLifecycleOwner) { animals ->
-            adapter.submitData(animals)
+            animalPagingAdapter.submitData(animals)
         }
     }
 
     override fun initInteraction() {
-        binding.recyclerView.adapter = adapter
+        binding.recyclerView.adapter = animalPagingAdapter
     }
 }

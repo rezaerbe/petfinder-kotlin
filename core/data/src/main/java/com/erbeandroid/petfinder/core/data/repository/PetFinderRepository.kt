@@ -4,7 +4,12 @@ import androidx.paging.PagingData
 import androidx.paging.map
 import com.erbeandroid.petfinder.core.common.dispatcher.Dispatcher
 import com.erbeandroid.petfinder.core.common.dispatcher.PetFinderDispatcher.Default
-import com.erbeandroid.petfinder.core.data.model.*
+import com.erbeandroid.petfinder.core.data.model.Animal
+import com.erbeandroid.petfinder.core.data.model.AnimalDetail
+import com.erbeandroid.petfinder.core.data.model.Breed
+import com.erbeandroid.petfinder.core.data.model.Type
+import com.erbeandroid.petfinder.core.data.model.asDomain
+import com.erbeandroid.petfinder.core.data.model.asDomainDetail
 import com.erbeandroid.petfinder.core.network.datasource.RemoteDataSource
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.flow.Flow

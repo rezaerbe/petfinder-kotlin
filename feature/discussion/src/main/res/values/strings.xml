@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- fragment_home -->
+    <string name="database">Database</string>
+
+    <!-- fragment_add_post -->
+    <string name="add_post">Add Post</string>
+    <string name="title">Title</string>
+    <string name="description">Description</string>
+</resources>
