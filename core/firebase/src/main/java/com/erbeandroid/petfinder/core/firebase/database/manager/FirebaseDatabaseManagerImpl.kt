@@ -33,13 +33,12 @@ class FirebaseDatabaseManagerImpl @Inject constructor(
         return firebaseAuth.currentUser
     }
 
-    override fun postUser() {
-        val user = currentUser()
-        user?.let {
-            val postUser = User(it.displayName, it.phoneNumber)
+    override fun addUser() {
+        currentUser()?.let { user ->
+            val postUser = User(user.displayName, user.phoneNumber)
             reference
                 .child("users")
-                .child(it.uid)
+                .child(user.uid)
                 .setValue(postUser)
                 .addOnSuccessListener {
                     Log.d("TAG", "postUser: Success")
@@ -51,16 +50,17 @@ class FirebaseDatabaseManagerImpl @Inject constructor(
     }
 
     override fun addPost(title: String, description: String) {
-        val user = currentUser()
-        user?.let {
-            reference.child("users").child(it.uid)
+        currentUser()?.let { user ->
+            reference
+                .child("users")
+                .child(user.uid)
                 .addListenerForSingleValueEvent(object : ValueEventListener {
                     override fun onDataChange(snapshot: DataSnapshot) {
                         val userDatabase = snapshot.getValue<User>()
                         if (userDatabase == null) {
                             Log.d("TAG", "User null")
                         } else {
-                            writeNewPost(it.uid, userDatabase.name.toString(), title, description)
+                            writePost(user.uid, userDatabase.name.toString(), title, description)
                         }
                     }
 
@@ -72,7 +72,7 @@ class FirebaseDatabaseManagerImpl @Inject constructor(
         }
     }
 
-    private fun writeNewPost(uid: String, name: String, title: String, description: String) {
+    private fun writePost(uid: String, name: String, title: String, description: String) {
         val key = reference.child("posts").push().key
         if (key == null) {
             Log.d("TAG", "Key null")
@@ -98,7 +98,7 @@ class FirebaseDatabaseManagerImpl @Inject constructor(
             }
     }
 
-    override val listPost: Flow<List<Post>> = callbackFlow {
+    override fun listPost(): Flow<List<Post>> = callbackFlow {
         val postReference = reference.child("posts")
         val postListener = object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
@@ -123,7 +123,9 @@ class FirebaseDatabaseManagerImpl @Inject constructor(
     }.flowOn(ioDispatcher)
 
     override fun detailPost(key: String) {
-        reference.child("posts").child(key)
+        reference
+            .child("posts")
+            .child(key)
             .addListenerForSingleValueEvent(object : ValueEventListener {
                 override fun onDataChange(snapshot: DataSnapshot) {
                     val post = snapshot.getValue<Post>()

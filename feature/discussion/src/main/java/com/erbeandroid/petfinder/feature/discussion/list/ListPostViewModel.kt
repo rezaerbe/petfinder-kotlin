@@ -12,5 +12,5 @@ class ListPostViewModel @Inject constructor(
     firebaseDatabaseManager: FirebaseDatabaseManager
 ) : ViewModel() {
 
-    val listPost: Flow<List<Post>> = firebaseDatabaseManager.listPost
+    val listPost: Flow<List<Post>> = firebaseDatabaseManager.listPost()
 }

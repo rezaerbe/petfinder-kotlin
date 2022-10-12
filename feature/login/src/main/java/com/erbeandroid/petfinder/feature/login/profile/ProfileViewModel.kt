@@ -19,7 +19,7 @@ class ProfileViewModel @Inject constructor(
         firebaseUserManager.updateUser(name)
     }
 
-    fun postUser() {
-        firebaseDatabaseManager.postUser()
+    fun addUser() {
+        firebaseDatabaseManager.addUser()
     }
 }

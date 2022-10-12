@@ -33,7 +33,7 @@ class ProfileFragment :
     override fun initObserver() {
         profileViewModel.state.launchAndCollectIn(viewLifecycleOwner) { state ->
             if (state == "Success") {
-                profileViewModel.postUser()
+                profileViewModel.addUser()
                 listener?.onLoginSuccess()
             }
         }
