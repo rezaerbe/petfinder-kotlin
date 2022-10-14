@@ -9,6 +9,36 @@
         android:id="@+id/taskFragment"
         android:name="com.erbeandroid.petfinder.feature.task.home.TaskFragment"
         android:label="Task"
-        tools:layout="@layout/fragment_task" />
+        tools:layout="@layout/fragment_task">
+
+        <action
+            android:id="@+id/action_taskFragment_to_listTaskFragment"
+            app:destination="@id/listTaskFragment" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/listTaskFragment"
+        android:name="com.erbeandroid.petfinder.feature.task.list.ListTaskFragment"
+        android:label="List"
+        tools:layout="@layout/fragment_list_task">
+
+        <action
+            android:id="@+id/action_listTaskFragment_to_addTaskFragment"
+            app:destination="@id/addTaskFragment" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/addTaskFragment"
+        android:name="com.erbeandroid.petfinder.feature.task.add.AddTaskFragment"
+        android:label="Add"
+        tools:layout="@layout/fragment_add_task" />
+
+    <fragment
+        android:id="@+id/detailTaskFragment"
+        android:name="com.erbeandroid.petfinder.feature.task.detail.DetailTaskFragment"
+        android:label="Detail"
+        tools:layout="@layout/fragment_detail_task" />
 
 </navigation>

@@ -22,6 +22,8 @@ android {
 
 dependencies {
 
+    implementation(project(":core:data"))
+    implementation(project(":core:firebase"))
     implementation(project(":core:common"))
 
     implementation("androidx.appcompat:appcompat:1.5.1")

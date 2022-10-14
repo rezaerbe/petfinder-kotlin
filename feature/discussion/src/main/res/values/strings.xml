@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- fragment_home -->
+    <!-- fragment_discussion -->
     <string name="database">Database</string>
 
     <!-- fragment_add_post -->
