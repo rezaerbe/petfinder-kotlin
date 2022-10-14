@@ -3,13 +3,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/discussion_navigation"
-    app:startDestination="@id/homeFragment">
+    app:startDestination="@id/discussionFragment">
 
     <fragment
-        android:id="@+id/homeFragment"
-        android:name="com.erbeandroid.petfinder.feature.discussion.home.HomeFragment"
-        android:label="Home"
-        tools:layout="@layout/fragment_home">
+        android:id="@+id/discussionFragment"
+        android:name="com.erbeandroid.petfinder.feature.discussion.home.DiscussionFragment"
+        android:label="Discussion"
+        tools:layout="@layout/fragment_discussion">
 
         <action
             android:id="@+id/action_homeFragment_to_listPostFragment"

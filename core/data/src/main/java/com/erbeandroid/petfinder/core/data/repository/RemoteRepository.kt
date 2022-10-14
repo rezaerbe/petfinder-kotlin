@@ -7,7 +7,7 @@ import com.erbeandroid.petfinder.core.data.model.Breed
 import com.erbeandroid.petfinder.core.data.model.Type
 import kotlinx.coroutines.flow.Flow
 
-interface Repository {
+interface RemoteRepository {
 
     suspend fun getTypes(): Flow<List<Type>>
 

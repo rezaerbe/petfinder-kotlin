@@ -6,7 +6,7 @@ plugins {
 }
 
 android {
-    namespace = "com.erbeandroid.petfinder.core.data"
+    namespace = "com.erbeandroid.petfinder.core.database"
     compileSdk = 32
 
     defaultConfig {
@@ -17,11 +17,11 @@ android {
 
 dependencies {
 
-    implementation(project(":core:network"))
-    implementation(project(":core:database"))
     implementation(project(":core:common"))
 
-    implementation("androidx.paging:paging-runtime:3.1.1")
+    implementation("androidx.room:room-runtime:2.4.3")
+    kapt("androidx.room:room-compiler:2.4.3")
+    implementation("androidx.room:room-ktx:2.4.3")
 
     implementation("com.google.dagger:hilt-android:2.43.2")
     kapt("com.google.dagger:hilt-android-compiler:2.43.2")

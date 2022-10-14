@@ -58,6 +58,7 @@ dependencies {
     implementation(project(":feature:login"))
     implementation(project(":feature:animal"))
     implementation(project(":feature:discussion"))
+    implementation(project(":feature:task"))
 
     implementation(project(":core:firebase"))
     implementation(project(":core:common"))

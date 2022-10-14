@@ -2,8 +2,8 @@ package com.erbeandroid.petfinder.feature.discussion.list
 
 import androidx.lifecycle.ViewModel
 import com.erbeandroid.petfinder.core.firebase.database.FirebaseDatabaseManager
-import com.erbeandroid.petfinder.core.firebase.model.Post
 import com.erbeandroid.petfinder.core.firebase.firestore.FirebaseFirestoreManager
+import com.erbeandroid.petfinder.core.firebase.model.Post
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject

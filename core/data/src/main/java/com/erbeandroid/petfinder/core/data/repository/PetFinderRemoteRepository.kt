@@ -17,10 +17,10 @@ import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.flow.map
 import javax.inject.Inject
 
-class PetFinderRepository @Inject constructor(
+class PetFinderRemoteRepository @Inject constructor(
     private val remoteDataSource: RemoteDataSource,
     @Dispatcher(Default) private val defaultDispatcher: CoroutineDispatcher
-) : Repository {
+) : RemoteRepository {
 
     override suspend fun getTypes(): Flow<List<Type>> =
         remoteDataSource.getTypes()

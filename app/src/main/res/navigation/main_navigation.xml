@@ -6,5 +6,6 @@
 
     <include app:graph="@navigation/animal_navigation" />
     <include app:graph="@navigation/discussion_navigation" />
+    <include app:graph="@navigation/task_navigation" />
 
 </navigation>

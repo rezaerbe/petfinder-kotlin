@@ -13,4 +13,5 @@
     <!-- bottom_navigation_menu -->
     <string name="animal">Animal</string>
     <string name="discussion">Discussion</string>
+    <string name="task">Task</string>
 </resources>

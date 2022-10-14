@@ -18,6 +18,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 import com.erbeandroid.petfinder.feature.animal.R.id as animal
 import com.erbeandroid.petfinder.feature.discussion.R.id as discussion
+import com.erbeandroid.petfinder.feature.task.R.id as task
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity(), LoginListener {
@@ -85,7 +86,8 @@ class MainActivity : AppCompatActivity(), LoginListener {
         appBarConfiguration = AppBarConfiguration(
             setOf(
                 animal.typeFragment,
-                discussion.homeFragment
+                discussion.discussionFragment,
+                task.taskFragment
             )
         )
         setupActionBarWithNavController(navController, appBarConfiguration)

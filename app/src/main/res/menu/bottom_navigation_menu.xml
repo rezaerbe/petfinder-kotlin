@@ -13,4 +13,10 @@
         android:icon="@drawable/ic_home"
         android:title="@string/discussion" />
 
+    <item
+        android:id="@+id/task_navigation"
+        android:enabled="true"
+        android:icon="@drawable/ic_home"
+        android:title="@string/task" />
+
 </menu>

@@ -4,17 +4,17 @@ import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.paging.cachedIn
-import com.erbeandroid.petfinder.core.data.repository.Repository
+import com.erbeandroid.petfinder.core.data.repository.RemoteRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
 @HiltViewModel
 class AnimalViewModel @Inject constructor(
     savedStateHandle: SavedStateHandle,
-    repository: Repository
+    remoteRepository: RemoteRepository
 ) : ViewModel() {
 
-    val animals = repository.getAnimals(
+    val animals = remoteRepository.getAnimals(
         savedStateHandle.get<String>("type") ?: "",
         savedStateHandle.get<String>("breed") ?: ""
     ).cachedIn(viewModelScope)

@@ -3,8 +3,8 @@ package com.erbeandroid.petfinder.feature.discussion.detail
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import com.erbeandroid.petfinder.core.firebase.database.FirebaseDatabaseManager
-import com.erbeandroid.petfinder.core.firebase.model.Post
 import com.erbeandroid.petfinder.core.firebase.firestore.FirebaseFirestoreManager
+import com.erbeandroid.petfinder.core.firebase.model.Post
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.StateFlow
 import javax.inject.Inject
