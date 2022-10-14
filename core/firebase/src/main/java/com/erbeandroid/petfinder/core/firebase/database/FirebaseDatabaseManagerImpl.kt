@@ -1,16 +1,13 @@
-package com.erbeandroid.petfinder.core.firebase.database.manager
+package com.erbeandroid.petfinder.core.firebase.database
 
 import android.util.Log
 import com.erbeandroid.petfinder.core.common.dispatcher.Dispatcher
 import com.erbeandroid.petfinder.core.common.dispatcher.PetFinderDispatcher.IO
-import com.erbeandroid.petfinder.core.firebase.database.model.Post
-import com.erbeandroid.petfinder.core.firebase.database.model.User
+import com.erbeandroid.petfinder.core.firebase.model.Post
+import com.erbeandroid.petfinder.core.firebase.model.User
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
-import com.google.firebase.database.DataSnapshot
-import com.google.firebase.database.DatabaseError
-import com.google.firebase.database.DatabaseReference
-import com.google.firebase.database.ValueEventListener
+import com.google.firebase.database.*
 import com.google.firebase.database.ktx.getValue
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.channels.awaitClose
@@ -41,10 +38,10 @@ class FirebaseDatabaseManagerImpl @Inject constructor(
                 .child(user.uid)
                 .setValue(postUser)
                 .addOnSuccessListener {
-                    Log.d("TAG", "postUser: Success")
+                    Log.d("TAG", "addUser: Success")
                 }
                 .addOnFailureListener {
-                    Log.d("TAG", "postUser: Failed")
+                    Log.d("TAG", "addUser: Failed")
                 }
         }
     }
@@ -89,11 +86,11 @@ class FirebaseDatabaseManagerImpl @Inject constructor(
 
         reference.updateChildren(update)
             .addOnSuccessListener {
-                Log.d("TAG", "writeNewPost: Success")
+                Log.d("TAG", "writePost: Success")
                 state.value = "Success"
             }
             .addOnFailureListener {
-                Log.d("TAG", "writeNewPost: Failed")
+                Log.d("TAG", "writePost: Failed")
                 state.value = "Failed"
             }
     }
@@ -102,7 +99,7 @@ class FirebaseDatabaseManagerImpl @Inject constructor(
         val postReference = reference.child("posts")
         val postListener = object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
-                val postList: ArrayList<Post> = arrayListOf()
+                val postList = arrayListOf<Post>()
                 for (postSnapshot in snapshot.children) {
                     val post = postSnapshot.getValue<Post>()
                     post?.let { data ->

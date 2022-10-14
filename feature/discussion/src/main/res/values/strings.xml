@@ -5,6 +5,7 @@
 
     <!-- fragment_add_post -->
     <string name="add_post">Add Post</string>
+    <string name="add_post_new">Add Post New</string>
     <string name="title">Title</string>
     <string name="description">Description</string>
 </resources>

@@ -4,7 +4,7 @@ import android.content.Context
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import androidx.constraintlayout.widget.ConstraintLayout
-import com.erbeandroid.petfinder.core.firebase.database.model.Post
+import com.erbeandroid.petfinder.core.firebase.model.Post
 import com.erbeandroid.petfinder.feature.discussion.databinding.ViewPostDetailBinding
 
 class PostDetailView @JvmOverloads constructor(

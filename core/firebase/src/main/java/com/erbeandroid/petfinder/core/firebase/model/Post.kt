@@ -1,4 +1,4 @@
-package com.erbeandroid.petfinder.core.firebase.database.model
+package com.erbeandroid.petfinder.core.firebase.model
 
 import com.google.firebase.database.Exclude
 import com.google.firebase.database.IgnoreExtraProperties

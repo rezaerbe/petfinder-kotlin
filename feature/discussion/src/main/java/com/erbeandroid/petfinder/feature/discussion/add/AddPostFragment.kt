@@ -20,6 +20,12 @@ class AddPostFragment :
                 addPostToListPost(this@AddPostFragment)
             }
         }
+
+        addPostViewModel.stateNew.launchAndCollectIn(viewLifecycleOwner) { state ->
+            if (state == "Success") {
+                addPostToListPost(this@AddPostFragment)
+            }
+        }
     }
 
     override fun initInteraction() {
@@ -28,6 +34,14 @@ class AddPostFragment :
             val description = binding.fieldDescription.text.toString()
             if (title.isNotEmpty() && description.isNotEmpty()) {
                 addPostViewModel.addPost(title, description)
+            }
+        })
+
+        binding.addPostNew.setOnClickListener(click {
+            val title = binding.fieldTitle.text.toString()
+            val description = binding.fieldDescription.text.toString()
+            if (title.isNotEmpty() && description.isNotEmpty()) {
+                addPostViewModel.addPostNew(title, description)
             }
         })
     }

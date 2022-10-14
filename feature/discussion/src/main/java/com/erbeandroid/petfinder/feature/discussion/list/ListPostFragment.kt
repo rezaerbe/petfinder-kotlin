@@ -6,7 +6,7 @@ import com.erbeandroid.petfinder.core.common.util.BaseAdapter
 import com.erbeandroid.petfinder.core.common.util.BaseFragment
 import com.erbeandroid.petfinder.core.common.util.click
 import com.erbeandroid.petfinder.core.common.util.launchAndCollectIn
-import com.erbeandroid.petfinder.core.firebase.database.model.Post
+import com.erbeandroid.petfinder.core.firebase.model.Post
 import com.erbeandroid.petfinder.feature.discussion.databinding.FragmentListPostBinding
 import com.erbeandroid.petfinder.feature.discussion.databinding.ItemPostBinding
 import com.erbeandroid.petfinder.feature.discussion.util.listPostToAddPost
@@ -22,6 +22,11 @@ class ListPostFragment :
 
     override fun initObserver() {
         listPostViewModel.listPost.launchAndCollectIn(viewLifecycleOwner) { listPost ->
+            Log.d("TAG", listPost.toString())
+            // listPostAdapter.submitList(listPost)
+        }
+
+        listPostViewModel.listPostNew.launchAndCollectIn(viewLifecycleOwner) { listPost ->
             Log.d("TAG", listPost.toString())
             listPostAdapter.submitList(listPost)
         }

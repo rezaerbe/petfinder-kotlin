@@ -1,6 +1,6 @@
-package com.erbeandroid.petfinder.core.firebase.database.manager
+package com.erbeandroid.petfinder.core.firebase.database
 
-import com.erbeandroid.petfinder.core.firebase.database.model.Post
+import com.erbeandroid.petfinder.core.firebase.model.Post
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 

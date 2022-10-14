@@ -16,6 +16,11 @@ class DetailPostFragment :
     override fun initObserver() {
         detailPostViewModel.post.launchAndCollectIn(viewLifecycleOwner) { post ->
             Log.d("TAG", post.toString())
+            // binding.postView.setPostDetailView(post)
+        }
+
+        detailPostViewModel.postNew.launchAndCollectIn(viewLifecycleOwner) { post ->
+            Log.d("TAG", post.toString())
             binding.postView.setPostDetailView(post)
         }
     }
