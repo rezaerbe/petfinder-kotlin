@@ -1,4 +1,4 @@
-package com.erbeandroid.petfinder.core.data.model
+package com.erbeandroid.petfinder.core.data.model.local
 
 data class User(
     val uid: String,

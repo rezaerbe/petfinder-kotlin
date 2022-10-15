@@ -1,4 +1,4 @@
-package com.erbeandroid.petfinder.core.data.model
+package com.erbeandroid.petfinder.core.data.model.remote
 
 import com.erbeandroid.petfinder.core.network.model.AnimalResponse
 import com.erbeandroid.petfinder.core.network.model.BreedResponse

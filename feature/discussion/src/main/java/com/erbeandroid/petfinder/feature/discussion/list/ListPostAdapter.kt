@@ -1,7 +1,7 @@
 package com.erbeandroid.petfinder.feature.discussion.list
 
-import com.erbeandroid.petfinder.core.common.util.BaseAdapter
-import com.erbeandroid.petfinder.core.common.util.click
+import com.erbeandroid.petfinder.core.common.base.BaseAdapter
+import com.erbeandroid.petfinder.core.common.base.click
 import com.erbeandroid.petfinder.core.firebase.model.Post
 import com.erbeandroid.petfinder.feature.discussion.databinding.ItemPostBinding
 

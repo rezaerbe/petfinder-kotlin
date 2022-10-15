@@ -1,4 +1,4 @@
-package com.erbeandroid.petfinder.core.data.model
+package com.erbeandroid.petfinder.core.data.model.remote
 
 data class AnimalDetail(
     val id: Int?,

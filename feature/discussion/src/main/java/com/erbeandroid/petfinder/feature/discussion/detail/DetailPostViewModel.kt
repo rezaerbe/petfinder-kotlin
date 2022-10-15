@@ -2,6 +2,7 @@ package com.erbeandroid.petfinder.feature.discussion.detail
 
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
+import com.erbeandroid.petfinder.core.common.state.StateData
 import com.erbeandroid.petfinder.core.firebase.database.FirebaseDatabaseManager
 import com.erbeandroid.petfinder.core.firebase.firestore.FirebaseFirestoreManager
 import com.erbeandroid.petfinder.core.firebase.model.Post
@@ -16,8 +17,8 @@ class DetailPostViewModel @Inject constructor(
     private val firebaseFirestoreManager: FirebaseFirestoreManager
 ) : ViewModel() {
 
-    val post: StateFlow<Post?> = firebaseDatabaseManager.postDetail
-    val postNew: StateFlow<Post?> = firebaseFirestoreManager.postDetail
+    val post: StateFlow<StateData<Post?>> = firebaseDatabaseManager.postDetail
+    val postNew: StateFlow<StateData<Post?>> = firebaseFirestoreManager.postDetail
 
     init {
         detailPost()
@@ -25,12 +26,12 @@ class DetailPostViewModel @Inject constructor(
     }
 
     private fun detailPost() {
-        val key = savedStateHandle.get<String>("key") ?: ""
+        val key = savedStateHandle.get<String>("id") ?: ""
         firebaseDatabaseManager.detailPost(key)
     }
 
     private fun detailPostNew() {
-        val key = savedStateHandle.get<String>("key") ?: ""
+        val key = savedStateHandle.get<String>("id") ?: ""
         firebaseFirestoreManager.detailPost(key)
     }
 }

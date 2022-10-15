@@ -4,9 +4,12 @@ import android.util.Log
 import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
 import androidx.paging.LoadState
-import com.erbeandroid.petfinder.core.common.util.BaseFragment
-import com.erbeandroid.petfinder.core.common.util.launchAndCollectIn
+import com.erbeandroid.petfinder.core.common.base.BaseFragment
+import com.erbeandroid.petfinder.core.common.base.BasePagingAdapter
+import com.erbeandroid.petfinder.core.common.extension.launchAndCollectIn
+import com.erbeandroid.petfinder.core.data.model.remote.Animal
 import com.erbeandroid.petfinder.feature.animal.databinding.FragmentAnimalBinding
+import com.erbeandroid.petfinder.feature.animal.databinding.ItemAnimalBinding
 import com.erbeandroid.petfinder.feature.animal.util.animalToDetail
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -15,15 +18,18 @@ class AnimalFragment :
     BaseFragment<FragmentAnimalBinding>(FragmentAnimalBinding::inflate) {
 
     private val animalViewModel: AnimalViewModel by viewModels()
-    private val animalPagingAdapter by lazy {
-        animalPagingAdapter { animal ->
+    private lateinit var animalPagingAdapter: BasePagingAdapter<Animal, ItemAnimalBinding>
+
+    override fun initInteraction() {
+        animalPagingAdapter = animalPagingAdapter { animal ->
             animal.id?.let { id ->
                 animalToDetail(this@AnimalFragment, id)
             }
         }
+        binding.recyclerView.adapter = animalPagingAdapter
     }
 
-    override fun initObserver() {
+    override fun initObservation() {
         animalPagingAdapter.loadStateFlow.launchAndCollectIn(viewLifecycleOwner) { loadState ->
             binding.progressBar.isVisible = loadState.refresh is LoadState.Loading
             if (loadState.refresh !is LoadState.Loading) {
@@ -37,9 +43,5 @@ class AnimalFragment :
         animalViewModel.animals.launchAndCollectIn(viewLifecycleOwner) { animals ->
             animalPagingAdapter.submitData(animals)
         }
-    }
-
-    override fun initInteraction() {
-        binding.recyclerView.adapter = animalPagingAdapter
     }
 }

@@ -4,7 +4,7 @@ import android.content.Context
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import androidx.constraintlayout.widget.ConstraintLayout
-import com.erbeandroid.petfinder.core.data.model.AnimalDetail
+import com.erbeandroid.petfinder.core.data.model.remote.AnimalDetail
 import com.erbeandroid.petfinder.feature.animal.databinding.ViewAnimalDetailBinding
 
 class AnimalDetailView @JvmOverloads constructor(

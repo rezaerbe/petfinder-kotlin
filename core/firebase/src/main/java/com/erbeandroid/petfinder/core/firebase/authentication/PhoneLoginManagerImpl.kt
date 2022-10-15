@@ -21,8 +21,8 @@ class PhoneLoginManagerImpl @Inject constructor(
     override val state = MutableStateFlow<String?>(null)
     override val code = MutableStateFlow<String?>(null)
 
-    private val verificationIdState = MutableStateFlow<String?>(null)
-    private val tokenState = MutableStateFlow<PhoneAuthProvider.ForceResendingToken?>(null)
+    private lateinit var verificationIdState: String
+    private lateinit var tokenState: PhoneAuthProvider.ForceResendingToken
 
     override fun send(phoneNumber: String) {
         val options = PhoneAuthOptions.newBuilder(firebaseAuth)
@@ -40,19 +40,18 @@ class PhoneLoginManagerImpl @Inject constructor(
             .setTimeout(60L, TimeUnit.SECONDS)
             .setActivity(activity)
             .setCallbacks(callback)
-            .setForceResendingToken(tokenState.value!!)
+            .setForceResendingToken(tokenState)
             .build()
         PhoneAuthProvider.verifyPhoneNumber(options)
     }
 
     override fun verify(code: String) {
-        val credential = PhoneAuthProvider.getCredential(verificationIdState.value!!, code)
+        val credential = PhoneAuthProvider.getCredential(verificationIdState, code)
         signInWithPhoneAuthCredential(credential)
     }
 
     private val callback = object : PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
         override fun onVerificationCompleted(credential: PhoneAuthCredential) {
-            Log.d("TAG", "onVerificationCompleted: ")
             state.value = "onVerificationCompleted"
             code.value = credential.smsCode
 
@@ -60,7 +59,6 @@ class PhoneLoginManagerImpl @Inject constructor(
         }
 
         override fun onVerificationFailed(exception: FirebaseException) {
-            Log.d("TAG", "onVerificationFailed: ")
             state.value = "onVerificationFailed"
 
             if (exception is FirebaseAuthInvalidCredentialsException) {
@@ -74,11 +72,10 @@ class PhoneLoginManagerImpl @Inject constructor(
             verificationId: String,
             token: PhoneAuthProvider.ForceResendingToken
         ) {
-            Log.d("TAG", "onCodeSent: ")
             state.value = "onCodeSent"
 
-            verificationIdState.value = verificationId
-            tokenState.value = token
+            verificationIdState = verificationId
+            tokenState = token
         }
     }
 
@@ -86,9 +83,8 @@ class PhoneLoginManagerImpl @Inject constructor(
         firebaseAuth.signInWithCredential(credential)
             .addOnCompleteListener { task ->
                 if (task.isSuccessful) {
-                    Log.d("TAG", "signInWithPhoneAuthCredential: Success")
-                    val user = firebaseAuth.currentUser?.displayName
-                    if (user != null) {
+                    val name = firebaseAuth.currentUser?.displayName
+                    if (name != null) {
                         state.value = "Success"
                     } else {
                         state.value = "Update"
@@ -97,7 +93,6 @@ class PhoneLoginManagerImpl @Inject constructor(
                     if (task.exception is FirebaseAuthInvalidCredentialsException) {
                         Log.d("TAG", "The verification code entered was invalid")
                     }
-                    Log.d("TAG", "signInWithPhoneAuthCredential: Failed")
                     state.value = "Failed"
                 }
             }

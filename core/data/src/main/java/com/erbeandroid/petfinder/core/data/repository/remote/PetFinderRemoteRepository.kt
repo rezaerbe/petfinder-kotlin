@@ -1,15 +1,15 @@
-package com.erbeandroid.petfinder.core.data.repository
+package com.erbeandroid.petfinder.core.data.repository.remote
 
 import androidx.paging.PagingData
 import androidx.paging.map
 import com.erbeandroid.petfinder.core.common.dispatcher.Dispatcher
 import com.erbeandroid.petfinder.core.common.dispatcher.PetFinderDispatcher.Default
-import com.erbeandroid.petfinder.core.data.model.Animal
-import com.erbeandroid.petfinder.core.data.model.AnimalDetail
-import com.erbeandroid.petfinder.core.data.model.Breed
-import com.erbeandroid.petfinder.core.data.model.Type
-import com.erbeandroid.petfinder.core.data.model.asDomain
-import com.erbeandroid.petfinder.core.data.model.asDomainDetail
+import com.erbeandroid.petfinder.core.data.model.remote.Animal
+import com.erbeandroid.petfinder.core.data.model.remote.AnimalDetail
+import com.erbeandroid.petfinder.core.data.model.remote.Breed
+import com.erbeandroid.petfinder.core.data.model.remote.Type
+import com.erbeandroid.petfinder.core.data.model.remote.asDomain
+import com.erbeandroid.petfinder.core.data.model.remote.asDomainDetail
 import com.erbeandroid.petfinder.core.network.datasource.RemoteDataSource
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.flow.Flow

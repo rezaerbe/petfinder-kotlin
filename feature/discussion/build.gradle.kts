@@ -25,7 +25,6 @@ dependencies {
     implementation(project(":core:firebase"))
     implementation(project(":core:common"))
 
-    implementation("androidx.appcompat:appcompat:1.5.1")
     implementation("com.google.android.material:material:1.6.1")
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
 

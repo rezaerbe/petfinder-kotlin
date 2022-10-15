@@ -1,9 +1,9 @@
 package com.erbeandroid.petfinder.core.data.di
 
-import com.erbeandroid.petfinder.core.data.repository.LocalRepository
-import com.erbeandroid.petfinder.core.data.repository.PetFinderRemoteRepository
-import com.erbeandroid.petfinder.core.data.repository.RemoteRepository
-import com.erbeandroid.petfinder.core.data.repository.TaskRepository
+import com.erbeandroid.petfinder.core.data.repository.local.LocalRepository
+import com.erbeandroid.petfinder.core.data.repository.local.TaskLocalRepository
+import com.erbeandroid.petfinder.core.data.repository.remote.PetFinderRemoteRepository
+import com.erbeandroid.petfinder.core.data.repository.remote.RemoteRepository
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
@@ -15,11 +15,11 @@ interface RepositoryModule {
 
     @Binds
     fun bindRemoteRepository(
-        petFinderRepository: PetFinderRemoteRepository
+        petFinderRemoteRepository: PetFinderRemoteRepository
     ): RemoteRepository
 
     @Binds
     fun bindLocalRepository(
-        taskRepository: TaskRepository
+        taskLocalRepository: TaskLocalRepository
     ): LocalRepository
 }

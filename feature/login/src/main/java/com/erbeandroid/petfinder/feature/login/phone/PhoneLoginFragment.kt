@@ -1,9 +1,10 @@
 package com.erbeandroid.petfinder.feature.login.phone
 
+import android.util.Log
 import androidx.fragment.app.activityViewModels
-import com.erbeandroid.petfinder.core.common.util.BaseFragment
-import com.erbeandroid.petfinder.core.common.util.click
-import com.erbeandroid.petfinder.core.common.util.launchAndCollectIn
+import com.erbeandroid.petfinder.core.common.base.BaseFragment
+import com.erbeandroid.petfinder.core.common.base.click
+import com.erbeandroid.petfinder.core.common.extension.launchAndCollectIn
 import com.erbeandroid.petfinder.feature.login.databinding.FragmentPhoneLoginBinding
 import com.erbeandroid.petfinder.feature.login.util.loginToVerification
 import dagger.hilt.android.AndroidEntryPoint
@@ -14,14 +15,6 @@ class PhoneLoginFragment :
 
     private val phoneLoginViewModel: PhoneLoginViewModel by activityViewModels()
 
-    override fun initObserver() {
-        phoneLoginViewModel.state.launchAndCollectIn(viewLifecycleOwner) { state ->
-            if (state == "onCodeSent") {
-                loginToVerification(this@PhoneLoginFragment)
-            }
-        }
-    }
-
     override fun initInteraction() {
         binding.send.setOnClickListener(click {
             val phone = binding.fieldPhone.text.toString()
@@ -29,5 +22,14 @@ class PhoneLoginFragment :
                 phoneLoginViewModel.send(phone)
             }
         })
+    }
+
+    override fun initObservation() {
+        phoneLoginViewModel.state.launchAndCollectIn(viewLifecycleOwner) { state ->
+            Log.d("TAG", state.toString())
+            if (state == "onCodeSent") {
+                loginToVerification(this@PhoneLoginFragment)
+            }
+        }
     }
 }

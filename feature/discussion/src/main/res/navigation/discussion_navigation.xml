@@ -12,7 +12,7 @@
         tools:layout="@layout/fragment_discussion">
 
         <action
-            android:id="@+id/action_homeFragment_to_listPostFragment"
+            android:id="@+id/action_discussionFragment_to_listPostFragment"
             app:destination="@id/listPostFragment" />
 
     </fragment>
@@ -54,7 +54,7 @@
         tools:layout="@layout/fragment_detail_post">
 
         <argument
-            android:name="key"
+            android:name="id"
             app:argType="string" />
 
     </fragment>

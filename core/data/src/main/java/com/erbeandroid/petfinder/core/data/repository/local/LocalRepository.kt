@@ -1,7 +1,7 @@
-package com.erbeandroid.petfinder.core.data.repository
+package com.erbeandroid.petfinder.core.data.repository.local
 
-import com.erbeandroid.petfinder.core.data.model.Post
-import com.erbeandroid.petfinder.core.data.model.User
+import com.erbeandroid.petfinder.core.data.model.local.Post
+import com.erbeandroid.petfinder.core.data.model.local.User
 import kotlinx.coroutines.flow.Flow
 
 interface LocalRepository {

@@ -11,20 +11,16 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
-import com.erbeandroid.petfinder.core.common.util.launchAndCollectIn
+import com.erbeandroid.petfinder.core.common.extension.launchAndCollectIn
 import com.erbeandroid.petfinder.databinding.ActivityMainBinding
 import com.erbeandroid.petfinder.feature.login.util.LoginListener
 import dagger.hilt.android.AndroidEntryPoint
-import javax.inject.Inject
 import com.erbeandroid.petfinder.feature.animal.R.id as animal
 import com.erbeandroid.petfinder.feature.discussion.R.id as discussion
 import com.erbeandroid.petfinder.feature.task.R.id as task
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity(), LoginListener {
-
-    @Inject
-    lateinit var connectionMonitoring: ConnectionMonitoring
 
     private lateinit var binding: ActivityMainBinding
     private val mainViewModel: MainViewModel by viewModels()
@@ -55,7 +51,7 @@ class MainActivity : AppCompatActivity(), LoginListener {
     }
 
     private fun observeData() {
-        connectionMonitoring.networkStatus.launchAndCollectIn(this) { state ->
+        mainViewModel.connectionStatus.launchAndCollectIn(this) { state ->
             Log.d("TAG", if (state) "Connected" else "Disconnected")
         }
 

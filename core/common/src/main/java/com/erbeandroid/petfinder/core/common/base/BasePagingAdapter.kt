@@ -1,4 +1,4 @@
-package com.erbeandroid.petfinder.core.common.util
+package com.erbeandroid.petfinder.core.common.base
 
 import android.annotation.SuppressLint
 import android.view.LayoutInflater
@@ -10,12 +10,12 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.viewbinding.ViewBinding
 
 class BasePagingAdapter<T : Any, VB : ViewBinding>(
-    private val bindFactory: (LayoutInflater, ViewGroup?, Boolean) -> VB,
+    private val inflaterFactory: (LayoutInflater, ViewGroup?, Boolean) -> VB,
     private val onItemBind: (T, VB) -> Unit
 ) : PagingDataAdapter<T, BasePagingAdapter.BasePagingViewHolder<T, VB>>(BasePagingItemCallback()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BasePagingViewHolder<T, VB> {
-        val binding = bindFactory(LayoutInflater.from(parent.context), parent, false)
+        val binding = inflaterFactory(LayoutInflater.from(parent.context), parent, false)
         val view = binding.root
         return BasePagingViewHolder(view, binding, onItemBind)
     }

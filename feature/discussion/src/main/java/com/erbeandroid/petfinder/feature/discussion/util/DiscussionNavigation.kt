@@ -10,7 +10,7 @@ import com.erbeandroid.petfinder.feature.discussion.list.ListPostFragmentDirecti
 
 fun discussionToListPost(fragment: DiscussionFragment) {
     fragment.findNavController().navigate(
-        DiscussionFragmentDirections.actionHomeFragmentToListPostFragment()
+        DiscussionFragmentDirections.actionDiscussionFragmentToListPostFragment()
     )
 }
 
@@ -26,8 +26,8 @@ fun addPostToListPost(fragment: AddPostFragment) {
     )
 }
 
-fun listPostToDetailPost(fragment: ListPostFragment, key: String) {
+fun listPostToDetailPost(fragment: ListPostFragment, id: String) {
     fragment.findNavController().navigate(
-        ListPostFragmentDirections.actionListPostFragmentToDetailPostFragment(key)
+        ListPostFragmentDirections.actionListPostFragmentToDetailPostFragment(id)
     )
 }

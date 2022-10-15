@@ -10,10 +10,7 @@ import kotlinx.coroutines.flow.Flow
 interface RemoteDataSource {
 
     suspend fun getTypes(): Flow<TypesResponse>
-
     suspend fun getBreeds(type: String): Flow<BreedsResponse>
-
     fun getAnimals(type: String, breed: String): Flow<PagingData<AnimalResponse>>
-
     suspend fun getAnimalDetail(id: Int): Flow<AnimalDetailResponse>
 }

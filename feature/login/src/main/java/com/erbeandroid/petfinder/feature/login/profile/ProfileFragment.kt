@@ -1,10 +1,11 @@
 package com.erbeandroid.petfinder.feature.login.profile
 
 import android.content.Context
+import android.util.Log
 import androidx.fragment.app.viewModels
-import com.erbeandroid.petfinder.core.common.util.BaseFragment
-import com.erbeandroid.petfinder.core.common.util.click
-import com.erbeandroid.petfinder.core.common.util.launchAndCollectIn
+import com.erbeandroid.petfinder.core.common.base.BaseFragment
+import com.erbeandroid.petfinder.core.common.base.click
+import com.erbeandroid.petfinder.core.common.extension.launchAndCollectIn
 import com.erbeandroid.petfinder.feature.login.databinding.FragmentProfileBinding
 import com.erbeandroid.petfinder.feature.login.util.LoginListener
 import dagger.hilt.android.AndroidEntryPoint
@@ -30,15 +31,6 @@ class ProfileFragment :
         listener = null
     }
 
-    override fun initObserver() {
-        profileViewModel.state.launchAndCollectIn(viewLifecycleOwner) { state ->
-            if (state == "Success") {
-                profileViewModel.addUser()
-                listener?.onLoginSuccess()
-            }
-        }
-    }
-
     override fun initInteraction() {
         binding.submit.setOnClickListener(click {
             val name = binding.fieldName.text.toString()
@@ -46,5 +38,15 @@ class ProfileFragment :
                 profileViewModel.updateUser(name)
             }
         })
+    }
+
+    override fun initObservation() {
+        profileViewModel.state.launchAndCollectIn(viewLifecycleOwner) { state ->
+            Log.d("TAG", state.toString())
+            if (state == "Success") {
+                profileViewModel.addUser()
+                listener?.onLoginSuccess()
+            }
+        }
     }
 }

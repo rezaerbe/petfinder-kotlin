@@ -4,7 +4,7 @@ import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.paging.cachedIn
-import com.erbeandroid.petfinder.core.data.repository.RemoteRepository
+import com.erbeandroid.petfinder.core.data.repository.remote.RemoteRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 

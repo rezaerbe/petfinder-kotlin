@@ -1,4 +1,4 @@
-package com.erbeandroid.petfinder.core.common.util
+package com.erbeandroid.petfinder.core.common.extension
 
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleOwner

@@ -1,4 +1,4 @@
-package com.erbeandroid.petfinder.core.data.model
+package com.erbeandroid.petfinder.core.data.model.local
 
 import com.erbeandroid.petfinder.core.database.model.PostEntity
 import com.erbeandroid.petfinder.core.database.model.UserEntity

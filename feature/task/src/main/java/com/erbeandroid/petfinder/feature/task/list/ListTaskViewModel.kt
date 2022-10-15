@@ -2,9 +2,9 @@ package com.erbeandroid.petfinder.feature.task.list
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.erbeandroid.petfinder.core.common.util.StateData
-import com.erbeandroid.petfinder.core.data.model.Post
-import com.erbeandroid.petfinder.core.data.repository.LocalRepository
+import com.erbeandroid.petfinder.core.common.state.StateData
+import com.erbeandroid.petfinder.core.data.model.local.Post
+import com.erbeandroid.petfinder.core.data.repository.local.LocalRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow

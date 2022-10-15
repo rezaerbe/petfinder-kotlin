@@ -1,6 +1,5 @@
-package com.erbeandroid.petfinder.core.common.di
+package com.erbeandroid.petfinder.core.common.dispatcher
 
-import com.erbeandroid.petfinder.core.common.dispatcher.Dispatcher
 import com.erbeandroid.petfinder.core.common.dispatcher.PetFinderDispatcher.Default
 import com.erbeandroid.petfinder.core.common.dispatcher.PetFinderDispatcher.IO
 import dagger.Module

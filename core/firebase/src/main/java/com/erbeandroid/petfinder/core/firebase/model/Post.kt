@@ -5,7 +5,7 @@ import com.google.firebase.database.IgnoreExtraProperties
 
 @IgnoreExtraProperties
 data class Post(
-    var key: String? = "",
+    var id: String? = "",
     var uid: String? = "",
     var name: String? = "",
     var title: String? = "",
@@ -15,7 +15,7 @@ data class Post(
     @Exclude
     fun toMap(): Map<String, Any?> {
         return mapOf(
-            "key" to key,
+            "id" to id,
             "uid" to uid,
             "name" to name,
             "title" to title,

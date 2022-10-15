@@ -3,9 +3,9 @@ package com.erbeandroid.petfinder.feature.animal.detail
 import android.util.Log
 import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
-import com.erbeandroid.petfinder.core.common.util.BaseFragment
-import com.erbeandroid.petfinder.core.common.util.StateData
-import com.erbeandroid.petfinder.core.common.util.launchAndCollectIn
+import com.erbeandroid.petfinder.core.common.base.BaseFragment
+import com.erbeandroid.petfinder.core.common.extension.launchAndCollectIn
+import com.erbeandroid.petfinder.core.common.state.StateData
 import com.erbeandroid.petfinder.feature.animal.databinding.FragmentDetailBinding
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -15,7 +15,9 @@ class DetailFragment :
 
     private val animalDetailViewModel: DetailViewModel by viewModels()
 
-    override fun initObserver() {
+    override fun initInteraction() = Unit
+
+    override fun initObservation() {
         animalDetailViewModel.animalDetailState.launchAndCollectIn(viewLifecycleOwner) { animalDetailState ->
             binding.progressBar.isVisible = animalDetailState is StateData.Loading
             binding.animalView.isVisible = animalDetailState is StateData.Success
@@ -28,6 +30,4 @@ class DetailFragment :
             }
         }
     }
-
-    override fun initInteraction() = Unit
 }

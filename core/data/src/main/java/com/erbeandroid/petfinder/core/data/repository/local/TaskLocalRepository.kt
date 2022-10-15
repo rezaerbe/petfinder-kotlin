@@ -1,11 +1,11 @@
-package com.erbeandroid.petfinder.core.data.repository
+package com.erbeandroid.petfinder.core.data.repository.local
 
 import com.erbeandroid.petfinder.core.common.dispatcher.Dispatcher
 import com.erbeandroid.petfinder.core.common.dispatcher.PetFinderDispatcher.*
-import com.erbeandroid.petfinder.core.data.model.Post
-import com.erbeandroid.petfinder.core.data.model.User
-import com.erbeandroid.petfinder.core.data.model.asDomain
-import com.erbeandroid.petfinder.core.data.model.asEntity
+import com.erbeandroid.petfinder.core.data.model.local.Post
+import com.erbeandroid.petfinder.core.data.model.local.User
+import com.erbeandroid.petfinder.core.data.model.local.asDomain
+import com.erbeandroid.petfinder.core.data.model.local.asEntity
 import com.erbeandroid.petfinder.core.database.datasource.LocalDataSource
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.flow.Flow
@@ -13,7 +13,7 @@ import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.flow.map
 import javax.inject.Inject
 
-class TaskRepository @Inject constructor(
+class TaskLocalRepository @Inject constructor(
     private val localDataSource: LocalDataSource,
     @Dispatcher(Default) private val defaultDispatcher: CoroutineDispatcher
 ) : LocalRepository {

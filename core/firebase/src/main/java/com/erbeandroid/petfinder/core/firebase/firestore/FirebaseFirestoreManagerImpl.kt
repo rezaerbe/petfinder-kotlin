@@ -3,10 +3,10 @@ package com.erbeandroid.petfinder.core.firebase.firestore
 import android.util.Log
 import com.erbeandroid.petfinder.core.common.dispatcher.Dispatcher
 import com.erbeandroid.petfinder.core.common.dispatcher.PetFinderDispatcher.*
+import com.erbeandroid.petfinder.core.common.state.StateData
 import com.erbeandroid.petfinder.core.firebase.model.Post
 import com.erbeandroid.petfinder.core.firebase.model.User
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.firestore.*
 import com.google.firebase.firestore.ktx.toObject
 import com.google.firebase.firestore.ktx.toObjects
@@ -20,36 +20,36 @@ import javax.inject.Inject
 
 class FirebaseFirestoreManagerImpl @Inject constructor(
     private val reference: FirebaseFirestore,
-    private val firebaseAuth: FirebaseAuth,
+    firebaseAuth: FirebaseAuth,
     @Dispatcher(IO) private val ioDispatcher: CoroutineDispatcher
 ) : FirebaseFirestoreManager {
 
-    override val state = MutableStateFlow<String?>(null)
-    override val postDetail = MutableStateFlow<Post?>(null)
+    private val user = firebaseAuth.currentUser
 
-    private fun currentUser(): FirebaseUser? {
-        return firebaseAuth.currentUser
-    }
+    override val state = MutableStateFlow<String?>(null)
+    override val postDetail = MutableStateFlow<StateData<Post?>>(StateData.Loading)
 
     override fun addUser() {
-        currentUser()?.let { user ->
-            val postUser = User(user.displayName, user.phoneNumber)
+        if (user != null) {
+            val postUser = User(user.uid, user.displayName, user.phoneNumber)
             reference
                 .collection("users")
                 .document(user.uid)
                 .set(postUser)
-                .addOnSuccessListener {
-                    Log.d("TAG", "addUser: Success")
+                .addOnCompleteListener { task ->
+                    if (task.isSuccessful) {
+                        Log.d("TAG", "addUserFirestore: Success")
+                    } else {
+                        Log.d("TAG", "addUserFirestore: Failed")
+                    }
                 }
-                .addOnFailureListener {
-                    Log.d("TAG", "addUser: Failed")
-                    state.value = "Failed"
-                }
+        } else {
+            Log.d("TAG", "addUserFirestore: User null")
         }
     }
 
     override fun addPost(title: String, description: String) {
-        currentUser()?.let { user ->
+        if (user != null) {
             reference
                 .collection("users")
                 .document(user.uid)
@@ -57,26 +57,28 @@ class FirebaseFirestoreManagerImpl @Inject constructor(
                 .addOnSuccessListener { snapshot ->
                     val userDatabase = snapshot.toObject<User>()
                     if (userDatabase == null) {
-                        Log.d("TAG", "User null")
+                        state.value = "User database null"
                     } else {
-                        writePost(user.uid, userDatabase.name.toString(), title, description)
+                        writePost(userDatabase, title, description)
                     }
                 }
                 .addOnFailureListener {
-                    Log.d("TAG", "addPost: Failed")
+                    state.value = "Failed"
                 }
+        } else {
+            state.value = "User null"
         }
     }
 
-    private fun writePost(uid: String, name: String, title: String, description: String) {
+    private fun writePost(user: User, title: String, description: String) {
         val key = reference.collection("posts").document().id
 
-        val post = Post(key, uid, name, title, description)
+        val post = Post(key, user.uid, user.name, title, description)
         val postMap = post.toMap()
 
         val postReference = reference.collection("posts").document(key)
         val userPostReference = reference
-            .collection("user-posts").document(uid)
+            .collection("user-posts").document(user.uid!!)
             .collection("posts").document(key)
 
         reference
@@ -84,26 +86,25 @@ class FirebaseFirestoreManagerImpl @Inject constructor(
                 batch.set(postReference, postMap)
                 batch.set(userPostReference, postMap)
             }
-            .addOnSuccessListener {
-                Log.d("TAG", "writePost: Success")
-                state.value = "Success"
-            }
-            .addOnFailureListener {
-                Log.d("TAG", "writePost: Failed")
-                state.value = "Failed"
+            .addOnCompleteListener { task ->
+                if (task.isSuccessful) {
+                    state.value = "Success"
+                } else {
+                    state.value = "Failed"
+                }
             }
     }
 
-    override fun listPost(): Flow<List<Post>> = callbackFlow {
+    override fun listPost(): Flow<StateData<List<Post>>> = callbackFlow {
         val postReference = reference.collection("posts")
         val postListener = EventListener<QuerySnapshot> { snapshot, error ->
             if (error != null) {
-                Log.d("TAG", "listPost: Failed")
+                trySend(StateData.Error(error))
                 return@EventListener
             }
             snapshot?.let {
-                val post = snapshot.toObjects<Post>()
-                trySend(post)
+                val postList = snapshot.toObjects<Post>()
+                trySend(StateData.Success(postList))
             }
         }
         val registration = postReference.addSnapshotListener(postListener)
@@ -119,10 +120,10 @@ class FirebaseFirestoreManagerImpl @Inject constructor(
             .get()
             .addOnSuccessListener { snapshot ->
                 val post = snapshot.toObject<Post>()
-                postDetail.value = post
+                postDetail.value = StateData.Success(post)
             }
-            .addOnFailureListener {
-                Log.d("TAG", "detailPost: Failed")
+            .addOnFailureListener { error ->
+                StateData.Error(error)
             }
     }
 }

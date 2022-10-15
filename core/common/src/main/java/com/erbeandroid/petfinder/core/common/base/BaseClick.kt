@@ -1,9 +1,9 @@
-package com.erbeandroid.petfinder.core.common.util
+package com.erbeandroid.petfinder.core.common.base
 
 import android.util.Log
 import android.view.View
 
-open class ClickListener : View.OnClickListener {
+open class BaseClick : View.OnClickListener {
     override fun onClick(view: View?) {
         view?.let { v ->
             val name = v.context.resources.getResourceEntryName(v.id)
@@ -12,11 +12,11 @@ open class ClickListener : View.OnClickListener {
     }
 }
 
-fun click(block: () -> Unit): ClickListener {
-    return object : ClickListener() {
+fun click(action: () -> Unit): BaseClick {
+    return object : BaseClick() {
         override fun onClick(view: View?) {
             super.onClick(view)
-            block()
+            action()
         }
     }
 }

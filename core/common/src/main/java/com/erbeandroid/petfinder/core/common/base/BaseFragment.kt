@@ -1,4 +1,4 @@
-package com.erbeandroid.petfinder.core.common.util
+package com.erbeandroid.petfinder.core.common.base
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,7 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.viewbinding.ViewBinding
 
 abstract class BaseFragment<VB : ViewBinding>(
-    private val bindFactory: (LayoutInflater, ViewGroup?, Boolean) -> VB
+    private val inflaterFactory: (LayoutInflater, ViewGroup?, Boolean) -> VB
 ) : Fragment() {
 
     private var _binding: VB? = null
@@ -19,19 +19,19 @@ abstract class BaseFragment<VB : ViewBinding>(
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding = bindFactory(inflater, container, false)
+        _binding = inflaterFactory(inflater, container, false)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        initObserver()
         initInteraction()
+        initObservation()
     }
 
-    abstract fun initObserver()
     abstract fun initInteraction()
+    abstract fun initObservation()
 
     override fun onDestroyView() {
         super.onDestroyView()

@@ -1,8 +1,8 @@
 package com.erbeandroid.petfinder.feature.animal.type
 
-import com.erbeandroid.petfinder.core.common.util.BaseAdapter
-import com.erbeandroid.petfinder.core.common.util.click
-import com.erbeandroid.petfinder.core.data.model.Type
+import com.erbeandroid.petfinder.core.common.base.BaseAdapter
+import com.erbeandroid.petfinder.core.common.base.click
+import com.erbeandroid.petfinder.core.data.model.remote.Type
 import com.erbeandroid.petfinder.feature.animal.databinding.ItemTypeBinding
 
 fun typeAdapter(

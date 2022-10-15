@@ -28,14 +28,14 @@ import javax.inject.Singleton
 interface FirebaseModule {
 
     @Binds
-    fun bindPhoneLoginManager(
-        phoneLoginManagerImpl: PhoneLoginManagerImpl
-    ): PhoneLoginManager
-
-    @Binds
     fun bindFirebaseUserManager(
         firebaseUserManagerImpl: FirebaseUserManagerImpl
     ): FirebaseUserManager
+
+    @Binds
+    fun bindPhoneLoginManager(
+        phoneLoginManagerImpl: PhoneLoginManagerImpl
+    ): PhoneLoginManager
 
     @Binds
     fun bindFirebaseDatabaseManager(
@@ -50,20 +50,20 @@ interface FirebaseModule {
     companion object {
         @Provides
         @Singleton
-        fun provideFirebaseAuth(): FirebaseAuth {
-            return Firebase.auth
-        }
-
-        @Provides
-        @Singleton
         fun provideFragmentActivity(): FragmentActivity {
             return FragmentActivity()
         }
 
         @Provides
         @Singleton
+        fun provideFirebaseAuth(): FirebaseAuth {
+            return Firebase.auth
+        }
+
+        @Provides
+        @Singleton
         fun provideFirebaseDatabase(): DatabaseReference {
-            return Firebase.database("https://petfinder-erbe-default-rtdb.asia-southeast1.firebasedatabase.app/").reference
+            return Firebase.database.reference
         }
 
         @Provides

@@ -1,10 +1,11 @@
 package com.erbeandroid.petfinder.feature.login.phone
 
 import android.content.Context
+import android.util.Log
 import androidx.fragment.app.activityViewModels
-import com.erbeandroid.petfinder.core.common.util.BaseFragment
-import com.erbeandroid.petfinder.core.common.util.click
-import com.erbeandroid.petfinder.core.common.util.launchAndCollectIn
+import com.erbeandroid.petfinder.core.common.base.BaseFragment
+import com.erbeandroid.petfinder.core.common.base.click
+import com.erbeandroid.petfinder.core.common.extension.launchAndCollectIn
 import com.erbeandroid.petfinder.feature.login.databinding.FragmentPhoneVerificationBinding
 import com.erbeandroid.petfinder.feature.login.util.LoginListener
 import com.erbeandroid.petfinder.feature.login.util.verificationToProfile
@@ -29,17 +30,6 @@ class PhoneVerificationFragment :
         listener = null
     }
 
-    override fun initObserver() {
-        phoneLoginViewModel.state.launchAndCollectIn(viewLifecycleOwner) { state ->
-            if (state == "Update") {
-                verificationToProfile(this@PhoneVerificationFragment)
-            }
-            if (state == "Success") {
-                listener?.onLoginSuccess()
-            }
-        }
-    }
-
     override fun initInteraction() {
         binding.verify.setOnClickListener(click {
             val code = binding.fieldCode.text.toString()
@@ -47,5 +37,17 @@ class PhoneVerificationFragment :
                 phoneLoginViewModel.verify(code)
             }
         })
+    }
+
+    override fun initObservation() {
+        phoneLoginViewModel.state.launchAndCollectIn(viewLifecycleOwner) { state ->
+            Log.d("TAG", state.toString())
+            if (state == "Update") {
+                verificationToProfile(this@PhoneVerificationFragment)
+            }
+            if (state == "Success") {
+                listener?.onLoginSuccess()
+            }
+        }
     }
 }

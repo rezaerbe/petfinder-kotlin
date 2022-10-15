@@ -3,10 +3,10 @@ package com.erbeandroid.petfinder.core.firebase.database
 import android.util.Log
 import com.erbeandroid.petfinder.core.common.dispatcher.Dispatcher
 import com.erbeandroid.petfinder.core.common.dispatcher.PetFinderDispatcher.IO
+import com.erbeandroid.petfinder.core.common.state.StateData
 import com.erbeandroid.petfinder.core.firebase.model.Post
 import com.erbeandroid.petfinder.core.firebase.model.User
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.*
 import com.google.firebase.database.ktx.getValue
 import kotlinx.coroutines.CoroutineDispatcher
@@ -19,35 +19,36 @@ import javax.inject.Inject
 
 class FirebaseDatabaseManagerImpl @Inject constructor(
     private val reference: DatabaseReference,
-    private val firebaseAuth: FirebaseAuth,
+    firebaseAuth: FirebaseAuth,
     @Dispatcher(IO) private val ioDispatcher: CoroutineDispatcher
 ) : FirebaseDatabaseManager {
 
-    override val state = MutableStateFlow<String?>(null)
-    override val postDetail = MutableStateFlow<Post?>(null)
+    private val user = firebaseAuth.currentUser
 
-    private fun currentUser(): FirebaseUser? {
-        return firebaseAuth.currentUser
-    }
+    override val state = MutableStateFlow<String?>(null)
+    override val postDetail = MutableStateFlow<StateData<Post?>>(StateData.Loading)
 
     override fun addUser() {
-        currentUser()?.let { user ->
-            val postUser = User(user.displayName, user.phoneNumber)
+        if (user != null) {
+            val postUser = User(user.uid, user.displayName, user.phoneNumber)
             reference
                 .child("users")
                 .child(user.uid)
                 .setValue(postUser)
-                .addOnSuccessListener {
-                    Log.d("TAG", "addUser: Success")
+                .addOnCompleteListener { task ->
+                    if (task.isSuccessful) {
+                        Log.d("TAG", "addUserDatabase: Success")
+                    } else {
+                        Log.d("TAG", "addUserDatabase: Failed")
+                    }
                 }
-                .addOnFailureListener {
-                    Log.d("TAG", "addUser: Failed")
-                }
+        } else {
+            Log.d("TAG", "addUserDatabase: User null")
         }
     }
 
     override fun addPost(title: String, description: String) {
-        currentUser()?.let { user ->
+        if (user != null) {
             reference
                 .child("users")
                 .child(user.uid)
@@ -55,47 +56,47 @@ class FirebaseDatabaseManagerImpl @Inject constructor(
                     override fun onDataChange(snapshot: DataSnapshot) {
                         val userDatabase = snapshot.getValue<User>()
                         if (userDatabase == null) {
-                            Log.d("TAG", "User null")
+                            state.value = "User database null"
                         } else {
-                            writePost(user.uid, userDatabase.name.toString(), title, description)
+                            writePost(userDatabase, title, description)
                         }
                     }
 
                     override fun onCancelled(error: DatabaseError) {
-                        Log.d("TAG", "onCancelled: ")
-                        state.value = "Cancelled"
+                        state.value = "Failed"
                     }
                 })
+        } else {
+            state.value = "User null"
         }
     }
 
-    private fun writePost(uid: String, name: String, title: String, description: String) {
+    private fun writePost(user: User, title: String, description: String) {
         val key = reference.child("posts").push().key
         if (key == null) {
-            Log.d("TAG", "Key null")
+            state.value = "Key null"
             return
         }
 
-        val post = Post(key, uid, name, title, description)
+        val post = Post(key, user.uid, user.name, title, description)
         val postMap = post.toMap()
 
         val update = hashMapOf<String, Any>(
             "/posts/$key" to postMap,
-            "/user-posts/$uid/$key" to postMap
+            "/user-posts/${user.uid}/posts/$key" to postMap
         )
 
         reference.updateChildren(update)
-            .addOnSuccessListener {
-                Log.d("TAG", "writePost: Success")
-                state.value = "Success"
-            }
-            .addOnFailureListener {
-                Log.d("TAG", "writePost: Failed")
-                state.value = "Failed"
+            .addOnCompleteListener { task ->
+                if (task.isSuccessful) {
+                    state.value = "Success"
+                } else {
+                    state.value = "Failed"
+                }
             }
     }
 
-    override fun listPost(): Flow<List<Post>> = callbackFlow {
+    override fun listPost(): Flow<StateData<List<Post>>> = callbackFlow {
         val postReference = reference.child("posts")
         val postListener = object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
@@ -106,11 +107,11 @@ class FirebaseDatabaseManagerImpl @Inject constructor(
                         postList.add(data)
                     }
                 }
-                trySend(postList.toList())
+                trySend(StateData.Success(postList))
             }
 
             override fun onCancelled(error: DatabaseError) {
-                Log.d("TAG", "onCancelled: ")
+                trySend(StateData.Error(error.toException()))
             }
         }
         postReference.addValueEventListener(postListener)
@@ -126,11 +127,11 @@ class FirebaseDatabaseManagerImpl @Inject constructor(
             .addListenerForSingleValueEvent(object : ValueEventListener {
                 override fun onDataChange(snapshot: DataSnapshot) {
                     val post = snapshot.getValue<Post>()
-                    postDetail.value = post
+                    postDetail.value = StateData.Success(post)
                 }
 
                 override fun onCancelled(error: DatabaseError) {
-                    Log.d("TAG", "onCancelled: ")
+                    postDetail.value = StateData.Error(error.toException())
                 }
             })
     }

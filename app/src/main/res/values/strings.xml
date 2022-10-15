@@ -3,6 +3,7 @@
 
     <!-- google-services.json -->
     <string name="default_web_client_id" translatable="false">363220246569-1va7g66df5cagehbujmg5cp0pinniguf.apps.googleusercontent.com</string>
+    <string name="firebase_database_url" translatable="false">https://petfinder-erbe-default-rtdb.asia-southeast1.firebasedatabase.app</string>
     <string name="gcm_defaultSenderId" translatable="false">363220246569</string>
     <string name="google_api_key" translatable="false">AIzaSyAnhStaQikw3KiDPHrQV7McRhGszL8wXPs</string>
     <string name="google_app_id" translatable="false">1:363220246569:android:ea60928dddf927d66c7c38</string>

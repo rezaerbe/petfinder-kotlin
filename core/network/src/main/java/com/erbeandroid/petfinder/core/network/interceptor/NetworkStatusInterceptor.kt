@@ -1,6 +1,6 @@
 package com.erbeandroid.petfinder.core.network.interceptor
 
-import com.erbeandroid.petfinder.core.network.util.ConnectionManager
+import com.erbeandroid.petfinder.core.common.connection.ConnectionManager
 import okhttp3.Interceptor
 import okhttp3.Response
 import okio.IOException
