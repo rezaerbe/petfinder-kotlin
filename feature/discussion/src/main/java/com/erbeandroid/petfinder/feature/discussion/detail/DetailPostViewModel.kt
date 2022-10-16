@@ -26,12 +26,12 @@ class DetailPostViewModel @Inject constructor(
     }
 
     private fun detailPost() {
-        val key = savedStateHandle.get<String>("id") ?: ""
-        firebaseDatabaseManager.detailPost(key)
+        val id = savedStateHandle.get<String>("id") ?: ""
+        firebaseDatabaseManager.detailPost(id)
     }
 
     private fun detailPostNew() {
-        val key = savedStateHandle.get<String>("id") ?: ""
-        firebaseFirestoreManager.detailPost(key)
+        val id = savedStateHandle.get<String>("id") ?: ""
+        firebaseFirestoreManager.detailPost(id)
     }
 }

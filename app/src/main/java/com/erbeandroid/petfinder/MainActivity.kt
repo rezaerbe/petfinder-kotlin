@@ -54,11 +54,6 @@ class MainActivity : AppCompatActivity(), LoginListener {
         mainViewModel.connectionStatus.launchAndCollectIn(this) { state ->
             Log.d("TAG", if (state) "Connected" else "Disconnected")
         }
-
-        navController.addOnDestinationChangedListener { _, destination, _ ->
-            val fragment = destination.displayName.split("/")[1]
-            Log.d("TAG", fragment)
-        }
     }
 
     override fun onLoginSuccess() {

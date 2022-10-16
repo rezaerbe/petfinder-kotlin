@@ -35,10 +35,10 @@ class ListTaskFragment :
     }
 
     override fun initObservation() {
-        listTaskViewModel.postState.launchAndCollectIn(viewLifecycleOwner) { postState ->
-            if (postState is StateData.Success) {
-                Log.d("TAG", postState.data.toString())
-                listTaskAdapter.submitList(postState.data)
+        listTaskViewModel.postListState.launchAndCollectIn(viewLifecycleOwner) { postListState ->
+            if (postListState is StateData.Success) {
+                Log.d("TAG", postListState.data.toString())
+                listTaskAdapter.submitList(postListState.data)
             }
         }
     }

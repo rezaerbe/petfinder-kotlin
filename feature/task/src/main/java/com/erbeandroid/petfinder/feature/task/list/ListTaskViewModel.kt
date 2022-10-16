@@ -16,8 +16,8 @@ class ListTaskViewModel @Inject constructor(
     private val localRepository: LocalRepository
 ) : ViewModel() {
 
-    private val _postState = MutableStateFlow<StateData<List<Post>>>(StateData.Loading)
-    val postState: StateFlow<StateData<List<Post>>> = _postState
+    private val _postListState = MutableStateFlow<StateData<List<Post>>>(StateData.Loading)
+    val postListState: StateFlow<StateData<List<Post>>> = _postListState
 
     init {
         getPosts()
@@ -28,10 +28,10 @@ class ListTaskViewModel @Inject constructor(
             try {
                 localRepository.loadPost()
                     .collect { posts ->
-                        _postState.value = StateData.Success(posts)
+                        _postListState.value = StateData.Success(posts)
                     }
             } catch (exception: Exception) {
-                _postState.value = StateData.Error(exception)
+                _postListState.value = StateData.Error(exception)
             }
         }
     }
