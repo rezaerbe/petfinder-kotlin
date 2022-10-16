@@ -25,6 +25,7 @@ class PhoneLoginManagerImpl @Inject constructor(
     private lateinit var tokenState: PhoneAuthProvider.ForceResendingToken
 
     override fun send(phoneNumber: String) {
+        setAppVerificationDisabledForTesting()
         val options = PhoneAuthOptions.newBuilder(firebaseAuth)
             .setPhoneNumber(phoneNumber)
             .setTimeout(60L, TimeUnit.SECONDS)
@@ -96,5 +97,9 @@ class PhoneLoginManagerImpl @Inject constructor(
                     state.value = "Failed"
                 }
             }
+    }
+
+    private fun setAppVerificationDisabledForTesting() {
+        firebaseAuth.firebaseAuthSettings.setAppVerificationDisabledForTesting(true)
     }
 }
