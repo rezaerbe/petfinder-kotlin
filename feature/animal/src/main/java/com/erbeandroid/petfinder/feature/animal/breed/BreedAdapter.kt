@@ -5,9 +5,9 @@ import com.erbeandroid.petfinder.core.common.base.click
 import com.erbeandroid.petfinder.core.data.model.remote.Breed
 import com.erbeandroid.petfinder.feature.animal.databinding.ItemBreedBinding
 
-fun breedAdapter(
+class BreedAdapter(
     onBreedClick: (Breed) -> Unit
-) = BaseAdapter<Breed, ItemBreedBinding>(
+) : BaseAdapter<Breed, ItemBreedBinding>(
     ItemBreedBinding::inflate,
     onItemBind = { item, binding ->
         binding.breed.text = item.name

@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewbinding.ViewBinding
 
-class BasePagingAdapter<T : Any, VB : ViewBinding>(
+abstract class BasePagingAdapter<T : Any, VB : ViewBinding>(
     private val inflaterFactory: (LayoutInflater, ViewGroup?, Boolean) -> VB,
     private val onItemBind: (T, VB) -> Unit
 ) : PagingDataAdapter<T, BasePagingAdapter.BasePagingViewHolder<T, VB>>(BasePagingItemCallback()) {

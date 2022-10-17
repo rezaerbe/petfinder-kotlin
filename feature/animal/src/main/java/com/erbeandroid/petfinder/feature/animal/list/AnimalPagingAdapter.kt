@@ -5,9 +5,9 @@ import com.erbeandroid.petfinder.core.common.base.click
 import com.erbeandroid.petfinder.core.data.model.remote.Animal
 import com.erbeandroid.petfinder.feature.animal.databinding.ItemAnimalBinding
 
-fun animalPagingAdapter(
+class AnimalPagingAdapter(
     onAnimalClick: (Animal) -> Unit
-) = BasePagingAdapter<Animal, ItemAnimalBinding>(
+) : BasePagingAdapter<Animal, ItemAnimalBinding>(
     ItemAnimalBinding::inflate,
     onItemBind = { item, binding ->
         binding.animal.text = item.name

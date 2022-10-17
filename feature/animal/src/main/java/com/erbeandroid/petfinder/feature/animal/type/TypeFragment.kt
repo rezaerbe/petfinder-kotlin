@@ -21,7 +21,7 @@ class TypeFragment :
     private lateinit var typeAdapter: BaseAdapter<Type, ItemTypeBinding>
 
     override fun initInteraction() {
-        typeAdapter = typeAdapter { type ->
+        typeAdapter = TypeAdapter { type ->
             type.name?.let { name ->
                 typeToBreed(this@TypeFragment, name)
             }

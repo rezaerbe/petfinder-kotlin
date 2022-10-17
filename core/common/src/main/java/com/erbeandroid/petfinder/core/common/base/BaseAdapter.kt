@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewbinding.ViewBinding
 
-class BaseAdapter<T : Any, VB : ViewBinding>(
+abstract class BaseAdapter<T : Any, VB : ViewBinding>(
     private val inflaterFactory: (LayoutInflater, ViewGroup?, Boolean) -> VB,
     private val onItemBind: (T, VB) -> Unit
 ) : ListAdapter<T, BaseAdapter.BaseViewHolder<T, VB>>(BaseItemCallback<T>()) {

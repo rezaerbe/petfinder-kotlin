@@ -21,7 +21,7 @@ class AnimalFragment :
     private lateinit var animalPagingAdapter: BasePagingAdapter<Animal, ItemAnimalBinding>
 
     override fun initInteraction() {
-        animalPagingAdapter = animalPagingAdapter { animal ->
+        animalPagingAdapter = AnimalPagingAdapter { animal ->
             animal.id?.let { id ->
                 animalToDetail(this@AnimalFragment, id)
             }

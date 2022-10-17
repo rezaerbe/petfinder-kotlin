@@ -23,7 +23,7 @@ class BreedFragment :
     private lateinit var breedAdapter: BaseAdapter<Breed, ItemBreedBinding>
 
     override fun initInteraction() {
-        breedAdapter = breedAdapter { breed ->
+        breedAdapter = BreedAdapter { breed ->
             breed.name?.let { name ->
                 breedToAnimal(this@BreedFragment, args.type, name)
             }

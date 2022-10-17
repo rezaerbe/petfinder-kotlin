@@ -5,9 +5,9 @@ import com.erbeandroid.petfinder.core.common.base.click
 import com.erbeandroid.petfinder.core.firebase.model.Post
 import com.erbeandroid.petfinder.feature.discussion.databinding.ItemPostBinding
 
-fun listPostAdapter(
+class ListPostAdapter(
     onPostClick: (Post) -> Unit
-) = BaseAdapter<Post, ItemPostBinding>(
+) : BaseAdapter<Post, ItemPostBinding>(
     ItemPostBinding::inflate,
     onItemBind = { item, binding ->
         binding.title.text = item.title

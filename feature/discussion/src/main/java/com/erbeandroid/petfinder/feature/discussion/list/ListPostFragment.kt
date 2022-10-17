@@ -22,7 +22,7 @@ class ListPostFragment :
     private lateinit var listPostAdapter: BaseAdapter<Post, ItemPostBinding>
 
     override fun initInteraction() {
-        listPostAdapter = listPostAdapter { post ->
+        listPostAdapter = ListPostAdapter { post ->
             post.id?.let { id ->
                 listPostToDetailPost(this@ListPostFragment, id)
             }
