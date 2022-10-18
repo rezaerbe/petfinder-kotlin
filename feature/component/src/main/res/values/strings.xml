@@ -1,3 +1,5 @@
 <resources>
     <string name="button">Button</string>
+    <string name="floating_action_button">Floating Action Button</string>
+    <string name="extended">Extended</string>
 </resources>
