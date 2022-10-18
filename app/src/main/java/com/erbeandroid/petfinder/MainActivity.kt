@@ -58,12 +58,12 @@ class MainActivity : AppCompatActivity(), LoginListener {
 
     override fun onLoginSuccess() {
         signIn()
+        setupMain()
     }
 
     private fun signIn() {
         navController.navigate(LoginDirections.actionGlobalNavigationLoginToMain())
         binding.bottomNavigation.isVisible = true
-        setupMain()
     }
 
     private fun signOut() {

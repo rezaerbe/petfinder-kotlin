@@ -25,16 +25,11 @@ interface PreferenceModule {
 
     companion object {
         @Provides
-        fun provideMasterKeyAlias(): String {
-            return MasterKeys.getOrCreate(MasterKeys.AES256_GCM_SPEC)
-        }
-
-        @Provides
         @Singleton
         fun provideSharedPreferences(
-            masterKeyAlias: String,
             @ApplicationContext context: Context
         ): SharedPreferences {
+            val masterKeyAlias = MasterKeys.getOrCreate(MasterKeys.AES256_GCM_SPEC)
             return EncryptedSharedPreferences.create(
                 "secret_shared_prefs",
                 masterKeyAlias,
