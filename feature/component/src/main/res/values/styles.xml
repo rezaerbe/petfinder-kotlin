@@ -5,4 +5,9 @@
         <item name="cornerFamily">cut</item>
         <item name="cornerSize">4dp</item>
     </style>
+
+    <style name="ShapeAppearance.App.MediumComponent" parent="ShapeAppearance.MaterialComponents.MediumComponent">
+        <item name="cornerFamily">cut</item>
+        <item name="cornerSize">8dp</item>
+    </style>
 </resources>

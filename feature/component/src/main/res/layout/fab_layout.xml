@@ -43,7 +43,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:importantForAccessibility="no"
-        android:text="@string/extended"
+        android:text="@string/button"
         app:icon="@drawable/ic_add"
         app:layout_constraintBottom_toBottomOf="@+id/mini_fab"
         app:layout_constraintEnd_toEndOf="parent"

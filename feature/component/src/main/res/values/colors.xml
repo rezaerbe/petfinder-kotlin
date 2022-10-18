@@ -10,4 +10,5 @@
 
     <color name="shrine_pink_100">#FFFEDBD0</color>
     <color name="shrine_pink_900">#FF442C2E</color>
+    <color name="shrine_surface_white">#FFFFFBFA</color>
 </resources>
