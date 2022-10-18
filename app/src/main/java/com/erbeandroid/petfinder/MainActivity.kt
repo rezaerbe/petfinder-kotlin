@@ -16,6 +16,7 @@ import com.erbeandroid.petfinder.databinding.ActivityMainBinding
 import com.erbeandroid.petfinder.feature.login.util.LoginListener
 import dagger.hilt.android.AndroidEntryPoint
 import com.erbeandroid.petfinder.feature.animal.R.id as animal
+import com.erbeandroid.petfinder.feature.component.R.id as component
 import com.erbeandroid.petfinder.feature.discussion.R.id as discussion
 import com.erbeandroid.petfinder.feature.task.R.id as task
 
@@ -76,6 +77,7 @@ class MainActivity : AppCompatActivity(), LoginListener {
 
         appBarConfiguration = AppBarConfiguration(
             setOf(
+                component.listFragment,
                 animal.typeFragment,
                 discussion.discussionFragment,
                 task.taskFragment

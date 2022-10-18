@@ -22,6 +22,8 @@ android {
 
 dependencies {
 
+    implementation(project(":feature:component"))
+
     implementation(project(":core:data"))
     implementation(project(":core:firebase"))
     implementation(project(":core:common"))

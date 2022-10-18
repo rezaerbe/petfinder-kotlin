@@ -55,6 +55,7 @@ android {
 
 dependencies {
 
+    implementation(project(":feature:component"))
     implementation(project(":feature:login"))
     implementation(project(":feature:animal"))
     implementation(project(":feature:discussion"))
