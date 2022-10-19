@@ -11,11 +11,11 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <include layout="@layout/button_layout" />
+        <include layout="@layout/component_button" />
 
-        <include layout="@layout/fab_layout" />
+        <include layout="@layout/component_fab" />
 
-        <include layout="@layout/card_layout" />
+        <include layout="@layout/component_card" />
 
     </LinearLayout>
 
