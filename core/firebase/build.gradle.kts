@@ -19,7 +19,7 @@ dependencies {
 
     implementation(project(":core:common"))
 
-    implementation(platform("com.google.firebase:firebase-bom:31.0.0"))
+    implementation(platform("com.google.firebase:firebase-bom:31.0.1"))
     implementation("com.google.firebase:firebase-auth-ktx")
     implementation("com.google.firebase:firebase-database-ktx")
     implementation("com.google.firebase:firebase-firestore-ktx")

@@ -10,9 +10,6 @@
     app:strokeWidth="1dp"
     app:strokeColor="@color/stroke_color"
     app:cardElevation="0dp"
-    android:checkable="true"
-    android:clickable="true"
-    android:focusable="true"
     -->
 
     <TextView
@@ -29,6 +26,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
+        android:checkable="true"
+        android:clickable="true"
+        android:focusable="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/title_card">

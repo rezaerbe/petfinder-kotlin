@@ -2,21 +2,39 @@ package com.erbeandroid.petfinder.core.common.base
 
 import android.util.Log
 import android.view.View
+import com.google.android.material.button.MaterialButtonToggleGroup
 
-open class BaseClick : View.OnClickListener {
-    override fun onClick(view: View?) {
+fun click(action: () -> Unit): View.OnClickListener {
+    return View.OnClickListener { view ->
         view?.let { v ->
             val name = v.context.resources.getResourceEntryName(v.id)
             Log.d("TAG", "onClick: $name")
         }
+        action()
     }
 }
 
-fun click(action: () -> Unit): BaseClick {
-    return object : BaseClick() {
-        override fun onClick(view: View?) {
-            super.onClick(view)
-            action()
+fun longClick(action: () -> Unit): View.OnLongClickListener {
+    return View.OnLongClickListener { view ->
+        view?.let { v ->
+            val name = v.context.resources.getResourceEntryName(v.id)
+            Log.d("TAG", "onLongClick: $name")
         }
+        action()
+        true
+    }
+}
+
+fun toggle(action: () -> Unit): MaterialButtonToggleGroup.OnButtonCheckedListener {
+    return MaterialButtonToggleGroup.OnButtonCheckedListener { group, checkedId, isChecked ->
+        group?.let { v ->
+            val name = v.context.resources.getResourceEntryName(checkedId)
+            if (isChecked) {
+                Log.d("TAG", "Checked: $name")
+            } else {
+                Log.d("TAG", "Unchecked: $name")
+            }
+        }
+        action()
     }
 }

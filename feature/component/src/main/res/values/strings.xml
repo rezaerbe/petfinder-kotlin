@@ -8,4 +8,6 @@
     <string name="secondary_text">Secondary text</string>
     <string name="supporting_text">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</string>
     <string name="action">Action</string>
+
+    <string name="checkbox">Checkbox</string>
 </resources>

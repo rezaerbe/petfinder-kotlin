@@ -21,7 +21,7 @@ android {
 
 dependencies {
 
-    implementation("androidx.recyclerview:recyclerview:1.2.1")
+    implementation("com.google.android.material:material:1.7.0")
     implementation("androidx.paging:paging-runtime:3.1.1")
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.5.1")
 

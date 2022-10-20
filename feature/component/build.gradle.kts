@@ -24,7 +24,7 @@ dependencies {
 
     implementation(project(":core:common"))
 
-    implementation("com.google.android.material:material:1.6.1")
+    implementation("com.google.android.material:material:1.7.0")
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
 
     implementation("androidx.fragment:fragment-ktx:1.5.3")
