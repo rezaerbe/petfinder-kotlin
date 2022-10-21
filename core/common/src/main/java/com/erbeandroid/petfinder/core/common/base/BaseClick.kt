@@ -1,5 +1,6 @@
 package com.erbeandroid.petfinder.core.common.base
 
+import android.content.DialogInterface
 import android.util.Log
 import android.view.View
 import android.widget.CompoundButton
@@ -62,6 +63,34 @@ fun checkState(action: () -> Unit): ChipGroup.OnCheckedStateChangeListener {
                 group.context.resources.getResourceEntryName(checkedId)
             }
             Log.d("TAG", "Checked: $names")
+        }
+        action()
+    }
+}
+
+fun dialogClick(action: () -> Unit): DialogInterface.OnClickListener {
+    return DialogInterface.OnClickListener { dialog, which ->
+        dialog?.let {
+            val name = when (which) {
+                -1 -> "positive"
+                -2 -> "negative"
+                -3 -> "neutral"
+                else -> "item $which"
+            }
+            Log.d("TAG", "Clicked: $name")
+        }
+        action()
+    }
+}
+
+fun dialogClickMultiple(action: () -> Unit): DialogInterface.OnMultiChoiceClickListener {
+    return DialogInterface.OnMultiChoiceClickListener { dialog, which, checked ->
+        dialog?.let {
+            if (checked) {
+                Log.d("TAG", "Checked: item $which")
+            } else {
+                Log.d("TAG", "Unchecked: item $which")
+            }
         }
         action()
     }
