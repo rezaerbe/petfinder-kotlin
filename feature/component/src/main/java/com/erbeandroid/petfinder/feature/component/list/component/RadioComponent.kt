@@ -4,6 +4,7 @@ import android.content.Context
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import androidx.constraintlayout.widget.ConstraintLayout
+import com.erbeandroid.petfinder.core.common.base.check
 import com.erbeandroid.petfinder.core.common.base.checkRadio
 import com.erbeandroid.petfinder.feature.component.databinding.ComponentRadioBinding
 
@@ -21,6 +22,12 @@ class RadioComponent @JvmOverloads constructor(
 
         binding.radioGroup.setOnCheckedChangeListener(checkRadio {
             // Responds to child RadioButton checked/unchecked
+        })
+
+        binding.radio1.isChecked = true
+
+        binding.radio1.setOnCheckedChangeListener(check {
+            // Responds to radio button being checked/unchecked
         })
     }
 }
