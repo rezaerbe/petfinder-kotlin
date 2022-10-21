@@ -4,6 +4,7 @@ import android.util.Log
 import android.view.View
 import android.widget.CompoundButton
 import com.google.android.material.button.MaterialButtonToggleGroup
+import com.google.android.material.chip.ChipGroup
 
 fun click(action: () -> Unit): View.OnClickListener {
     return View.OnClickListener { view ->
@@ -49,6 +50,18 @@ fun check(action: () -> Unit): CompoundButton.OnCheckedChangeListener {
             } else {
                 Log.d("TAG", "Unchecked: $name")
             }
+        }
+        action()
+    }
+}
+
+fun checkState(action: () -> Unit): ChipGroup.OnCheckedStateChangeListener {
+    return ChipGroup.OnCheckedStateChangeListener { group, checkedIds ->
+        if (checkedIds.isNotEmpty()) {
+            val names = checkedIds.map { checkedId ->
+                group.context.resources.getResourceEntryName(checkedId)
+            }
+            Log.d("TAG", "Checked: $names")
         }
         action()
     }
