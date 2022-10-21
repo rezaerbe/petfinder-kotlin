@@ -27,7 +27,11 @@ class RadioComponent @JvmOverloads constructor(
         binding.radio1.isChecked = true
 
         binding.radio1.setOnCheckedChangeListener(check {
-            // Responds to radio button being checked/unchecked
+            // Responds to radio1 being checked/unchecked
+        })
+
+        binding.radio2.setOnCheckedChangeListener(check {
+            // Responds to radio2 being checked/unchecked
         })
     }
 }
