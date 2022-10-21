@@ -14,6 +14,7 @@ import androidx.navigation.ui.setupWithNavController
 import com.erbeandroid.petfinder.core.common.extension.launchAndCollectIn
 import com.erbeandroid.petfinder.databinding.ActivityMainBinding
 import com.erbeandroid.petfinder.feature.login.util.LoginListener
+import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 import com.erbeandroid.petfinder.feature.animal.R.id as animal
 import com.erbeandroid.petfinder.feature.component.R.id as component
@@ -53,7 +54,9 @@ class MainActivity : AppCompatActivity(), LoginListener {
 
     private fun observeData() {
         mainViewModel.connectionStatus.launchAndCollectIn(this) { state ->
-            Log.d("TAG", if (state) "Connected" else "Disconnected")
+            val status = if (state) "Connected" else "Disconnected"
+            Log.d("TAG", status)
+            showSnackbar(status)
         }
     }
 
@@ -84,6 +87,12 @@ class MainActivity : AppCompatActivity(), LoginListener {
             )
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
+    }
+
+    private fun showSnackbar(message: String) {
+        Snackbar.make(binding.navHostFragment, message, Snackbar.LENGTH_SHORT)
+            .setAnchorView(binding.bottomNavigation)
+            .show()
     }
 
     override fun onSupportNavigateUp(): Boolean {
