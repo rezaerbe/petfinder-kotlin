@@ -17,10 +17,14 @@ class CheckboxComponent @JvmOverloads constructor(
         ComponentCheckboxBinding.inflate(LayoutInflater.from(context), this, true)
 
     init {
-        binding.checkboxParent.isChecked = true
+        binding.checkbox1.isChecked = true
 
-        binding.checkboxParent.setOnCheckedChangeListener(check {
-            // Responds to checkbox being checked/unchecked
+        binding.checkbox1.setOnCheckedChangeListener(check {
+            // Responds to checkbox1 being checked/unchecked
+        })
+
+        binding.checkbox2.setOnCheckedChangeListener(check {
+            // Responds to checkbox2 being checked/unchecked
         })
     }
 }

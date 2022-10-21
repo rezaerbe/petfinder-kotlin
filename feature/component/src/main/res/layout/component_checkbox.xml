@@ -16,38 +16,21 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <CheckBox
-        android:id="@+id/checkbox_parent"
-        android:layout_width="match_parent"
+        android:id="@+id/checkbox1"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:text="@string/parent"
-        app:checkedState="indeterminate"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:checked="true"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/title_checkbox" />
 
-    <LinearLayout
-        android:id="@+id/checkbox_container"
-        android:layout_width="match_parent"
+    <CheckBox
+        android:id="@+id/checkbox2"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:orientation="vertical"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/checkbox_parent">
-
-        <CheckBox
-            android:id="@+id/checkbox_child_1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/child_1" />
-
-        <CheckBox
-            android:id="@+id/checkbox_child_2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/child_2" />
-
-    </LinearLayout>
+        app:layout_constraintBottom_toBottomOf="@id/checkbox1"
+        app:layout_constraintStart_toEndOf="@id/checkbox1"
+        app:layout_constraintTop_toTopOf="@id/checkbox1" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
