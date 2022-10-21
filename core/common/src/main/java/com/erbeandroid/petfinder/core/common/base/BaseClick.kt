@@ -4,6 +4,7 @@ import android.content.DialogInterface
 import android.util.Log
 import android.view.View
 import android.widget.CompoundButton
+import android.widget.RadioGroup
 import com.google.android.material.button.MaterialButtonToggleGroup
 import com.google.android.material.chip.ChipGroup
 
@@ -51,6 +52,16 @@ fun check(action: () -> Unit): CompoundButton.OnCheckedChangeListener {
             } else {
                 Log.d("TAG", "Unchecked: $name")
             }
+        }
+        action()
+    }
+}
+
+fun checkRadio(action: () -> Unit): RadioGroup.OnCheckedChangeListener {
+    return RadioGroup.OnCheckedChangeListener { group, checkedId ->
+        group?.let { v ->
+            val name = v.context.resources.getResourceEntryName(checkedId)
+            Log.d("TAG", "Checked: $name")
         }
         action()
     }
