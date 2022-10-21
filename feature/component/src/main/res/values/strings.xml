@@ -10,4 +10,8 @@
     <string name="action">Action</string>
 
     <string name="checkbox">Checkbox</string>
+
+    <string name="parent">Parent</string>
+    <string name="child_1">Child 1</string>
+    <string name="child_2">Child 2</string>
 </resources>
