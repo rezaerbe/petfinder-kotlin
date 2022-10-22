@@ -4,8 +4,6 @@ import android.content.Context
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import androidx.constraintlayout.widget.ConstraintLayout
-import com.erbeandroid.petfinder.core.common.base.checkState
-import com.erbeandroid.petfinder.core.common.base.click
 import com.erbeandroid.petfinder.feature.component.databinding.ComponentChipBinding
 
 class ChipComponent @JvmOverloads constructor(
@@ -17,7 +15,7 @@ class ChipComponent @JvmOverloads constructor(
     private val binding =
         ComponentChipBinding.inflate(LayoutInflater.from(context), this, true)
 
-    init {
+/*    init {
         // val checkedChipId = binding.chipGroup.checkedChipId
         // val checkedChipIds = binding.chipGroup.checkedChipIds
 
@@ -28,5 +26,5 @@ class ChipComponent @JvmOverloads constructor(
         binding.actionChip.setOnClickListener(click {
             // Responds to child chip clicked
         })
-    }
+    }*/
 }

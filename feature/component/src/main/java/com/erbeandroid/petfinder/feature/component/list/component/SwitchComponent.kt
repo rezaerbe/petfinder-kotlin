@@ -4,7 +4,6 @@ import android.content.Context
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import androidx.constraintlayout.widget.ConstraintLayout
-import com.erbeandroid.petfinder.core.common.base.check
 import com.erbeandroid.petfinder.feature.component.databinding.ComponentSwitchBinding
 
 class SwitchComponent @JvmOverloads constructor(
@@ -16,7 +15,7 @@ class SwitchComponent @JvmOverloads constructor(
     private val binding =
         ComponentSwitchBinding.inflate(LayoutInflater.from(context), this, true)
 
-    init {
+/*    init {
         binding.switch1.isChecked = true
 
         binding.switch1.setOnCheckedChangeListener(check {
@@ -26,5 +25,5 @@ class SwitchComponent @JvmOverloads constructor(
         binding.switch2.setOnCheckedChangeListener(check {
             // Responds to switch2 being checked/unchecked
         })
-    }
+    }*/
 }

@@ -4,12 +4,7 @@ import android.content.Context
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import androidx.constraintlayout.widget.ConstraintLayout
-import com.erbeandroid.petfinder.core.common.base.click
-import com.erbeandroid.petfinder.core.common.base.dialogClick
-import com.erbeandroid.petfinder.core.common.base.dialogClickMultiple
-import com.erbeandroid.petfinder.feature.component.R
 import com.erbeandroid.petfinder.feature.component.databinding.ComponentDialogBinding
-import com.google.android.material.dialog.MaterialAlertDialogBuilder
 
 class DialogComponent @JvmOverloads constructor(
     context: Context,
@@ -20,7 +15,7 @@ class DialogComponent @JvmOverloads constructor(
     private val binding =
         ComponentDialogBinding.inflate(LayoutInflater.from(context), this, true)
 
-    init {
+/*    init {
         binding.alertDialog.setOnClickListener(click {
             alertDialog()
         })
@@ -32,9 +27,9 @@ class DialogComponent @JvmOverloads constructor(
         binding.confirmationDialog.setOnClickListener(click {
             confirmationDialog()
         })
-    }
+    }*/
 
-    private fun alertDialog() {
+/*    private fun alertDialog() {
         MaterialAlertDialogBuilder(context)
             .setTitle(resources.getString(R.string.title))
             .setMessage(resources.getString(R.string.supporting_text))
@@ -100,5 +95,5 @@ class DialogComponent @JvmOverloads constructor(
                 // Respond to item chosen
             })
             .show()
-    }
+    }*/
 }

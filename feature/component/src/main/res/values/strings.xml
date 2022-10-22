@@ -31,4 +31,8 @@
     <string name="radio_button">Radio Button</string>
 
     <string name="switches">Switches</string>
+
+    <string name="app_bar_bottom">App Bar Bottom</string>
+    <string name="search">Search</string>
+    <string name="more">More</string>
 </resources>

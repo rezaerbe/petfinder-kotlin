@@ -56,7 +56,7 @@ class MainActivity : AppCompatActivity(), LoginListener {
         mainViewModel.connectionStatus.launchAndCollectIn(this) { state ->
             val status = if (state) "Connected" else "Disconnected"
             Log.d("TAG", status)
-            showSnackbar(status)
+            if (status == "Disconnected") showSnackbar(status)
         }
     }
 

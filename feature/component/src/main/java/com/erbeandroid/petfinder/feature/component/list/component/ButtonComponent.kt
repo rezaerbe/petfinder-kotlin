@@ -4,8 +4,6 @@ import android.content.Context
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import androidx.constraintlayout.widget.ConstraintLayout
-import com.erbeandroid.petfinder.core.common.base.click
-import com.erbeandroid.petfinder.core.common.base.toggle
 import com.erbeandroid.petfinder.feature.component.databinding.ComponentButtonBinding
 
 class ButtonComponent @JvmOverloads constructor(
@@ -17,7 +15,7 @@ class ButtonComponent @JvmOverloads constructor(
     private val binding =
         ComponentButtonBinding.inflate(LayoutInflater.from(context), this, true)
 
-    init {
+/*    init {
         binding.textButton.setOnClickListener(click {
             // Respond to text button press
         })
@@ -37,5 +35,5 @@ class ButtonComponent @JvmOverloads constructor(
         binding.toggleIcon.addOnButtonCheckedListener(toggle {
             // Respond to icon selection
         })
-    }
+    }*/
 }

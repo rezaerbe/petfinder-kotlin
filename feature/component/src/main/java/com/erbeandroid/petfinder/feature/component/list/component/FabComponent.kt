@@ -4,7 +4,6 @@ import android.content.Context
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import androidx.constraintlayout.widget.ConstraintLayout
-import com.erbeandroid.petfinder.core.common.base.click
 import com.erbeandroid.petfinder.feature.component.databinding.ComponentFabBinding
 
 class FabComponent @JvmOverloads constructor(
@@ -16,7 +15,7 @@ class FabComponent @JvmOverloads constructor(
     private val binding =
         ComponentFabBinding.inflate(LayoutInflater.from(context), this, true)
 
-    init {
+/*    init {
         // fab.show()
         // fab.hide()
         binding.fab.setOnClickListener(click {
@@ -34,5 +33,5 @@ class FabComponent @JvmOverloads constructor(
         binding.extendedFab.setOnClickListener(click {
             // Respond to Extended FAB click
         })
-    }
+    }*/
 }

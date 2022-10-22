@@ -11,7 +11,11 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <com.erbeandroid.petfinder.feature.component.list.component.ButtonComponent
+        <com.erbeandroid.petfinder.feature.component.list.component.AppBarBottomComponent
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <!--<com.erbeandroid.petfinder.feature.component.list.component.ButtonComponent
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
@@ -41,7 +45,7 @@
 
         <com.erbeandroid.petfinder.feature.component.list.component.DialogComponent
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content" />-->
 
     </LinearLayout>
 

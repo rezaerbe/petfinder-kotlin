@@ -4,8 +4,6 @@ import android.content.Context
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import androidx.constraintlayout.widget.ConstraintLayout
-import com.erbeandroid.petfinder.core.common.base.check
-import com.erbeandroid.petfinder.core.common.base.checkRadio
 import com.erbeandroid.petfinder.feature.component.databinding.ComponentRadioBinding
 
 class RadioComponent @JvmOverloads constructor(
@@ -17,7 +15,7 @@ class RadioComponent @JvmOverloads constructor(
     private val binding =
         ComponentRadioBinding.inflate(LayoutInflater.from(context), this, true)
 
-    init {
+/*    init {
         // val checkedRadioButtonId = binding.radioGroup.checkedRadioButtonId
 
         binding.radioGroup.setOnCheckedChangeListener(checkRadio {
@@ -33,5 +31,5 @@ class RadioComponent @JvmOverloads constructor(
         binding.radio2.setOnCheckedChangeListener(check {
             // Responds to radio2 being checked/unchecked
         })
-    }
+    }*/
 }
