@@ -58,6 +58,14 @@ class MainActivity : AppCompatActivity(), LoginListener {
             Log.d("TAG", status)
             if (status == "Disconnected") showSnackbar(status)
         }
+
+        navController.addOnDestinationChangedListener { _, destination, _ ->
+            binding.bottomNavigation.isVisible =
+                destination.id == component.listFragment ||
+                        destination.id == animal.typeFragment ||
+                        destination.id == discussion.discussionFragment ||
+                        destination.id == task.taskFragment
+        }
     }
 
     override fun onLoginSuccess() {
