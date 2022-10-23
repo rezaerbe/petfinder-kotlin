@@ -8,6 +8,7 @@
 
     <!--
     app:hideOnScroll="true"
+    style="?attr/bottomAppBarStyle"
     -->
 
     <TextView
@@ -40,7 +41,7 @@
 
         <com.google.android.material.bottomappbar.BottomAppBar
             android:id="@+id/bottom_app_bar"
-            style="?attr/bottomAppBarStyle"
+            style="@style/Widget.MaterialComponents.BottomAppBar.Colored"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
