@@ -32,5 +32,8 @@
 
         <!-- Checkbox -->
         <item name="checkboxStyle">@style/Widget.App.CheckBox</item>
+
+        <!-- Chip -->
+        <item name="chipStyle">@style/Widget.App.Chip</item>
     </style>
 </resources>

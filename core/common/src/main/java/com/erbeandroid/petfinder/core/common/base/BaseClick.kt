@@ -6,6 +6,7 @@ import android.view.View
 import android.widget.CompoundButton
 import androidx.appcompat.widget.Toolbar
 import com.google.android.material.button.MaterialButtonToggleGroup
+import com.google.android.material.chip.ChipGroup
 
 fun click(action: (View) -> Unit): View.OnClickListener {
     return View.OnClickListener { view ->
@@ -71,24 +72,22 @@ fun buttonCheckedChange(action: (CompoundButton, Boolean) -> Unit): CompoundButt
     }
 }
 
+fun checkedStateChange(action: (ChipGroup, MutableList<Int>) -> Unit): ChipGroup.OnCheckedStateChangeListener {
+    return ChipGroup.OnCheckedStateChangeListener { group, checkedIds ->
+        val names = checkedIds.map { checkedId ->
+            group.context.resources.getResourceEntryName(checkedId)
+        }
+        Log.d("TAG", "Checked: $names")
+        action(group, checkedIds)
+    }
+}
+
 /*
 fun radioCheckedChange(action: () -> Unit): RadioGroup.OnCheckedChangeListener {
     return RadioGroup.OnCheckedChangeListener { group, checkedId ->
         group?.let { v ->
             val name = v.context.resources.getResourceEntryName(checkedId)
             Log.d("TAG", "Checked: $name")
-        }
-        action()
-    }
-}
-
-fun checkedStateChange(action: () -> Unit): ChipGroup.OnCheckedStateChangeListener {
-    return ChipGroup.OnCheckedStateChangeListener { group, checkedIds ->
-        if (checkedIds.isNotEmpty()) {
-            val names = checkedIds.map { checkedId ->
-                group.context.resources.getResourceEntryName(checkedId)
-            }
-            Log.d("TAG", "Checked: $names")
         }
         action()
     }
