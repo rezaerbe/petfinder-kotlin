@@ -1,12 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style name="Theme.CustomAppBarBottom" parent="Theme.PetFinder">
-        <item name="bottomAppBarStyle">@style/Widget.App.BottomAppBar</item>
-        <item name="floatingActionButtonStyle">@style/Widget.AppBarBottom.FloatingActionButton
-        </item>
-    </style>
-
     <style name="Widget.App.BottomAppBar" parent="Widget.MaterialComponents.BottomAppBar.Colored">
         <item name="materialThemeOverlay">@style/ThemeOverlay.App.BottomAppBar</item>
     </style>

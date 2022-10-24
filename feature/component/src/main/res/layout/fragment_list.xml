@@ -19,11 +19,11 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
-        <!--<com.erbeandroid.petfinder.feature.component.list.component.ButtonComponent
+        <com.erbeandroid.petfinder.feature.component.list.component.ButtonComponent
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
-        <com.erbeandroid.petfinder.feature.component.list.component.FabComponent
+        <!--<com.erbeandroid.petfinder.feature.component.list.component.FabComponent
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
