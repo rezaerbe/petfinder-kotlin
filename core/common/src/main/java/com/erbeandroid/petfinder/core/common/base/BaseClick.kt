@@ -3,6 +3,7 @@ package com.erbeandroid.petfinder.core.common.base
 import android.util.Log
 import android.view.MenuItem
 import android.view.View
+import android.widget.CompoundButton
 import androidx.appcompat.widget.Toolbar
 import com.google.android.material.button.MaterialButtonToggleGroup
 
@@ -54,21 +55,23 @@ fun longClick(action: (View) -> Boolean): View.OnLongClickListener {
     }
 }
 
-/*
-fun compoundCheckedChange(action: (CompoundButton?, Boolean) -> Unit): CompoundButton.OnCheckedChangeListener {
+fun buttonCheckedChange(action: (CompoundButton, Boolean) -> Unit): CompoundButton.OnCheckedChangeListener {
     return CompoundButton.OnCheckedChangeListener { buttonView, isChecked ->
         buttonView?.let { v ->
-            val name = v.context.resources.getResourceEntryName(v.id)
-            if (isChecked) {
-                Log.d("TAG", "Checked: $name")
-            } else {
-                Log.d("TAG", "Unchecked: $name")
+            if (v.id > 0) {
+                val name = v.context.resources.getResourceEntryName(v.id)
+                if (isChecked) {
+                    Log.d("TAG", "Checked: $name")
+                } else {
+                    Log.d("TAG", "Unchecked: $name")
+                }
             }
         }
         action(buttonView, isChecked)
     }
 }
 
+/*
 fun radioCheckedChange(action: () -> Unit): RadioGroup.OnCheckedChangeListener {
     return RadioGroup.OnCheckedChangeListener { group, checkedId ->
         group?.let { v ->

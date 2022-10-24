@@ -4,6 +4,7 @@ import android.content.Context
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import androidx.constraintlayout.widget.ConstraintLayout
+import com.erbeandroid.petfinder.core.common.base.buttonCheckedChange
 import com.erbeandroid.petfinder.feature.component.databinding.ComponentCheckboxBinding
 
 class CheckboxComponent @JvmOverloads constructor(
@@ -15,15 +16,15 @@ class CheckboxComponent @JvmOverloads constructor(
     private val binding =
         ComponentCheckboxBinding.inflate(LayoutInflater.from(context), this, true)
 
-/*    init {
+    init {
         binding.checkbox1.isChecked = true
 
-        binding.checkbox1.setOnCheckedChangeListener(check {
-            // Responds to checkbox1 being checked/unchecked
+        binding.checkbox1.setOnCheckedChangeListener(buttonCheckedChange { _, _ ->
+            // Responds to checkbox being checked/unchecked
         })
 
-        binding.checkbox2.setOnCheckedChangeListener(check {
-            // Responds to checkbox2 being checked/unchecked
+        binding.checkbox2.setOnCheckedChangeListener(buttonCheckedChange { _, _ ->
+            // Responds to checkbox being checked/unchecked
         })
-    }*/
+    }
 }

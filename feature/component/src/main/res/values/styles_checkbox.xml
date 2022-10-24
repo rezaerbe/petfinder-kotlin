@@ -1,12 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style name="Theme.CustomCheckbox" parent="Theme.PetFinder">
-        <item name="checkboxStyle">@style/Widget.App.CheckBox</item>
-    </style>
-
     <style name="Widget.App.CheckBox" parent="Widget.MaterialComponents.CompoundButton.CheckBox">
         <item name="materialThemeOverlay">@style/ThemeOverlay.App.CheckBox</item>
+        <item name="buttonTint">@color/button_tint</item>
     </style>
 
     <style name="ThemeOverlay.App.CheckBox" parent="">

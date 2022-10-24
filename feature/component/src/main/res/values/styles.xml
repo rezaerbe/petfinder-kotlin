@@ -29,5 +29,8 @@
 
         <!-- Card -->
         <item name="materialCardViewStyle">@style/Widget.App.CardView</item>
+
+        <!-- Checkbox -->
+        <item name="checkboxStyle">@style/Widget.App.CheckBox</item>
     </style>
 </resources>

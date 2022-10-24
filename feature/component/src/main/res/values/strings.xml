@@ -1,4 +1,11 @@
 <resources>
+    <string name="app_bar_bottom">App Bar Bottom</string>
+    <string name="search">Search</string>
+    <string name="more">More</string>
+
+    <string name="app_bar_top">App Bar Top</string>
+    <string name="page_title">Page title</string>
+
     <string name="button">Button</string>
 
     <string name="floating_action_button">Floating Action Button</string>
@@ -31,11 +38,4 @@
     <string name="radio_button">Radio Button</string>
 
     <string name="switches">Switches</string>
-
-    <string name="app_bar_bottom">App Bar Bottom</string>
-    <string name="search">Search</string>
-    <string name="more">More</string>
-
-    <string name="app_bar_top">App Bar Top</string>
-    <string name="page_title">Page title</string>
 </resources>

@@ -31,11 +31,11 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
-        <!--<com.erbeandroid.petfinder.feature.component.list.component.CheckboxComponent
+        <com.erbeandroid.petfinder.feature.component.list.component.CheckboxComponent
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
-        <com.erbeandroid.petfinder.feature.component.list.component.RadioComponent
+        <!--<com.erbeandroid.petfinder.feature.component.list.component.RadioComponent
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
