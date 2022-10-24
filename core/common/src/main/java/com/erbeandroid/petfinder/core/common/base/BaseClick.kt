@@ -42,18 +42,19 @@ fun buttonChecked(action: (MaterialButtonToggleGroup, Int, Boolean) -> Unit): Ma
     }
 }
 
-/*
-fun longClick(action: (View?) -> Unit): View.OnLongClickListener {
+fun longClick(action: (View) -> Boolean): View.OnLongClickListener {
     return View.OnLongClickListener { view ->
         view?.let { v ->
-            val name = v.context.resources.getResourceEntryName(v.id)
-            Log.d("TAG", "onLongClick: $name")
+            if (v.id > 0) {
+                val name = v.context.resources.getResourceEntryName(v.id)
+                Log.d("TAG", "onLongClick: $name")
+            }
         }
         action(view)
-        true
     }
 }
 
+/*
 fun compoundCheckedChange(action: (CompoundButton?, Boolean) -> Unit): CompoundButton.OnCheckedChangeListener {
     return CompoundButton.OnCheckedChangeListener { buttonView, isChecked ->
         buttonView?.let { v ->

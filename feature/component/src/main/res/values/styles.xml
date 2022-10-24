@@ -26,5 +26,8 @@
             @style/Widget.App.ExtendedFloatingActionButton
         </item>
         <item name="floatingActionButtonStyle">@style/Widget.App.FloatingActionButton</item>
+
+        <!-- Card -->
+        <item name="materialCardViewStyle">@style/Widget.App.CardView</item>
     </style>
 </resources>

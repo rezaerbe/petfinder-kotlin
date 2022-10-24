@@ -1,11 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style name="Theme.CustomCard" parent="Theme.PetFinder">
-        <item name="materialCardViewStyle">@style/Widget.App.CardView</item>
-        <item name="borderlessButtonStyle">@style/Widget.App.Button.TextButton</item>
-    </style>
-
     <style name="Widget.App.CardView" parent="Widget.MaterialComponents.CardView">
         <item name="materialThemeOverlay">@style/ThemeOverlay.App.Card</item>
         <item name="shapeAppearance">@style/ShapeAppearance.App.MediumComponent</item>
@@ -15,5 +10,10 @@
         <item name="colorPrimary">@color/shrine_pink_100</item>
         <item name="colorSurface">@color/shrine_surface_white</item>
         <item name="colorOnSurface">@color/shrine_pink_900</item>
+    </style>
+
+    <style name="ShapeAppearanceOverlay.App.Card.Media" parent="">
+        <item name="cornerSizeBottomLeft">0dp</item>
+        <item name="cornerSizeBottomRight">0dp</item>
     </style>
 </resources>
