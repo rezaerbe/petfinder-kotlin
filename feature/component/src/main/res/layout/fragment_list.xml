@@ -23,11 +23,11 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
-        <!--<com.erbeandroid.petfinder.feature.component.list.component.FabComponent
+        <com.erbeandroid.petfinder.feature.component.list.component.FabComponent
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
-        <com.erbeandroid.petfinder.feature.component.list.component.CardComponent
+        <!--<com.erbeandroid.petfinder.feature.component.list.component.CardComponent
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 

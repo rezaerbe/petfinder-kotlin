@@ -4,8 +4,8 @@
     <style name="Theme.Shrine" parent="Theme.PetFinder">
         <!-- App Bar Bottom -->
         <item name="bottomAppBarStyle">@style/Widget.App.BottomAppBar</item>
-        <item name="floatingActionButtonStyle">@style/Widget.AppBarBottom.FloatingActionButton
-        </item>
+        <!--<item name="floatingActionButtonStyle">@style/Widget.AppBarBottom.FloatingActionButton
+        </item>-->
 
         <!-- App Bar Top -->
         <!--<item name="android:windowTranslucentStatus">true</item>-->
@@ -20,5 +20,11 @@
         <item name="borderlessButtonStyle">@style/Widget.App.Button.TextButton</item>
         <item name="materialButtonOutlinedStyle">@style/Widget.App.Button.OutlinedButton</item>
         <item name="materialButtonStyle">@style/Widget.App.Button</item>
+
+        <!-- Floating Action Button -->
+        <item name="extendedFloatingActionButtonStyle">
+            @style/Widget.App.ExtendedFloatingActionButton
+        </item>
+        <item name="floatingActionButtonStyle">@style/Widget.App.FloatingActionButton</item>
     </style>
 </resources>

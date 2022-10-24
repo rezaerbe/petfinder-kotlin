@@ -19,6 +19,6 @@
     <style name="ThemeOverlay.AppBarBottom.FloatingActionButton" parent="">
         <item name="colorSecondary">@color/shrine_pink_50</item>
         <item name="colorOnSecondary">@color/shrine_pink_900</item>
-        <item name="shapeAppearanceSmallComponent">@style/ShapeAppearance.App.SmallComponent</item>
+        <!--<item name="shapeAppearanceSmallComponent">@style/ShapeAppearance.App.SmallComponent</item>-->
     </style>
 </resources>
