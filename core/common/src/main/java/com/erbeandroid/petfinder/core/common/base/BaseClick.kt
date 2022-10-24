@@ -4,6 +4,7 @@ import android.util.Log
 import android.view.MenuItem
 import android.view.View
 import androidx.appcompat.widget.Toolbar
+import com.google.android.material.button.MaterialButtonToggleGroup
 
 fun click(action: (View) -> Unit): View.OnClickListener {
     return View.OnClickListener { view ->
@@ -27,19 +28,7 @@ fun menuItemClick(action: (MenuItem) -> Boolean): Toolbar.OnMenuItemClickListene
     }
 }
 
-/*
-fun longClick(action: (View?) -> Unit): View.OnLongClickListener {
-    return View.OnLongClickListener { view ->
-        view?.let { v ->
-            val name = v.context.resources.getResourceEntryName(v.id)
-            Log.d("TAG", "onLongClick: $name")
-        }
-        action(view)
-        true
-    }
-}
-
-fun buttonChecked(action: (MaterialButtonToggleGroup?, Int, Boolean) -> Unit): MaterialButtonToggleGroup.OnButtonCheckedListener {
+fun buttonChecked(action: (MaterialButtonToggleGroup, Int, Boolean) -> Unit): MaterialButtonToggleGroup.OnButtonCheckedListener {
     return MaterialButtonToggleGroup.OnButtonCheckedListener { group, checkedId, isChecked ->
         group?.let { v ->
             val name = v.context.resources.getResourceEntryName(checkedId)
@@ -50,6 +39,18 @@ fun buttonChecked(action: (MaterialButtonToggleGroup?, Int, Boolean) -> Unit): M
             }
         }
         action(group, checkedId, isChecked)
+    }
+}
+
+/*
+fun longClick(action: (View?) -> Unit): View.OnLongClickListener {
+    return View.OnLongClickListener { view ->
+        view?.let { v ->
+            val name = v.context.resources.getResourceEntryName(v.id)
+            Log.d("TAG", "onLongClick: $name")
+        }
+        action(view)
+        true
     }
 }
 
