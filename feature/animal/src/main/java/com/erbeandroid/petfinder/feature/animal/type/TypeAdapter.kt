@@ -9,7 +9,7 @@ class TypeAdapter(
     onTypeClick: (Type) -> Unit
 ) : BaseAdapter<Type, ItemTypeBinding>(
     ItemTypeBinding::inflate,
-    onItemBind = { item, binding ->
+    onItemBind = { item, binding, _ ->
         binding.type.text = item.name
         binding.type.setOnClickListener(click {
             onTypeClick(item)

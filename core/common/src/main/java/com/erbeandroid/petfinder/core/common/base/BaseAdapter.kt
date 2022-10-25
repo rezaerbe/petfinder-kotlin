@@ -11,7 +11,7 @@ import androidx.viewbinding.ViewBinding
 
 abstract class BaseAdapter<T : Any, VB : ViewBinding>(
     private val inflaterFactory: (LayoutInflater, ViewGroup?, Boolean) -> VB,
-    private val onItemBind: (T, VB) -> Unit
+    private val onItemBind: (T, VB, View) -> Unit
 ) : ListAdapter<T, BaseAdapter.BaseViewHolder<T, VB>>(BaseItemCallback<T>()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BaseViewHolder<T, VB> {
@@ -28,10 +28,10 @@ abstract class BaseAdapter<T : Any, VB : ViewBinding>(
     class BaseViewHolder<T : Any, VB : ViewBinding>(
         view: View,
         private val binding: VB,
-        private val onItemBind: (T, VB) -> Unit
+        private val onItemBind: (T, VB, View) -> Unit
     ) : RecyclerView.ViewHolder(view) {
         fun bind(item: T) {
-            onItemBind(item, binding)
+            onItemBind(item, binding, itemView)
         }
     }
 

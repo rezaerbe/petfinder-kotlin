@@ -9,7 +9,7 @@ class BreedAdapter(
     onBreedClick: (Breed) -> Unit
 ) : BaseAdapter<Breed, ItemBreedBinding>(
     ItemBreedBinding::inflate,
-    onItemBind = { item, binding ->
+    onItemBind = { item, binding, _ ->
         binding.breed.text = item.name
         binding.breed.setOnClickListener(click {
             onBreedClick(item)
