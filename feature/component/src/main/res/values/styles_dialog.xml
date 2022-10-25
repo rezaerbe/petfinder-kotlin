@@ -1,10 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style name="Theme.CustomDialog" parent="Theme.PetFinder">
-        <item name="materialAlertDialogTheme">@style/ThemeOverlay.App.MaterialAlertDialog</item>
-    </style>
-
     <style name="ThemeOverlay.App.MaterialAlertDialog" parent="ThemeOverlay.MaterialComponents.MaterialAlertDialog">
         <item name="colorPrimary">@color/shrine_pink_100</item>
         <item name="colorSecondary">@color/shrine_pink_100</item>
@@ -13,8 +9,10 @@
         <item name="alertDialogStyle">@style/MaterialAlertDialog.App</item>
         <item name="materialAlertDialogTitleTextStyle">@style/MaterialAlertDialog.App.Title.Text
         </item>
-        <item name="buttonBarPositiveButtonStyle">@style/Widget.App.Button</item>
-        <item name="buttonBarNeutralButtonStyle">@style/Widget.App.Button</item>
+        <item name="buttonBarButtonStyle">@style/Widget.Dialog.Button</item>
+        <item name="buttonBarPositiveButtonStyle">@style/Widget.Dialog.Button</item>
+        <item name="buttonBarNegativeButtonStyle">@style/Widget.Dialog.Button</item>
+        <item name="buttonBarNeutralButtonStyle">@style/Widget.Dialog.Button</item>
     </style>
 
     <style name="MaterialAlertDialog.App" parent="MaterialAlertDialog.MaterialComponents">
@@ -23,5 +21,10 @@
 
     <style name="MaterialAlertDialog.App.Title.Text" parent="MaterialAlertDialog.MaterialComponents.Title.Text">
         <item name="android:textColor">@color/shrine_pink_900</item>
+    </style>
+
+    <style name="Widget.Dialog.Button" parent="Widget.MaterialComponents.Button.TextButton.Dialog">
+        <item name="materialThemeOverlay">@style/ThemeOverlay.App.Button.TextButton</item>
+        <item name="shapeAppearance">@style/ShapeAppearance.App.SmallComponent</item>
     </style>
 </resources>

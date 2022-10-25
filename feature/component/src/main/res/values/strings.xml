@@ -34,6 +34,7 @@
     <string name="decline">Decline</string>
     <string name="accept">Accept</string>
     <string name="ok">OK</string>
+    <string name="dismiss">Dismiss</string>
 
     <string name="radio_button">Radio Button</string>
 

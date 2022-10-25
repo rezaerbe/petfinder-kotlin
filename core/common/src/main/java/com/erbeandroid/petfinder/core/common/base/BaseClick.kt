@@ -1,5 +1,6 @@
 package com.erbeandroid.petfinder.core.common.base
 
+import android.content.DialogInterface
 import android.util.Log
 import android.view.MenuItem
 import android.view.View
@@ -82,18 +83,7 @@ fun checkedStateChange(action: (ChipGroup, MutableList<Int>) -> Unit): ChipGroup
     }
 }
 
-/*
-fun radioCheckedChange(action: () -> Unit): RadioGroup.OnCheckedChangeListener {
-    return RadioGroup.OnCheckedChangeListener { group, checkedId ->
-        group?.let { v ->
-            val name = v.context.resources.getResourceEntryName(checkedId)
-            Log.d("TAG", "Checked: $name")
-        }
-        action()
-    }
-}
-
-fun dialogClick(action: () -> Unit): DialogInterface.OnClickListener {
+fun dialogClick(action: (DialogInterface, Int) -> Unit): DialogInterface.OnClickListener {
     return DialogInterface.OnClickListener { dialog, which ->
         dialog?.let {
             val name = when (which) {
@@ -102,20 +92,32 @@ fun dialogClick(action: () -> Unit): DialogInterface.OnClickListener {
                 -3 -> "neutral"
                 else -> "item $which"
             }
-            Log.d("TAG", "Clicked: $name")
+            Log.d("TAG", "onClick: $name")
         }
-        action()
+        action(dialog, which)
     }
 }
 
-fun dialogMultiChoiceClick(action: () -> Unit): DialogInterface.OnMultiChoiceClickListener {
+fun dialogMultiChoiceClick(action: (DialogInterface, Int, Boolean) -> Unit): DialogInterface.OnMultiChoiceClickListener {
     return DialogInterface.OnMultiChoiceClickListener { dialog, which, checked ->
         dialog?.let {
+            val name = "item $which"
             if (checked) {
-                Log.d("TAG", "Checked: item $which")
+                Log.d("TAG", "Checked: $name")
             } else {
-                Log.d("TAG", "Unchecked: item $which")
+                Log.d("TAG", "Unchecked: $name")
             }
+        }
+        action(dialog, which, checked)
+    }
+}
+
+/*
+fun radioCheckedChange(action: () -> Unit): RadioGroup.OnCheckedChangeListener {
+    return RadioGroup.OnCheckedChangeListener { group, checkedId ->
+        group?.let { v ->
+            val name = v.context.resources.getResourceEntryName(checkedId)
+            Log.d("TAG", "Checked: $name")
         }
         action()
     }

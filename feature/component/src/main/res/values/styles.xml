@@ -35,5 +35,8 @@
 
         <!-- Chip -->
         <item name="chipStyle">@style/Widget.App.Chip</item>
+
+        <!-- Dialog -->
+        <item name="materialAlertDialogTheme">@style/ThemeOverlay.App.MaterialAlertDialog</item>
     </style>
 </resources>

@@ -4,7 +4,12 @@ import android.content.Context
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import androidx.constraintlayout.widget.ConstraintLayout
+import com.erbeandroid.petfinder.core.common.base.click
+import com.erbeandroid.petfinder.core.common.base.dialogClick
+import com.erbeandroid.petfinder.core.common.base.dialogMultiChoiceClick
+import com.erbeandroid.petfinder.feature.component.R
 import com.erbeandroid.petfinder.feature.component.databinding.ComponentDialogBinding
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 
 class DialogComponent @JvmOverloads constructor(
     context: Context,
@@ -15,7 +20,7 @@ class DialogComponent @JvmOverloads constructor(
     private val binding =
         ComponentDialogBinding.inflate(LayoutInflater.from(context), this, true)
 
-/*    init {
+    init {
         binding.alertDialog.setOnClickListener(click {
             alertDialog()
         })
@@ -27,19 +32,25 @@ class DialogComponent @JvmOverloads constructor(
         binding.confirmationDialog.setOnClickListener(click {
             confirmationDialog()
         })
-    }*/
+    }
 
-/*    private fun alertDialog() {
+    fun initFullDialog(showFullDialog: () -> Unit) {
+        binding.fullDialog.setOnClickListener(click {
+            showFullDialog()
+        })
+    }
+
+    private fun alertDialog() {
         MaterialAlertDialogBuilder(context)
             .setTitle(resources.getString(R.string.title))
             .setMessage(resources.getString(R.string.supporting_text))
-            .setNeutralButton(resources.getString(R.string.cancel), dialogClick {
+            .setNeutralButton(resources.getString(R.string.cancel), dialogClick { _, _ ->
                 // Respond to neutral button press
             })
-            .setNegativeButton(resources.getString(R.string.decline), dialogClick {
+            .setNegativeButton(resources.getString(R.string.decline), dialogClick { _, _ ->
                 // Respond to negative button press
             })
-            .setPositiveButton(resources.getString(R.string.accept), dialogClick {
+            .setPositiveButton(resources.getString(R.string.accept), dialogClick { _, _ ->
                 // Respond to positive button press
             })
             .show()
@@ -50,7 +61,7 @@ class DialogComponent @JvmOverloads constructor(
 
         MaterialAlertDialogBuilder(context)
             .setTitle(resources.getString(R.string.title))
-            .setItems(items, dialogClick {
+            .setItems(items, dialogClick { _, _ ->
                 // Respond to item chosen
             })
             .show()
@@ -67,13 +78,13 @@ class DialogComponent @JvmOverloads constructor(
 
         MaterialAlertDialogBuilder(context)
             .setTitle(resources.getString(R.string.title))
-            .setNeutralButton(resources.getString(R.string.cancel), dialogClick {
+            .setNeutralButton(resources.getString(R.string.cancel), dialogClick { _, _ ->
                 // Respond to neutral button press
             })
-            .setPositiveButton(resources.getString(R.string.ok), dialogClick {
+            .setPositiveButton(resources.getString(R.string.ok), dialogClick { _, _ ->
                 // Respond to positive button press
             })
-            .setSingleChoiceItems(singleItems, checkedItem, dialogClick {
+            .setSingleChoiceItems(singleItems, checkedItem, dialogClick { _, _ ->
                 // Respond to item chosen
             })
             .show()
@@ -85,15 +96,15 @@ class DialogComponent @JvmOverloads constructor(
 
         MaterialAlertDialogBuilder(context)
             .setTitle(resources.getString(R.string.title))
-            .setNeutralButton(resources.getString(R.string.cancel), dialogClick {
+            .setNeutralButton(resources.getString(R.string.cancel), dialogClick { _, _ ->
                 // Respond to neutral button press
             })
-            .setPositiveButton(resources.getString(R.string.ok), dialogClick {
+            .setPositiveButton(resources.getString(R.string.ok), dialogClick { _, _ ->
                 // Respond to positive button press
             })
-            .setMultiChoiceItems(multiItems, checkedItems, dialogClickMultiple {
+            .setMultiChoiceItems(multiItems, checkedItems, dialogMultiChoiceClick { _, _, _ ->
                 // Respond to item chosen
             })
             .show()
-    }*/
+    }
 }
