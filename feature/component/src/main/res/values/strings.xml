@@ -36,6 +36,8 @@
     <string name="ok">OK</string>
     <string name="dismiss">Dismiss</string>
 
+    <string name="divider">Divider</string>
+
     <string name="radio_button">Radio Button</string>
 
     <string name="switches">Switches</string>
