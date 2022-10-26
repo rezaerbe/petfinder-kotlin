@@ -9,7 +9,7 @@
     <string name="google_app_id" translatable="false">1:363220246569:android:ea60928dddf927d66c7c38</string>
     <string name="google_crash_reporting_api_key" translatable="false">AIzaSyAnhStaQikw3KiDPHrQV7McRhGszL8wXPs</string>
     <string name="google_storage_bucket" translatable="false">petfinder-erbe.appspot.com</string>
-    <string name="project_id" translatable="false">petfinder-erbe</string>
+    <!--<string name="project_id" translatable="false">petfinder-erbe</string>-->
 
     <!-- bottom_navigation_menu -->
     <string name="component">Component</string>
