@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewbinding.ViewBinding
@@ -44,5 +45,45 @@ abstract class BaseAdapter<T : Any, VB : ViewBinding>(
         override fun areContentsTheSame(oldItem: T, newItem: T): Boolean {
             return oldItem == newItem
         }
+    }
+
+    fun itemTouchHelper(): ItemTouchHelper {
+        val adapter = this
+
+        val itemTouchCallback = object : ItemTouchHelper.Callback() {
+            override fun getMovementFlags(
+                recyclerView: RecyclerView,
+                viewHolder: RecyclerView.ViewHolder
+            ): Int {
+                val drag = ItemTouchHelper.UP or ItemTouchHelper.DOWN
+                val swipe = ItemTouchHelper.RIGHT or ItemTouchHelper.LEFT
+                return makeMovementFlags(drag, swipe)
+            }
+
+            override fun onMove(
+                recyclerView: RecyclerView,
+                viewHolder: RecyclerView.ViewHolder,
+                target: RecyclerView.ViewHolder
+            ): Boolean {
+                val from = viewHolder.bindingAdapterPosition
+                val to = target.bindingAdapterPosition
+
+                val list = adapter.currentList.toMutableList()
+                list[from] = list[to].also { list[to] = list[from] }
+                adapter.submitList(list)
+
+                return true
+            }
+
+            override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
+                val position = viewHolder.bindingAdapterPosition
+
+                val list = adapter.currentList.toMutableList()
+                list.removeAt(position)
+                adapter.submitList(list)
+            }
+        }
+
+        return ItemTouchHelper(itemTouchCallback)
     }
 }
