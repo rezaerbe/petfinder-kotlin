@@ -5,7 +5,7 @@ import android.util.AttributeSet
 import android.view.LayoutInflater
 import androidx.constraintlayout.widget.ConstraintLayout
 import com.erbeandroid.petfinder.core.common.base.click
-import com.erbeandroid.petfinder.core.common.base.menuItemClick
+import com.erbeandroid.petfinder.core.common.base.toolbarMenuItemClick
 import com.erbeandroid.petfinder.feature.component.R
 import com.erbeandroid.petfinder.feature.component.databinding.ComponentAppBarBottomBinding
 
@@ -27,7 +27,7 @@ class AppBarBottomComponent @JvmOverloads constructor(
             // Respond to FAB click
         })
 
-        binding.bottomAppBar.setOnMenuItemClickListener(menuItemClick { menuItem ->
+        binding.bottomAppBar.setOnMenuItemClickListener(toolbarMenuItemClick { menuItem ->
             when (menuItem.itemId) {
                 R.id.search -> {
                     // Handle search icon press

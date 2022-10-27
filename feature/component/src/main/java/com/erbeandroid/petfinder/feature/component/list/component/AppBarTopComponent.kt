@@ -5,7 +5,7 @@ import android.util.AttributeSet
 import android.view.LayoutInflater
 import androidx.constraintlayout.widget.ConstraintLayout
 import com.erbeandroid.petfinder.core.common.base.click
-import com.erbeandroid.petfinder.core.common.base.menuItemClick
+import com.erbeandroid.petfinder.core.common.base.toolbarMenuItemClick
 import com.erbeandroid.petfinder.feature.component.R
 import com.erbeandroid.petfinder.feature.component.databinding.ComponentAppBarTopBinding
 
@@ -23,7 +23,7 @@ class AppBarTopComponent @JvmOverloads constructor(
             // Handle navigation icon press
         })
 
-        binding.topAppBar.setOnMenuItemClickListener(menuItemClick { menuItem ->
+        binding.topAppBar.setOnMenuItemClickListener(toolbarMenuItemClick { menuItem ->
             when (menuItem.itemId) {
                 R.id.search -> {
                     // Handle search icon press
@@ -37,9 +37,11 @@ class AppBarTopComponent @JvmOverloads constructor(
             }
         })
 
-/*        val callback = object : ActionMode.Callback {
+/*        val activity = (context as AppCompatActivity)
+
+        val callback = object : ActionMode.Callback {
             override fun onCreateActionMode(mode: ActionMode?, menu: Menu?): Boolean {
-                (context as AppCompatActivity).menuInflater.inflate(R.menu.top_app_bar, menu)
+                activity.menuInflater.inflate(R.menu.top_app_bar, menu)
                 return true
             }
 
@@ -64,7 +66,7 @@ class AppBarTopComponent @JvmOverloads constructor(
             override fun onDestroyActionMode(mode: ActionMode?) {}
         }
 
-        val actionMode = (context as AppCompatActivity).startSupportActionMode(callback)
+        val actionMode = activity.startSupportActionMode(callback)
         actionMode?.title = "1 selected"*/
     }
 }

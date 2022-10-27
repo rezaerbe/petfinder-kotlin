@@ -5,6 +5,7 @@ import android.util.Log
 import android.view.MenuItem
 import android.view.View
 import android.widget.CompoundButton
+import androidx.appcompat.widget.PopupMenu
 import androidx.appcompat.widget.Toolbar
 import com.google.android.material.button.MaterialButtonToggleGroup
 import com.google.android.material.chip.ChipGroup
@@ -21,7 +22,7 @@ fun click(action: (View) -> Unit): View.OnClickListener {
     }
 }
 
-fun menuItemClick(action: (MenuItem) -> Boolean): Toolbar.OnMenuItemClickListener {
+fun toolbarMenuItemClick(action: (MenuItem) -> Boolean): Toolbar.OnMenuItemClickListener {
     return Toolbar.OnMenuItemClickListener { menuItem ->
         menuItem?.let { menu ->
             val name = menu.title
@@ -109,6 +110,16 @@ fun dialogMultiChoiceClick(action: (DialogInterface, Int, Boolean) -> Unit): Dia
             }
         }
         action(dialog, which, checked)
+    }
+}
+
+fun popupMenuItemClick(action: (MenuItem) -> Boolean): PopupMenu.OnMenuItemClickListener {
+    return PopupMenu.OnMenuItemClickListener { menuItem ->
+        menuItem?.let { menu ->
+            val name = menu.title
+            Log.d("TAG", "onMenuItemClick: $name")
+        }
+        action(menuItem)
     }
 }
 

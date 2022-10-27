@@ -1,36 +1,63 @@
 package com.erbeandroid.petfinder.feature.component.list
 
-import androidx.fragment.app.FragmentTransaction
-import com.erbeandroid.petfinder.core.common.base.BaseFragment
+import android.os.Bundle
+import android.util.Log
+import android.view.ContextMenu
+import android.view.LayoutInflater
+import android.view.MenuItem
+import android.view.View
+import android.view.ViewGroup
+import androidx.fragment.app.Fragment
+import com.erbeandroid.petfinder.feature.component.R
 import com.erbeandroid.petfinder.feature.component.databinding.FragmentListBinding
-import com.erbeandroid.petfinder.feature.component.list.util.CustomDialogFragment
 
-class ListFragment :
-    BaseFragment<FragmentListBinding>(FragmentListBinding::inflate) {
+class ListFragment : Fragment() {
 
-    override fun initInteraction() {
-        binding.dialogComponent.initFullDialog {
-            showFullDialog()
-        }
+    private var _binding: FragmentListBinding? = null
+    private val binding get() = _binding!!
+
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
+        _binding = FragmentListBinding.inflate(inflater, container, false)
+        registerForContextMenu(binding.menuComponent.textMenu)
+        return binding.root
     }
 
-    override fun initObservation() = Unit
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+        unregisterForContextMenu(binding.menuComponent.textMenu)
+    }
 
-    private fun showFullDialog() {
-        val customDialogFragment = CustomDialogFragment()
+    override fun onCreateContextMenu(
+        menu: ContextMenu,
+        v: View,
+        menuInfo: ContextMenu.ContextMenuInfo?
+    ) {
+        super.onCreateContextMenu(menu, v, menuInfo)
+        requireActivity().menuInflater.inflate(R.menu.option_menu, menu)
+    }
 
-        // The device is using a large layout, so show the fragment as a dialog
-        // customDialogFragment.show(parentFragmentManager, "dialog")
-
-        // The device is smaller, so show the fragment fullscreen
-        val transaction = requireActivity().supportFragmentManager.beginTransaction()
-        // For a little polish, specify a transition animation
-        transaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
-        // To make it fullscreen, use the 'content' root view as the container
-        // for the fragment, which is always the root view for the activity
-        transaction
-            .add(android.R.id.content, customDialogFragment)
-            .addToBackStack(null)
-            .commit()
+    override fun onContextItemSelected(menuItem: MenuItem): Boolean {
+        val name = menuItem.title
+        Log.d("TAG", "onMenuItemClick: $name")
+        return when (menuItem.itemId) {
+            R.id.option_1 -> {
+                // Respond to menu item 1 click.
+                true
+            }
+            R.id.option_2 -> {
+                // Respond to menu item 2 click.
+                true
+            }
+            R.id.option_3 -> {
+                // Respond to menu item 3 click.
+                true
+            }
+            else -> super.onContextItemSelected(menuItem)
+        }
     }
 }

@@ -38,6 +38,13 @@
 
     <string name="divider">Divider</string>
 
+    <string name="menu">Menu</string>
+    <string name="option_1">Option 1</string>
+    <string name="option_2">Option 2</string>
+    <string name="option_3">Option 3</string>
+    <string name="text_menu">This text opens a context menu when long pressed.</string>
+    <string name="show_menu">Show Menu</string>
+
     <string name="radio_button">Radio Button</string>
 
     <string name="switches">Switches</string>

@@ -48,6 +48,11 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
+        <com.erbeandroid.petfinder.feature.component.list.component.MenuComponent
+            android:id="@+id/menu_component"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
         <!--<com.erbeandroid.petfinder.feature.component.list.component.RadioComponent
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />

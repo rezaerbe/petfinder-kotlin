@@ -3,12 +3,15 @@ package com.erbeandroid.petfinder.feature.component.list.component
 import android.content.Context
 import android.util.AttributeSet
 import android.view.LayoutInflater
+import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.fragment.app.FragmentTransaction
 import com.erbeandroid.petfinder.core.common.base.click
 import com.erbeandroid.petfinder.core.common.base.dialogClick
 import com.erbeandroid.petfinder.core.common.base.dialogMultiChoiceClick
 import com.erbeandroid.petfinder.feature.component.R
 import com.erbeandroid.petfinder.feature.component.databinding.ComponentDialogBinding
+import com.erbeandroid.petfinder.feature.component.list.util.CustomDialogFragment
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 
 class DialogComponent @JvmOverloads constructor(
@@ -32,11 +35,9 @@ class DialogComponent @JvmOverloads constructor(
         binding.confirmationDialog.setOnClickListener(click {
             confirmationDialog()
         })
-    }
 
-    fun initFullDialog(showFullDialog: () -> Unit) {
         binding.fullDialog.setOnClickListener(click {
-            showFullDialog()
+            fullDialog()
         })
     }
 
@@ -106,5 +107,21 @@ class DialogComponent @JvmOverloads constructor(
                 // Respond to item chosen
             })
             .show()
+    }
+
+    private fun fullDialog() {
+        val fragmentManager = (context as AppCompatActivity).supportFragmentManager
+        val customDialogFragment = CustomDialogFragment()
+
+        // The device is using a large layout, so show the fragment as a dialog
+        // customDialogFragment.show(fragmentManager, "dialog")
+
+        // The device is smaller, so show the fragment fullscreen
+        val transaction = fragmentManager.beginTransaction()
+        transaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
+        transaction
+            .add(android.R.id.content, customDialogFragment)
+            .addToBackStack(null)
+            .commit()
     }
 }
