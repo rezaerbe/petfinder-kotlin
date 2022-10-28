@@ -28,8 +28,8 @@ class ListFragment : Fragment() {
 
     override fun onDestroyView() {
         super.onDestroyView()
-        _binding = null
         unregisterForContextMenu(binding.menuComponent.textMenu)
+        _binding = null
     }
 
     override fun onCreateContextMenu(

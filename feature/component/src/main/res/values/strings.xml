@@ -44,6 +44,8 @@
     <string name="option_3">Option 3</string>
     <string name="text_menu">This text opens a context menu when long pressed.</string>
     <string name="show_menu">Show Menu</string>
+    <string name="list_menu">List Menu</string>
+    <string name="label">Label</string>
 
     <string name="radio_button">Radio Button</string>
 

@@ -1,20 +1,27 @@
 package com.erbeandroid.petfinder.feature.component.list.component
 
+import android.annotation.SuppressLint
 import android.content.Context
+import android.graphics.drawable.InsetDrawable
 import android.util.AttributeSet
 import android.util.Log
+import android.util.TypedValue
 import android.view.LayoutInflater
 import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
 import android.view.View
+import android.widget.ArrayAdapter
 import androidx.annotation.MenuRes
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.view.menu.MenuBuilder
+import androidx.appcompat.widget.ListPopupWindow
 import androidx.appcompat.widget.PopupMenu
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.view.MenuProvider
 import androidx.lifecycle.Lifecycle
 import com.erbeandroid.petfinder.core.common.base.click
+import com.erbeandroid.petfinder.core.common.base.itemClick
 import com.erbeandroid.petfinder.core.common.base.popupMenuItemClick
 import com.erbeandroid.petfinder.feature.component.R
 import com.erbeandroid.petfinder.feature.component.databinding.ComponentMenuBinding
@@ -59,14 +66,35 @@ class MenuComponent @JvmOverloads constructor(
             }
         }, context, Lifecycle.State.RESUMED)
 
-        binding.buttonMenu.setOnClickListener(click { view ->
-            showMenu(view, R.menu.option_menu)
+        binding.buttonShowMenu.setOnClickListener(click { view ->
+            showMenu(view, R.menu.popup_menu)
         })
+
+        binding.buttonListMenu.setOnClickListener(click {
+            listMenu()
+        })
+
+        dropdownMenu()
     }
 
+    @SuppressLint("RestrictedApi")
     private fun showMenu(view: View, @MenuRes menuRes: Int) {
         val popup = PopupMenu(context, view)
         popup.menuInflater.inflate(menuRes, popup.menu)
+
+        if (popup.menu is MenuBuilder) {
+            val menuBuilder = popup.menu as MenuBuilder
+            menuBuilder.setOptionalIconsVisible(true)
+            for (item in menuBuilder.visibleItems) {
+                val iconMarginPx =
+                    TypedValue.applyDimension(
+                        TypedValue.COMPLEX_UNIT_DIP, 8f, resources.displayMetrics
+                    ).toInt()
+                if (item.icon != null) {
+                    item.icon = InsetDrawable(item.icon, iconMarginPx, 0, iconMarginPx, 0)
+                }
+            }
+        }
 
         popup.setOnMenuItemClickListener(popupMenuItemClick { menuItem ->
             when (menuItem.itemId) {
@@ -87,5 +115,40 @@ class MenuComponent @JvmOverloads constructor(
         })
 
         popup.show()
+    }
+
+    private fun listMenu() {
+        val listPopupWindow =
+            ListPopupWindow(
+                context,
+                null,
+                com.google.android.material.R.attr.listPopupWindowStyle
+            )
+
+        listPopupWindow.anchorView = binding.buttonListMenu
+
+        val items = listOf("Option 1", "Option 2", "Option 3")
+        val adapter = ArrayAdapter(context, R.layout.list_menu, items)
+        listPopupWindow.setAdapter(adapter)
+
+        listPopupWindow.setOnItemClickListener(itemClick { _, _, _, _ ->
+            // Respond to list popup window item click.
+
+            // Dismiss popup.
+            listPopupWindow.dismiss()
+        })
+
+        listPopupWindow.show()
+    }
+
+    private fun dropdownMenu() {
+        val items = listOf("Option 1", "Option 2", "Option 3")
+        val adapter = ArrayAdapter(context, R.layout.list_menu, items)
+        binding.menuInput.setAdapter(adapter)
+        binding.menuInput.setText(items[0], false)
+
+        binding.menuInput.onItemClickListener = itemClick { _, _, _, _ ->
+            // Respond to list item click.
+        }
     }
 }

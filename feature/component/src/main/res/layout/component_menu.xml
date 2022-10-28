@@ -6,6 +6,13 @@
     android:clipToPadding="false"
     android:padding="16dp">
 
+    <!--
+    style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu"
+    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+    style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.Dense.ExposedDropdownMenu"
+    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
+    -->
+
     <TextView
         android:id="@+id/title_menu"
         android:layout_width="wrap_content"
@@ -26,13 +33,41 @@
         app:layout_constraintTop_toBottomOf="@id/title_menu" />
 
     <Button
-        android:id="@+id/button_menu"
+        android:id="@+id/button_show_menu"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:text="@string/show_menu"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/button_list_menu"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/text_menu" />
+
+    <Button
+        android:id="@+id/button_list_menu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/list_menu"
+        app:layout_constraintBottom_toBottomOf="@id/button_show_menu"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/button_show_menu"
+        app:layout_constraintTop_toTopOf="@id/button_show_menu" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/label_menu"
+        style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:hint="@string/label"
+        app:layout_constraintTop_toBottomOf="@id/button_show_menu">
+
+        <AutoCompleteTextView
+            android:id="@+id/menu_input"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@null"
+            android:inputType="none" />
+
+    </com.google.android.material.textfield.TextInputLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

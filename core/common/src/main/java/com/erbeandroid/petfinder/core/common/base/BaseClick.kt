@@ -4,6 +4,7 @@ import android.content.DialogInterface
 import android.util.Log
 import android.view.MenuItem
 import android.view.View
+import android.widget.AdapterView
 import android.widget.CompoundButton
 import androidx.appcompat.widget.PopupMenu
 import androidx.appcompat.widget.Toolbar
@@ -120,6 +121,16 @@ fun popupMenuItemClick(action: (MenuItem) -> Boolean): PopupMenu.OnMenuItemClick
             Log.d("TAG", "onMenuItemClick: $name")
         }
         action(menuItem)
+    }
+}
+
+fun itemClick(action: (AdapterView<*>, View, Int, Long) -> Unit): AdapterView.OnItemClickListener {
+    return AdapterView.OnItemClickListener { parent, view, position, id ->
+        parent?.let { v ->
+            val name = v.getItemAtPosition(position)
+            Log.d("TAG", "onMenuItemClick: $name")
+        }
+        action(parent, view, position, id)
     }
 }
 
