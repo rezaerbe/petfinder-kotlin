@@ -41,5 +41,12 @@
 
         <!-- Divider -->
         <item name="materialDividerStyle">@style/Widget.App.MaterialDivider</item>
+
+        <!-- Menu -->
+        <item name="textAppearanceLargePopupMenu">@style/TextAppearance.App.Subtitle1</item>
+        <item name="textAppearanceSmallPopupMenu">@style/TextAppearance.App.Subtitle1</item>
+        <item name="popupMenuBackground">@drawable/custom_popup_background</item>
+
+        <item name="textInputStyle">@style/Widget.App.ExposedDropdownMenu</item>
     </style>
 </resources>
