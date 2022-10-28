@@ -49,7 +49,9 @@
 
     <string name="progress">Progress</string>
 
-    <string name="radio_button">Radio Button</string>
+    <string name="radio">Radio</string>
+
+    <string name="bottom_sheet">Bottom Sheet</string>
 
     <string name="switches">Switches</string>
 </resources>
