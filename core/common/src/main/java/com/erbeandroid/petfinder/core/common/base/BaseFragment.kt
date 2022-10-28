@@ -35,6 +35,14 @@ abstract class BaseFragment<VB : ViewBinding>(
     abstract fun initInteraction()
     abstract fun initObservation()
 
+    open fun onConnect() {
+        Log.d("TAG", "onConnect: ")
+    }
+
+    open fun onDisconnect() {
+        Log.d("TAG", "onDisconnect: ")
+    }
+
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null

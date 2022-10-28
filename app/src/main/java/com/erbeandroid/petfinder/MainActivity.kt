@@ -1,7 +1,6 @@
 package com.erbeandroid.petfinder
 
 import android.os.Bundle
-import android.util.Log
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
@@ -11,10 +10,10 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
+import com.erbeandroid.petfinder.core.common.base.BaseFragment
 import com.erbeandroid.petfinder.core.common.extension.launchAndCollectIn
 import com.erbeandroid.petfinder.databinding.ActivityMainBinding
 import com.erbeandroid.petfinder.feature.login.util.LoginListener
-import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 import com.erbeandroid.petfinder.feature.animal.R.id as animal
 import com.erbeandroid.petfinder.feature.component.R.id as component
@@ -54,9 +53,11 @@ class MainActivity : AppCompatActivity(), LoginListener {
 
     private fun observeData() {
         mainViewModel.connectionStatus.launchAndCollectIn(this) { state ->
-            val status = if (state) "Connected" else "Disconnected"
-            Log.d("TAG", status)
-            if (status == "Disconnected") showSnackbar(status)
+            val currentFragment =
+                navHostFragment.childFragmentManager.primaryNavigationFragment
+            if (currentFragment is BaseFragment<*>) {
+                if (state) currentFragment.onConnect() else currentFragment.onDisconnect()
+            }
         }
 
         navController.addOnDestinationChangedListener { _, destination, _ ->
@@ -95,12 +96,6 @@ class MainActivity : AppCompatActivity(), LoginListener {
             )
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
-    }
-
-    private fun showSnackbar(message: String) {
-        Snackbar.make(binding.navHostFragment, message, Snackbar.LENGTH_SHORT)
-            .setAnchorView(binding.bottomNavigation)
-            .show()
     }
 
     override fun onSupportNavigateUp(): Boolean {
