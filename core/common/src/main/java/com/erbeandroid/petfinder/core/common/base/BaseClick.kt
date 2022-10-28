@@ -6,6 +6,7 @@ import android.view.MenuItem
 import android.view.View
 import android.widget.AdapterView
 import android.widget.CompoundButton
+import android.widget.RadioGroup
 import androidx.appcompat.widget.PopupMenu
 import androidx.appcompat.widget.Toolbar
 import com.google.android.material.button.MaterialButtonToggleGroup
@@ -134,13 +135,12 @@ fun itemClick(action: (AdapterView<*>, View, Int, Long) -> Unit): AdapterView.On
     }
 }
 
-/*
-fun radioCheckedChange(action: () -> Unit): RadioGroup.OnCheckedChangeListener {
+fun radioCheckedChange(action: (RadioGroup, Int) -> Unit): RadioGroup.OnCheckedChangeListener {
     return RadioGroup.OnCheckedChangeListener { group, checkedId ->
         group?.let { v ->
             val name = v.context.resources.getResourceEntryName(checkedId)
             Log.d("TAG", "Checked: $name")
         }
-        action()
+        action(group, checkedId)
     }
-}*/
+}

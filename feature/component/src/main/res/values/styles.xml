@@ -52,5 +52,8 @@
         <!-- Progress -->
         <item name="circularProgressIndicatorStyle">@style/Widget.App.CircularProgressIndicator
         </item>
+
+        <!-- Checkbox -->
+        <item name="radioButtonStyle">@style/Widget.App.RadioButton</item>
     </style>
 </resources>
