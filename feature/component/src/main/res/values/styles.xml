@@ -48,5 +48,9 @@
         <item name="popupMenuBackground">@drawable/custom_popup_background</item>
 
         <item name="textInputStyle">@style/Widget.App.ExposedDropdownMenu</item>
+
+        <!-- Progress -->
+        <item name="circularProgressIndicatorStyle">@style/Widget.App.CircularProgressIndicator
+        </item>
     </style>
 </resources>

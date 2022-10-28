@@ -47,6 +47,8 @@
     <string name="list_menu">List Menu</string>
     <string name="label">Label</string>
 
+    <string name="progress">Progress</string>
+
     <string name="radio_button">Radio Button</string>
 
     <string name="switches">Switches</string>
