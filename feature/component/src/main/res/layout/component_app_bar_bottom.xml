@@ -6,10 +6,6 @@
     android:clipToPadding="false"
     android:padding="16dp">
 
-    <!--
-    app:hideOnScroll="true"
-    -->
-
     <TextView
         android:id="@+id/title_app_bar_bottom"
         android:layout_width="wrap_content"
@@ -38,6 +34,9 @@
 
         </androidx.core.widget.NestedScrollView>
 
+        <!--
+        app:hideOnScroll="true"
+        -->
         <com.google.android.material.bottomappbar.BottomAppBar
             android:id="@+id/bottom_app_bar"
             style="?attr/bottomAppBarStyle"

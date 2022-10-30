@@ -15,7 +15,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
-        <com.erbeandroid.petfinder.feature.component.list.component.AppBarTopComponent
+        <!--<com.erbeandroid.petfinder.feature.component.list.component.AppBarTopComponent
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
@@ -59,7 +59,7 @@
 
         <com.erbeandroid.petfinder.feature.component.list.component.RadioComponent
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content" />-->
 
         <!--<com.erbeandroid.petfinder.feature.component.list.component.BottomSheetComponent
             android:layout_width="match_parent"
