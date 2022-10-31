@@ -6,21 +6,6 @@
     android:clipToPadding="false"
     android:padding="16dp">
 
-    <!--
-    app:liftOnScroll="true"
-    -> app:layout_scrollFlags="scroll|enterAlways|snap"
-
-    app:layout_scrollFlags="scroll|exitUntilCollapsed|snap"
-    app:contentScrim="?attr/colorPrimary"
-    app:statusBarScrim="?attr/colorPrimaryVariant"
-    -> app:layout_collapseMode="pin"
-
-    style="?attr/appBarLayoutStyle"
-    style="?attr/toolbarStyle"
-    style="?attr/collapsingToolbarLayoutStyle"
-    style="?attr/actionModeStyle"
-    -->
-
     <TextView
         android:id="@+id/title_app_bar_top"
         android:layout_width="wrap_content"
@@ -39,10 +24,16 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/title_app_bar_top">
 
+        <!--
+        app:liftOnScroll="true"
+        -->
         <com.google.android.material.appbar.AppBarLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
+            <!--
+            app:layout_scrollFlags="scroll|enterAlways|snap"
+            -->
             <com.google.android.material.appbar.MaterialToolbar
                 android:id="@+id/top_app_bar"
                 style="@style/Widget.MaterialComponents.Toolbar.Primary"
@@ -79,6 +70,11 @@
             android:layout_width="match_parent"
             android:layout_height="128dp">
 
+            <!--
+            app:layout_scrollFlags="scroll|exitUntilCollapsed|snap"
+            app:contentScrim="?attr/colorPrimary"
+            app:statusBarScrim="?attr/colorPrimaryVariant"
+            -->
             <com.google.android.material.appbar.CollapsingToolbarLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -87,6 +83,9 @@
                 app:expandedTitleMarginStart="72dp"
                 app:expandedTitleTextAppearance="@style/TextAppearance.App.CollapsingToolbar.Expanded">
 
+                <!--
+                app:layout_collapseMode="pin"
+                -->
                 <com.google.android.material.appbar.MaterialToolbar
                     android:id="@+id/prominent_top_app_bar"
                     style="@style/Widget.MaterialComponents.Toolbar.Primary"
@@ -113,6 +112,9 @@
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
+    <!--
+    android:fitsSystemWindows="true"
+    -->
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:id="@+id/image_prominent_app_bar_top_container"
         android:layout_width="match_parent"
@@ -128,6 +130,11 @@
             android:layout_height="152dp"
             android:fitsSystemWindows="false">
 
+            <!--
+            app:layout_scrollFlags="scroll|exitUntilCollapsed|snap"
+            app:contentScrim="?attr/colorPrimary"
+            app:statusBarScrim="?attr/colorPrimaryVariant"
+            -->
             <com.google.android.material.appbar.CollapsingToolbarLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -145,6 +152,9 @@
                     android:scaleType="centerCrop"
                     android:src="@drawable/media" />
 
+                <!--
+                app:layout_collapseMode="pin"
+                -->
                 <com.google.android.material.appbar.MaterialToolbar
                     android:id="@+id/image_prominent_top_app_bar"
                     style="@style/Widget.MaterialComponents.Toolbar.Primary"
