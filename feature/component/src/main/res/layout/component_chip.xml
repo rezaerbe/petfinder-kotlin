@@ -6,18 +6,6 @@
     android:clipToPadding="false"
     android:padding="16dp">
 
-    <!--
-    app:singleLine="true"
-    app:chipMinTouchTargetSize
-    app:chipSpacingHorizontal
-    app:singleSelection
-    app:selectionRequired
-
-    style="?attr/chipStyle"
-    style="?attr/chipGroupStyle"
-    style="?attr/chipStandaloneStyle"
-    -->
-
     <TextView
         android:id="@+id/title_chip"
         android:layout_width="wrap_content"
@@ -27,6 +15,14 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <!--
+    app:singleLine="true"
+    app:chipSpacingHorizontal
+    app:chipSpacingVertical
+    app:chipMinTouchTargetSize
+    app:singleSelection
+    app:selectionRequired
+    -->
     <com.google.android.material.chip.ChipGroup
         android:id="@+id/chipGroup"
         android:layout_width="match_parent"

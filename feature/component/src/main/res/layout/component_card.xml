@@ -6,12 +6,6 @@
     android:clipToPadding="false"
     android:padding="16dp">
 
-    <!--
-    app:strokeWidth="1dp"
-    app:strokeColor="@color/stroke_color"
-    app:cardElevation="0dp"
-    -->
-
     <TextView
         android:id="@+id/title_card"
         android:layout_width="wrap_content"
@@ -21,6 +15,11 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <!--
+    app:strokeWidth="1dp"
+    app:strokeColor="@color/stroke_color"
+    app:cardElevation="0dp"
+    -->
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/card"
         android:layout_width="match_parent"

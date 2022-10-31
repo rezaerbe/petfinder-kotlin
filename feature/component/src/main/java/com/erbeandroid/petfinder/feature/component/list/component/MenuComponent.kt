@@ -35,8 +35,6 @@ class MenuComponent @JvmOverloads constructor(
     private val binding =
         ComponentMenuBinding.inflate(LayoutInflater.from(context), this, true)
 
-    val textMenu = binding.textMenu
-
     init {
         val activity = (context as AppCompatActivity)
 

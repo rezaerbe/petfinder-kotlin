@@ -26,19 +26,19 @@ class ChipComponent @JvmOverloads constructor(
         })
 
         binding.actionChip.setOnClickListener(click {
-            // Responds to chip click
+            // Responds to action chip click
         })
 
         binding.inputChip.setOnCloseIconClickListener(click {
-            // Responds to chip's close icon click if one is present
+            // Responds to input chip's close icon click if one is present
         })
 
 /*        binding.choiceChip.setOnCheckedChangeListener(buttonCheckedChange { _, _ ->
-            // Responds to chip checked/unchecked
+            // Responds to choice chip checked/unchecked
         })
 
         binding.filterChip.setOnCheckedChangeListener(buttonCheckedChange { _, _ ->
-            // Responds to chip checked/unchecked
+            // Responds to filter chip checked/unchecked
         })*/
     }
 }

@@ -6,14 +6,6 @@
     android:clipToPadding="false"
     android:padding="16dp">
 
-    <!--
-    style="?attr/textInputStyle"
-    style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu"
-    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
-    style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.Dense.ExposedDropdownMenu"
-    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
-    -->
-
     <TextView
         android:id="@+id/title_menu"
         android:layout_width="wrap_content"
@@ -53,6 +45,12 @@
         app:layout_constraintStart_toEndOf="@id/button_show_menu"
         app:layout_constraintTop_toTopOf="@id/button_show_menu" />
 
+    <!--
+    style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu"
+    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+    style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.Dense.ExposedDropdownMenu"
+    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
+    -->
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/label_menu"
         style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu"

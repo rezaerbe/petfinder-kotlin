@@ -20,11 +20,11 @@ class CheckboxComponent @JvmOverloads constructor(
         binding.checkbox1.isChecked = true
 
         binding.checkbox1.setOnCheckedChangeListener(buttonCheckedChange { _, _ ->
-            // Responds to checkbox being checked/unchecked
+            // Responds to checkbox 1 being checked/unchecked
         })
 
         binding.checkbox2.setOnCheckedChangeListener(buttonCheckedChange { _, _ ->
-            // Responds to checkbox being checked/unchecked
+            // Responds to checkbox 2 being checked/unchecked
         })
     }
 }

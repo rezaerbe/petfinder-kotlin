@@ -6,13 +6,6 @@
     android:clipToPadding="false"
     android:padding="16dp">
 
-    <!--
-    app:icon="@drawable/ic_add"
-    style="@style/Widget.MaterialComponents.Button.TextButton.Icon"
-    style="@style/Widget.MaterialComponents.Button.OutlinedButton.Icon"
-    style="@style/Widget.MaterialComponents.Button.Icon"
-    -->
-
     <TextView
         android:id="@+id/title_button"
         android:layout_width="wrap_content"
@@ -22,6 +15,10 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <!--
+    app:icon="@drawable/ic_add"
+    style="@style/Widget.MaterialComponents.Button.TextButton.Icon"
+    -->
     <Button
         android:id="@+id/text_button"
         style="?attr/borderlessButtonStyle"
@@ -33,6 +30,11 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/title_button" />
 
+
+    <!--
+    app:icon="@drawable/ic_add"
+    style="@style/Widget.MaterialComponents.Button.OutlinedButton.Icon"
+    -->
     <Button
         android:id="@+id/outlined_button"
         style="?attr/materialButtonOutlinedStyle"
@@ -44,6 +46,10 @@
         app:layout_constraintStart_toEndOf="@+id/text_button"
         app:layout_constraintTop_toTopOf="@+id/text_button" />
 
+    <!--
+    app:icon="@drawable/ic_add"
+    style="@style/Widget.MaterialComponents.Button.Icon"
+    -->
     <Button
         android:id="@+id/contained_button"
         style="?attr/materialButtonStyle"
