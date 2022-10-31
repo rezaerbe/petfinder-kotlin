@@ -24,8 +24,8 @@ class ProgressComponent @JvmOverloads constructor(
             }
 
             override fun onFinish() {
-                // binding.linearProgress.hide()
-                // binding.circularProgress.hide()
+                binding.linearProgress.hide()
+                binding.circularProgress.hide()
             }
         }
 

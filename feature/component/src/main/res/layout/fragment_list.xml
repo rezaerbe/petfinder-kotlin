@@ -59,11 +59,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
-        <!--<com.erbeandroid.petfinder.feature.component.list.component.BottomSheetComponent
+        <com.erbeandroid.petfinder.feature.component.list.component.BottomSheetComponent
+            android:id="@+id/bottom_sheet"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
-        <com.erbeandroid.petfinder.feature.component.list.component.SwitchComponent
+        <!--<com.erbeandroid.petfinder.feature.component.list.component.SwitchComponent
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />-->
 
