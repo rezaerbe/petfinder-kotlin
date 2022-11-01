@@ -52,6 +52,8 @@
     <string name="radio">Radio</string>
 
     <string name="bottom_sheet">Bottom Sheet</string>
+    <string name="standard">Standard</string>
+    <string name="modal">Modal</string>
 
     <string name="switches">Switches</string>
 </resources>

@@ -55,5 +55,8 @@
 
         <!-- Checkbox -->
         <item name="radioButtonStyle">@style/Widget.App.RadioButton</item>
+
+        <!-- Bottom Sheet -->
+        <item name="bottomSheetDialogTheme">@style/ThemeOverlay.App.BottomSheetDialog</item>
     </style>
 </resources>

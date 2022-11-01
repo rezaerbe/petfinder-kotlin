@@ -126,7 +126,7 @@ class MenuComponent @JvmOverloads constructor(
         listPopupWindow.anchorView = binding.buttonListMenu
 
         val items = listOf("Option 1", "Option 2", "Option 3")
-        val adapter = ArrayAdapter(context, R.layout.list_menu, items)
+        val adapter = ArrayAdapter(context, R.layout.item_menu, items)
         listPopupWindow.setAdapter(adapter)
 
         listPopupWindow.setOnItemClickListener(itemClick { _, _, _, _ ->
@@ -141,7 +141,7 @@ class MenuComponent @JvmOverloads constructor(
 
     private fun dropdownMenu() {
         val items = listOf("Option 1", "Option 2", "Option 3")
-        val adapter = ArrayAdapter(context, R.layout.list_menu, items)
+        val adapter = ArrayAdapter(context, R.layout.item_menu, items)
         binding.menuInput.setAdapter(adapter)
         binding.menuInput.setText(items[0], false)
 
