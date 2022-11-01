@@ -61,5 +61,9 @@
 
         <!-- Slider -->
         <item name="sliderStyle">@style/Widget.App.Slider</item>
+
+        <!-- Snackbar -->
+        <item name="snackbarStyle">@style/Widget.App.Snackbar</item>
+        <item name="snackbarButtonStyle">@style/Widget.App.SnackbarButton</item>
     </style>
 </resources>

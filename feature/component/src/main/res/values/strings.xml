@@ -57,5 +57,8 @@
 
     <string name="slider">Slider</string>
 
+    <string name="snackbar">Snackbar</string>
+    <string name="show_snackbar">Show Snackbar</string>
+
     <string name="switches">Switches</string>
 </resources>
