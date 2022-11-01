@@ -65,5 +65,8 @@
         <!-- Snackbar -->
         <item name="snackbarStyle">@style/Widget.App.Snackbar</item>
         <item name="snackbarButtonStyle">@style/Widget.App.SnackbarButton</item>
+
+        <!-- Switch -->
+        <item name="switchStyle">@style/Widget.App.Switch</item>
     </style>
 </resources>
