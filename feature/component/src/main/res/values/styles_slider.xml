@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="Widget.App.Slider" parent="Widget.MaterialComponents.Slider">
+        <item name="materialThemeOverlay">@style/ThemeOverlay.App.Slider</item>
+        <item name="labelStyle">@style/Widget.App.Tooltip</item>
+    </style>
+
+    <style name="ThemeOverlay.App.Slider" parent="">
+        <item name="colorPrimary">@color/shrine_pink_100</item>
+        <item name="colorOnPrimary">@color/shrine_pink_900</item>
+        <item name="colorOnSurface">@color/shrine_pink_100</item>
+    </style>
+
+    <style name="Widget.App.Tooltip" parent="Widget.MaterialComponents.Tooltip">
+        <item name="android:textAppearance">@style/TextAppearance.App.Tooltip</item>
+        <item name="backgroundTint">@color/shrine_pink_900</item>
+    </style>
+</resources>

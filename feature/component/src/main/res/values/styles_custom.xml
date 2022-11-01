@@ -36,6 +36,12 @@
         <item name="android:fontFamily">@font/rubik</item>
     </style>
 
+    <style name="TextAppearance.App.Tooltip" parent="TextAppearance.MaterialComponents.Tooltip">
+        <item name="android:textColor">@color/shrine_pink_100</item>
+        <item name="fontFamily">@font/rubik</item>
+        <item name="android:fontFamily">@font/rubik</item>
+    </style>
+
     <style name="ShapeAppearance.App.SmallComponent" parent="ShapeAppearance.MaterialComponents.SmallComponent">
         <item name="cornerFamily">cut</item>
         <item name="cornerSize">4dp</item>

@@ -58,5 +58,8 @@
 
         <!-- Bottom Sheet -->
         <item name="bottomSheetDialogTheme">@style/ThemeOverlay.App.BottomSheetDialog</item>
+
+        <!-- Slider -->
+        <item name="sliderStyle">@style/Widget.App.Slider</item>
     </style>
 </resources>

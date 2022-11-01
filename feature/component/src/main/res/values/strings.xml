@@ -55,5 +55,7 @@
     <string name="standard">Standard</string>
     <string name="modal">Modal</string>
 
+    <string name="slider">Slider</string>
+
     <string name="switches">Switches</string>
 </resources>
