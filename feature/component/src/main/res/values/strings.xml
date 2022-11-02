@@ -72,4 +72,7 @@
     <string name="error">Error</string>
     <string name="prefix">Prefix</string>
     <string name="suffix">Suffix</string>
+
+    <string name="date_picker">Date Picker</string>
+    <string name="date_range_picker">Date Range Picker</string>
 </resources>
