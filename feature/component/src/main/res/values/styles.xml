@@ -47,7 +47,7 @@
         <item name="textAppearanceSmallPopupMenu">@style/TextAppearance.App.Subtitle1</item>
         <item name="popupMenuBackground">@drawable/custom_popup_background</item>
 
-        <item name="textInputStyle">@style/Widget.App.ExposedDropdownMenu</item>
+        <item name="textInputFilledExposedDropdownMenuStyle">@style/Widget.App.ExposedDropdownMenu</item>
 
         <!-- Progress -->
         <item name="circularProgressIndicatorStyle">@style/Widget.App.CircularProgressIndicator
@@ -71,5 +71,9 @@
 
         <!-- Tab -->
         <item name="tabStyle">@style/Widget.App.TabLayout</item>
+
+        <!-- Text Field -->
+        <item name="textInputFilledStyle">@style/Widget.App.TextInputLayout.FilledBox</item>
+        <item name="textInputOutlinedStyle">@style/Widget.App.TextInputLayout.OutlinedBox</item>
     </style>
 </resources>
