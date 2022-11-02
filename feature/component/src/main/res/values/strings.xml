@@ -75,4 +75,6 @@
 
     <string name="date_picker">Date Picker</string>
     <string name="date_range_picker">Date Range Picker</string>
+
+    <string name="time_picker">Time Picker</string>
 </resources>

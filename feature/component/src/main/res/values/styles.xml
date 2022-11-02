@@ -79,5 +79,8 @@
 
         <!-- Date Picker -->
         <item name="materialCalendarTheme">@style/ThemeOverlay.App.DatePicker</item>
+
+        <!-- Time Picker -->
+        <!--<item name="materialTimePickerTheme">@style/ThemeOverlay.App.TimePicker</item>-->
     </style>
 </resources>
