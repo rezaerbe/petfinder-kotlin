@@ -61,7 +61,7 @@ class MainActivity : AppCompatActivity(), LoginListener {
         }
 
         navController.addOnDestinationChangedListener { _, destination, _ ->
-            binding.bottomNavigation.isVisible =
+            binding.bottomNavigation?.isVisible =
                 destination.id == component.listFragment ||
                         destination.id == animal.typeFragment ||
                         destination.id == discussion.discussionFragment ||
@@ -76,16 +76,16 @@ class MainActivity : AppCompatActivity(), LoginListener {
 
     private fun signIn() {
         navController.navigate(LoginDirections.actionGlobalNavigationLoginToMain())
-        binding.bottomNavigation.isVisible = true
+        binding.bottomNavigation?.isVisible = true
     }
 
     private fun signOut() {
         navController.navigate(MainDirections.actionGlobalNavigationMainToLogin())
-        binding.bottomNavigation.isVisible = false
+        binding.bottomNavigation?.isVisible = false
     }
 
     private fun setupMain() {
-        binding.bottomNavigation.setupWithNavController(navController)
+        binding.bottomNavigation?.setupWithNavController(navController)
 
         appBarConfiguration = AppBarConfiguration(
             setOf(

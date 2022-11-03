@@ -3,6 +3,8 @@ package com.erbeandroid.petfinder.feature.animal.detail
 import android.util.Log
 import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
+import androidx.viewbinding.ViewBinding
+import com.erbeandroid.petfinder.core.common.base.BaseAdapterOk
 import com.erbeandroid.petfinder.core.common.base.BaseFragment
 import com.erbeandroid.petfinder.core.common.extension.launchAndCollectIn
 import com.erbeandroid.petfinder.core.common.state.StateData
@@ -14,8 +16,33 @@ class DetailFragment :
     BaseFragment<FragmentDetailBinding>(FragmentDetailBinding::inflate) {
 
     private val animalDetailViewModel: DetailViewModel by viewModels()
+    private lateinit var detailAdapter: BaseAdapterOk<DataModel, ViewBinding>
 
-    override fun initInteraction() = Unit
+    override fun initInteraction() {
+        detailAdapter = DetailAdapter(
+            onItemClick1 = {
+
+            },
+            onItemClick2 = {
+
+            }
+        )
+        binding.recyclerView.adapter = detailAdapter
+
+        val list = listOf(
+            DataModel.Model1(1, 1),
+            DataModel.Model2(2, "Text 1"),
+            DataModel.Model1(3, 2),
+            DataModel.Model1(4, 3),
+            DataModel.Model2(5, "Text 2"),
+            DataModel.Model1(6, 4),
+            DataModel.Model1(7, 5),
+            DataModel.Model1(8, 6),
+            DataModel.Model2(5, "Text 3")
+        )
+
+        detailAdapter.submitList(list)
+    }
 
     override fun initObservation() {
         animalDetailViewModel.animalDetailState.launchAndCollectIn(viewLifecycleOwner) { animalDetailState ->

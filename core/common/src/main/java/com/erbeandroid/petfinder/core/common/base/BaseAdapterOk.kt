@@ -9,23 +9,28 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewbinding.ViewBinding
 
-abstract class BaseAdapter<T : Any, VB : ViewBinding>(
-    private val inflaterFactory: (LayoutInflater, ViewGroup?, Boolean) -> VB,
+abstract class BaseAdapterOk<T : Any, VB : ViewBinding>(
+    private val itemViewType: (T) -> Int,
+    private val inflaterFactory: (LayoutInflater, ViewGroup?, Boolean, Int) -> VB,
     private val onItemBind: (T, VB, View) -> Unit
-) : ListAdapter<T, BaseAdapter.BaseViewHolder<T, VB>>(BaseItemCallback<T>()) {
+) : ListAdapter<T, BaseAdapterOk.BaseViewHolderOk<T, VB>>(BaseItemCallbackOk<T>()) {
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BaseViewHolder<T, VB> {
-        val binding = inflaterFactory(LayoutInflater.from(parent.context), parent, false)
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BaseViewHolderOk<T, VB> {
+        val binding = inflaterFactory(LayoutInflater.from(parent.context), parent, false, viewType)
         val view = binding.root
-        return BaseViewHolder(view, binding, onItemBind)
+        return BaseViewHolderOk(view, binding, onItemBind)
     }
 
-    override fun onBindViewHolder(holder: BaseViewHolder<T, VB>, position: Int) {
+    override fun onBindViewHolder(holder: BaseViewHolderOk<T, VB>, position: Int) {
         val item = getItem(position)
         holder.bind(item)
     }
 
-    class BaseViewHolder<T : Any, VB : ViewBinding>(
+    override fun getItemViewType(position: Int): Int {
+        return itemViewType(getItem(position))
+    }
+
+    class BaseViewHolderOk<T : Any, VB : ViewBinding>(
         view: View,
         private val binding: VB,
         private val onItemBind: (T, VB, View) -> Unit
@@ -35,7 +40,7 @@ abstract class BaseAdapter<T : Any, VB : ViewBinding>(
         }
     }
 
-    class BaseItemCallback<T : Any> : DiffUtil.ItemCallback<T>() {
+    class BaseItemCallbackOk<T : Any> : DiffUtil.ItemCallback<T>() {
         override fun areItemsTheSame(oldItem: T, newItem: T): Boolean {
             return oldItem.toString() == newItem.toString()
         }
