@@ -1,7 +1,7 @@
 package com.erbeandroid.petfinder.feature.animal.detail
 
 import androidx.viewbinding.ViewBinding
-import com.erbeandroid.petfinder.core.common.base.BaseAdapterOk
+import com.erbeandroid.petfinder.core.common.base.BaseAdapterMultiple
 import com.erbeandroid.petfinder.core.common.base.click
 import com.erbeandroid.petfinder.feature.animal.databinding.ItemNumberBinding
 import com.erbeandroid.petfinder.feature.animal.databinding.ItemTextBinding
@@ -9,7 +9,7 @@ import com.erbeandroid.petfinder.feature.animal.databinding.ItemTextBinding
 class DetailAdapter(
     onItemClick1: (DataModel.Model1) -> Unit,
     onItemClick2: (DataModel.Model2) -> Unit
-) : BaseAdapterOk<DataModel, ViewBinding>(
+) : BaseAdapterMultiple<DataModel, ViewBinding>(
     itemViewType = { item ->
         when (item) {
             is DataModel.Model1 -> 0

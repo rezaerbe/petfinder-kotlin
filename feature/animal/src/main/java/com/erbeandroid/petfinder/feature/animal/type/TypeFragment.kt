@@ -6,7 +6,7 @@ import androidx.fragment.app.viewModels
 import androidx.recyclerview.selection.SelectionPredicates
 import androidx.recyclerview.selection.SelectionTracker
 import androidx.recyclerview.selection.StorageStrategy
-import com.erbeandroid.petfinder.core.common.base.BaseAdapter
+import com.erbeandroid.petfinder.core.common.base.BaseAdapterSelection
 import com.erbeandroid.petfinder.core.common.base.BaseFragment
 import com.erbeandroid.petfinder.core.common.base.BaseItemKeyProvider
 import com.erbeandroid.petfinder.core.common.base.BaseItemLookUp
@@ -23,7 +23,7 @@ class TypeFragment :
     BaseFragment<FragmentTypeBinding>(FragmentTypeBinding::inflate) {
 
     private val typeViewModel: TypeViewModel by viewModels()
-    private lateinit var typeAdapter: BaseAdapter<Type, ItemTypeBinding>
+    private lateinit var typeAdapter: BaseAdapterSelection<Type, ItemTypeBinding>
 
     override fun initInteraction() {
         typeAdapter = TypeAdapter { type ->

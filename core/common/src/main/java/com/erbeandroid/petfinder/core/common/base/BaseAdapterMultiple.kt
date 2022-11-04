@@ -9,19 +9,22 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewbinding.ViewBinding
 
-abstract class BaseAdapterOk<T : Any, VB : ViewBinding>(
+abstract class BaseAdapterMultiple<T : Any, VB : ViewBinding>(
     private val itemViewType: (T) -> Int,
     private val inflaterFactory: (LayoutInflater, ViewGroup?, Boolean, Int) -> VB,
     private val onItemBind: (T, VB, View) -> Unit
-) : ListAdapter<T, BaseAdapterOk.BaseViewHolderOk<T, VB>>(BaseItemCallbackOk<T>()) {
+) : ListAdapter<T, BaseAdapterMultiple.BaseViewHolderMultiple<T, VB>>(BaseItemCallbackMultiple<T>()) {
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BaseViewHolderOk<T, VB> {
+    override fun onCreateViewHolder(
+        parent: ViewGroup,
+        viewType: Int
+    ): BaseViewHolderMultiple<T, VB> {
         val binding = inflaterFactory(LayoutInflater.from(parent.context), parent, false, viewType)
         val view = binding.root
-        return BaseViewHolderOk(view, binding, onItemBind)
+        return BaseViewHolderMultiple(view, binding, onItemBind)
     }
 
-    override fun onBindViewHolder(holder: BaseViewHolderOk<T, VB>, position: Int) {
+    override fun onBindViewHolder(holder: BaseViewHolderMultiple<T, VB>, position: Int) {
         val item = getItem(position)
         holder.bind(item)
     }
@@ -30,7 +33,7 @@ abstract class BaseAdapterOk<T : Any, VB : ViewBinding>(
         return itemViewType(getItem(position))
     }
 
-    class BaseViewHolderOk<T : Any, VB : ViewBinding>(
+    class BaseViewHolderMultiple<T : Any, VB : ViewBinding>(
         view: View,
         private val binding: VB,
         private val onItemBind: (T, VB, View) -> Unit
@@ -40,7 +43,7 @@ abstract class BaseAdapterOk<T : Any, VB : ViewBinding>(
         }
     }
 
-    class BaseItemCallbackOk<T : Any> : DiffUtil.ItemCallback<T>() {
+    class BaseItemCallbackMultiple<T : Any> : DiffUtil.ItemCallback<T>() {
         override fun areItemsTheSame(oldItem: T, newItem: T): Boolean {
             return oldItem.toString() == newItem.toString()
         }

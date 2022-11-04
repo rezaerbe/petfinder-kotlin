@@ -9,7 +9,7 @@ class ListTaskAdapter(
     onTaskClick: (Post) -> Unit
 ) : BaseAdapter<Post, ItemTaskBinding>(
     ItemTaskBinding::inflate,
-    onItemBind = { item, binding, _, _ ->
+    onItemBind = { item, binding, _ ->
         binding.title.text = item.title
         binding.title.setOnClickListener(click {
             onTaskClick(item)

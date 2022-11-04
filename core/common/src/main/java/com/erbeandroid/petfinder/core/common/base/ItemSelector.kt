@@ -20,7 +20,7 @@ class BaseItemLookUp(private val recyclerView: RecyclerView) : ItemDetailsLookup
     override fun getItemDetails(e: MotionEvent): ItemDetails<Long>? {
         val view = recyclerView.findChildViewUnder(e.x, e.y)
         view?.let {
-            return (recyclerView.getChildViewHolder(view) as BaseAdapter.BaseViewHolder<*, *>).getItemDetails()
+            return (recyclerView.getChildViewHolder(view) as BaseAdapterSelection.BaseViewHolderSelection<*, *>).getItemDetails()
         }
         return null
     }

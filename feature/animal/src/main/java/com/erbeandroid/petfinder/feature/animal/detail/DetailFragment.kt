@@ -4,7 +4,7 @@ import android.util.Log
 import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
 import androidx.viewbinding.ViewBinding
-import com.erbeandroid.petfinder.core.common.base.BaseAdapterOk
+import com.erbeandroid.petfinder.core.common.base.BaseAdapterMultiple
 import com.erbeandroid.petfinder.core.common.base.BaseFragment
 import com.erbeandroid.petfinder.core.common.extension.launchAndCollectIn
 import com.erbeandroid.petfinder.core.common.state.StateData
@@ -16,7 +16,7 @@ class DetailFragment :
     BaseFragment<FragmentDetailBinding>(FragmentDetailBinding::inflate) {
 
     private val animalDetailViewModel: DetailViewModel by viewModels()
-    private lateinit var detailAdapter: BaseAdapterOk<DataModel, ViewBinding>
+    private lateinit var detailAdapter: BaseAdapterMultiple<DataModel, ViewBinding>
 
     override fun initInteraction() {
         detailAdapter = DetailAdapter(
