@@ -3,8 +3,13 @@ package com.erbeandroid.petfinder.feature.animal.type
 import android.util.Log
 import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
+import androidx.recyclerview.selection.SelectionPredicates
+import androidx.recyclerview.selection.SelectionTracker
+import androidx.recyclerview.selection.StorageStrategy
 import com.erbeandroid.petfinder.core.common.base.BaseAdapter
 import com.erbeandroid.petfinder.core.common.base.BaseFragment
+import com.erbeandroid.petfinder.core.common.base.BaseItemKeyProvider
+import com.erbeandroid.petfinder.core.common.base.BaseItemLookUp
 import com.erbeandroid.petfinder.core.common.extension.launchAndCollectIn
 import com.erbeandroid.petfinder.core.common.state.StateData
 import com.erbeandroid.petfinder.core.data.model.remote.Type
@@ -27,6 +32,26 @@ class TypeFragment :
             }
         }
         binding.recyclerView.adapter = typeAdapter
+
+        val selectionTracker = SelectionTracker.Builder(
+            "type",
+            binding.recyclerView,
+            BaseItemKeyProvider(binding.recyclerView),
+            BaseItemLookUp(binding.recyclerView),
+            StorageStrategy.createLongStorage()
+        ).withSelectionPredicate(SelectionPredicates.createSelectAnything()).build()
+
+        selectionTracker.addObserver(object : SelectionTracker.SelectionObserver<Long>() {
+            override fun onSelectionChanged() {
+                super.onSelectionChanged()
+                if (selectionTracker.selection.size() > 0) {
+                    val selectedItems = selectionTracker.selection
+                    Log.d("TAG", selectedItems.toString())
+                }
+            }
+        })
+
+        typeAdapter.selectionTracker = selectionTracker
 
         binding.refreshLayout.setOnRefreshListener {
             typeViewModel.getTypes()

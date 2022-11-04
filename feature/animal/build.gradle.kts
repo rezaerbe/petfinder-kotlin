@@ -29,6 +29,7 @@ dependencies {
 
     implementation("com.google.android.material:material:1.7.0")
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
+    implementation("androidx.recyclerview:recyclerview-selection:1.1.0")
 
     implementation("androidx.fragment:fragment-ktx:1.5.4")
 

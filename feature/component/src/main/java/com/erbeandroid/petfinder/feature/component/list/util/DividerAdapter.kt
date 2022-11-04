@@ -6,7 +6,7 @@ import com.erbeandroid.petfinder.feature.component.databinding.ItemDividerBindin
 class DividerAdapter :
     BaseAdapter<String, ItemDividerBinding>(
         ItemDividerBinding::inflate,
-        onItemBind = { item, binding, _ ->
+        onItemBind = { item, binding, _, _ ->
             binding.item.text = item
         }
     )

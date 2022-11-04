@@ -9,7 +9,7 @@ class ListPostAdapter(
     onPostClick: (Post) -> Unit
 ) : BaseAdapter<Post, ItemPostBinding>(
     ItemPostBinding::inflate,
-    onItemBind = { item, binding, _ ->
+    onItemBind = { item, binding, _, _ ->
         binding.title.text = item.title
         binding.title.setOnClickListener(click {
             onPostClick(item)
